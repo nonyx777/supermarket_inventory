@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "699428765550",
+    "project_id": "authfirebase-6bf2d",
+    "storage_bucket": "authfirebase-6bf2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:699428765550:android:43eed5c60cf78ae6480b7f",
+        "android_client_info": {
+          "package_name": "com.example.supermarket_inventory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "699428765550-g43t3q39g2uamp4c99bth675jnc06d86.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBERzg5sgR560avnUH-Gj8wvr98CGauxeo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "699428765550-g43t3q39g2uamp4c99bth675jnc06d86.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
