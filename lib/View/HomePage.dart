@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
             child: Center(
       child: Column(
         children: [
-          Text("Hello" + user.email!),
+          Text("Hello " + user.email!),
           ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
               onPressed: () {

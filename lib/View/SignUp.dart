@@ -1,9 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:supermarket_inventory/View/LoginForm.dart';
-import 'package:supermarket_inventory/View/components/LoginButton.dart';
 import 'package:supermarket_inventory/View/components/LoginTextfield.dart';
 import 'package:supermarket_inventory/View/components/SignUpButton.dart';
 import 'package:supermarket_inventory/View/components/square_tile.dart';

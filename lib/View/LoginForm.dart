@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:supermarket_inventory/View/ForgetPassword.dart';
 import 'package:supermarket_inventory/View/SignUp.dart';
 import 'package:supermarket_inventory/View/components/LoginButton.dart';
 import 'package:supermarket_inventory/View/components/LoginTextfield.dart';
@@ -90,10 +91,21 @@ class _LoginFormState extends State<LoginForm> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Colors.grey[600]),
-                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ForgetPassword()),
+                          );
+                        },
+                        child: Text(
+                          'Forgot Password?',
+                          style: TextStyle(
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
