@@ -83,9 +83,6 @@ class _LoginFormState extends State<LoginForm> {
                   hintText: 'Password',
                   obscureText: true,
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -100,20 +97,20 @@ class _LoginFormState extends State<LoginForm> {
                           );
                         },
                         child: Text(
-                          'Forgot Password?',
+                          'forgot password?',
                           style: TextStyle(
                             color: Colors.grey[600],
+                            fontSize: 11,
                           ),
                         ),
                       )
                     ],
                   ),
                 ),
-                const SizedBox(height: 25),
                 MyButton(
                   onTap: signInUser,
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 15),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -147,7 +144,6 @@ class _LoginFormState extends State<LoginForm> {
                     SquareTile(imagePath: 'images/google.png'),
                   ],
                 ),
-                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

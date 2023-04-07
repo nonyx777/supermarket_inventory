@@ -1,10 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:supermarket_inventory/View/HomePage.dart';
 import 'package:supermarket_inventory/View/LoginForm.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 

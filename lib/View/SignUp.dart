@@ -71,7 +71,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SignUpForm()),
+                          MaterialPageRoute(builder: (context) => LoginForm()),
                         );
                       },
                     ),
