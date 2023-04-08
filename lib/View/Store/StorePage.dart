@@ -14,6 +14,7 @@ class StorePage extends StatefulWidget {
 class _StorePageState extends State<StorePage> {
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: BlocBuilder<StoreBloc, StoreState>(
         builder: (context, state) {
@@ -45,8 +46,8 @@ class _StorePageState extends State<StorePage> {
                 final Product product = state.product[index];
                 return Column(
                   children: [
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: height * 0.0175,
                     ),
                     ProductTile(
                       id: product.id,

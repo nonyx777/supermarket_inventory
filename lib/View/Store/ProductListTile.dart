@@ -1,0 +1,103 @@
+import 'package:flutter/material.dart';
+
+class ProductListTile extends StatefulWidget {
+  final String productCategory;
+  final String productImage;
+  final double productPrice;
+
+  const ProductListTile(
+      {required this.productCategory,
+      required this.productImage,
+      required this.productPrice,
+      super.key});
+
+  @override
+  State<ProductListTile> createState() => _ProductListTileState();
+}
+
+class _ProductListTileState extends State<ProductListTile> {
+  @override
+  Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
+    return Material(
+      elevation: 3,
+      borderRadius: BorderRadius.circular(10),
+      child: Container(
+        height: height * 0.13,
+        width: width * .9,
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 229, 229, 229),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Material(
+                elevation: 1,
+                borderRadius: BorderRadius.circular(150),
+                child: Container(
+                  height: width * .2,
+                  width: width * .2,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(widget.productImage),
+                      fit: BoxFit.fitWidth,
+                    ),
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+              //...
+              SizedBox(
+                width: width * 0.05,
+              ),
+              //..
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //...
+                    SizedBox(
+                      height: height * 0.01,
+                    ),
+                    //...
+                    Text(
+                      widget.productCategory,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20,
+                      ),
+                    ),
+                    //...
+                    SizedBox(
+                      height: height * 0.02,
+                    ),
+                    //...
+                    Text(
+                      widget.productPrice.toString(),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.navigate_next_rounded,
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
