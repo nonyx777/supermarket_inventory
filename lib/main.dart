@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider<StoreBloc>(
         create: (context) => StoreBloc(),
-        child: const StoreManagement(),
+        child: StoreManagement(),
       ),
     );
   }

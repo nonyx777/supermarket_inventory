@@ -13,9 +13,18 @@ class StorePage extends StatefulWidget {
 
 class _StorePageState extends State<StorePage> {
   @override
+  void initState() {
+    BlocProvider.of<StoreBloc>(context).add(GetDataButtonPressed());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 20, 33, 61),
+      ),
       body: BlocBuilder<StoreBloc, StoreState>(
         builder: (context, state) {
           if (state is StoreInitialState) {
@@ -23,17 +32,7 @@ class _StorePageState extends State<StorePage> {
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               alignment: Alignment.center,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orangeAccent,
-                  elevation: 20,
-                ),
-                onPressed: () {
-                  BlocProvider.of<StoreBloc>(context)
-                      .add(GetDataButtonPressed());
-                },
-                child: const Text("Products"),
-              ),
+              child: const Text("No prodcuts available"),
             );
           } else if (state is StoreLoadingState) {
             return const Center(child: CircularProgressIndicator());

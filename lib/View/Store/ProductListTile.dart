@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
+import 'package:supermarket_inventory/Service/Utility.dart';
+import 'package:supermarket_inventory/View/Store/StorePage.dart';
 
 class ProductListTile extends StatefulWidget {
   final String productCategory;
@@ -89,7 +93,19 @@ class _ProductListTileState extends State<ProductListTile> {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  selectedCategory = widget.productCategory;
+                  final storeBloc = StoreBloc();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BlocProvider.value(
+                        value: storeBloc,
+                        child: StorePage(),
+                      ),
+                    ),
+                  );
+                },
                 icon: const Icon(
                   Icons.navigate_next_rounded,
                 ),

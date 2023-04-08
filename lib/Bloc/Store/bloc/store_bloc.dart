@@ -14,7 +14,13 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
     on<GetDataButtonPressed>((event, emit) async {
       emit(StoreLoadingState());
       final product = await _apiServiceProvider.fetchProduct();
-      emit(StoreSuccessState(product!));
+      final selectedProducts = [];
+      for (var p in product!) {
+        if (p.productCategory == selectedCategory) {
+          selectedProducts.add(p);
+        }
+      }
+      emit(StoreSuccessState(selectedProducts));
     });
 
     on<GetCategoryButtonPressed>((event, emit) async {
@@ -45,7 +51,7 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
         double price = 10;
         for (var p in product) {
           if (key == p.productCategory) {
-            int productPriceInt = p.productPrice;
+            num productPriceInt = p.productPrice;
             double productPrice = productPriceInt.toDouble();
             price += productPrice;
           }

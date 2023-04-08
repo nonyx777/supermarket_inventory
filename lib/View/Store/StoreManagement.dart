@@ -28,10 +28,10 @@ class _StoreManagementState extends State<StoreManagement> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 252, 163, 17),
+        backgroundColor: const Color.fromARGB(255, 20, 33, 61),
         title: const Text(
           style: TextStyle(
-            color: Color.fromARGB(255, 20, 33, 61),
+            color: Color.fromARGB(255, 252, 163, 17),
             fontSize: 25,
           ),
           "Products",
