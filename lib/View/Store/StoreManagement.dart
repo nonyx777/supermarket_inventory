@@ -50,7 +50,7 @@ class _StoreManagementState extends State<StoreManagement> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
                         Text(
-                          "Total Products",
+                          "Total Product Price",
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 20,
@@ -73,14 +73,14 @@ class _StoreManagementState extends State<StoreManagement> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: const [
                         Text(
-                          "128",
+                          "0",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
                           ),
                         ),
                         Text(
-                          "2345",
+                          "0",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
@@ -122,7 +122,7 @@ class _StoreManagementState extends State<StoreManagement> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
                         Text(
-                          "Total Products",
+                          "Total Product Price",
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 20,
@@ -145,14 +145,14 @@ class _StoreManagementState extends State<StoreManagement> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: const [
                         Text(
-                          "128",
+                          "0",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
                           ),
                         ),
                         Text(
-                          "2345",
+                          "0",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
@@ -199,7 +199,7 @@ class _StoreManagementState extends State<StoreManagement> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [
                           Text(
-                            "Total Products",
+                            "Total Product Price",
                             style: TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 20,
@@ -220,15 +220,15 @@ class _StoreManagementState extends State<StoreManagement> {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: const [
+                        children: [
                           Text(
-                            "128",
-                            style: TextStyle(
+                            "\$$totalProductPrice",
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 30,
                             ),
                           ),
-                          Text(
+                          const Text(
                             "2345",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,

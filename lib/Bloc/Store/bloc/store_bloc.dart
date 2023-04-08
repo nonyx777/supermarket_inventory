@@ -54,6 +54,11 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
         productTotalPrice[key] = price;
       }
 
+      //calculating the total product price
+      for (var value in productTotalPrice.values) {
+        totalProductPrice += value;
+      }
+
       emit(StoreSuccessState(category));
     });
   }
