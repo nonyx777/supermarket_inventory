@@ -79,7 +79,7 @@ class _ProductListTileState extends State<ProductListTile> {
                     ),
                     //...
                     Text(
-                      widget.productPrice.toString(),
+                      "\$${widget.productPrice.toString()}",
                       style: const TextStyle(
                         fontWeight: FontWeight.normal,
                         fontSize: 20,

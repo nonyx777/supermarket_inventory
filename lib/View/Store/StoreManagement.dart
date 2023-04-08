@@ -263,7 +263,8 @@ class _StoreManagementState extends State<StoreManagement> {
                               ProductListTile(
                                 productCategory: product.productCategory,
                                 productImage: product.productImage,
-                                productPrice: product.productPrice,
+                                productPrice:
+                                    productTotalPrice[product.productCategory],
                               ),
                               //....
                               SizedBox(
