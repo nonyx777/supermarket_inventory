@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:supermarket_inventory/View/HomePage.dart';
 import 'package:supermarket_inventory/View/LoginForm.dart';
 import 'package:supermarket_inventory/View/components/LoginTextfield.dart';
 import 'package:supermarket_inventory/View/components/SignUpButton.dart';
@@ -22,6 +24,28 @@ class _SignUpFormState extends State<SignUpForm> {
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
+  }
+
+  Future<void> signInWithGoogle() async {
+    //Create Instance
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+
+    //triger authentication
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+
+    //Obtain auth details
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
+
+    //create new credentials
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    //Sign In The User
+    final UserCredential userCredential =
+        await auth.signInWithCredential(credential);
   }
 
   @override
@@ -75,7 +99,7 @@ class _SignUpFormState extends State<SignUpForm> {
                         );
                       },
                     ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 15),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25.0),
                       child: Row(
@@ -104,13 +128,23 @@ class _SignUpFormState extends State<SignUpForm> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        SquareTile(imagePath: 'images/google.png'),
-                      ],
+                    GestureDetector(
+                      onTap: () async {
+                        await signInWithGoogle();
+                        if (mounted) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePage()));
+                        }
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          SquareTile(imagePath: 'images/google.png'),
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -127,7 +161,7 @@ class _SignUpFormState extends State<SignUpForm> {
                                   builder: (context) => LoginForm()),
                             );
                           },
-                          child: Text(
+                          child: const Text(
                             'Login Now',
                             style: TextStyle(
                               color: Color.fromARGB(255, 252, 163, 17),

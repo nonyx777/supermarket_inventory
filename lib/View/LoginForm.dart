@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supermarket_inventory/View/ForgetPassword.dart';
+import 'package:supermarket_inventory/View/HomePage.dart';
 import 'package:supermarket_inventory/View/SignUp.dart';
 import 'package:supermarket_inventory/View/components/LoginButton.dart';
 import 'package:supermarket_inventory/View/components/LoginTextfield.dart';
@@ -43,6 +45,28 @@ class _LoginFormState extends State<LoginForm> {
             textColor: Colors.white);
       }
     }
+  }
+
+  Future<void> signInWithGoogle() async {
+    //Create Instance
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+
+    //triger authentication
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+
+    //Obtain auth details
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
+
+    //create new credentials
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    //Sign In The User
+    final UserCredential userCredential =
+        await auth.signInWithCredential(credential);
   }
 
   @override
@@ -138,11 +162,22 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    SquareTile(imagePath: 'images/google.png'),
-                  ],
+                GestureDetector(
+                  onTap: () async {
+                    await signInWithGoogle();
+                    if (mounted) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()));
+                    }
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      SquareTile(imagePath: 'images/google.png'),
+                    ],
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -159,7 +194,7 @@ class _LoginFormState extends State<LoginForm> {
                           MaterialPageRoute(builder: (context) => SignUpForm()),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         'Register now',
                         style: TextStyle(
                           color: Color.fromARGB(255, 252, 163, 17),
