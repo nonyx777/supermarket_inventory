@@ -43,21 +43,18 @@ class _StorePageState extends State<StorePage> {
               itemCount: state.product.length,
               itemBuilder: (context, index) {
                 final Product product = state.product[index];
-                return Column(
-                  children: [
-                    SizedBox(
-                      height: height * 0.0175,
-                    ),
-                    ProductTile(
-                      id: product.id,
-                      productName: product.productName,
-                      productPrice: product.productPrice,
-                      productImage: product.productImage,
-                    ),
-                    // const SizedBox(
-                    //   height: 10,
-                    // ),
-                  ],
+                return Padding(
+                  padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
+                  child: Column(
+                    children: [
+                      ProductTile(
+                        id: product.id,
+                        productName: product.productName,
+                        productPrice: product.productPrice,
+                        productImage: product.productImage,
+                      ),
+                    ],
+                  ),
                 );
               },
             );
