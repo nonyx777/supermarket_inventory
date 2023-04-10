@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:supermarket_inventory/Data/Model/Product.dart';
 import 'package:supermarket_inventory/main.dart';
 
@@ -92,24 +93,48 @@ class _ProductTileState extends State<ProductTile> {
                   ),
                 ],
               ),
-              Container(
-                width: 100,
-                height: 45,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(
-                        Color.fromARGB(255, 252, 248, 248)),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.remove),
+                      ),
+                      const Text(
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        "1",
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.add),
+                      ),
+                    ],
                   ),
-                  child: const Text(
-                    "Add",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                  Container(
+                    width: 100,
+                    height: 45,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: const ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(
+                            Color.fromARGB(255, 252, 248, 248)),
+                      ),
+                      child: const Text(
+                        "Add",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
             ],
           ),
