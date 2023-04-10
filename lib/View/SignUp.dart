@@ -50,6 +50,8 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -66,7 +68,7 @@ class _SignUpFormState extends State<SignUpForm> {
                           fontSize: 46,
                           fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: height * 0.01),
                     const Text(
                       'Sign Up',
                       style: TextStyle(
@@ -74,19 +76,19 @@ class _SignUpFormState extends State<SignUpForm> {
                         fontSize: 26,
                       ),
                     ),
-                    const SizedBox(height: 25),
+                    SizedBox(height: height * 0.04),
                     MyTextField(
                       controller: emailController,
                       hintText: 'Email',
                       obscureText: false,
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: height * 0.01),
                     MyTextField(
                       controller: passwordController,
                       hintText: 'Password',
                       obscureText: true,
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: height * 0.01),
                     SignUpButton(
                       onTap: () {
                         FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -99,7 +101,7 @@ class _SignUpFormState extends State<SignUpForm> {
                         );
                       },
                     ),
-                    const SizedBox(height: 15),
+                    SizedBox(height: height * 0.02),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25.0),
                       child: Row(
@@ -127,7 +129,7 @@ class _SignUpFormState extends State<SignUpForm> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: height * 0.02),
                     GestureDetector(
                       onTap: () async {
                         await signInWithGoogle();
@@ -152,7 +154,7 @@ class _SignUpFormState extends State<SignUpForm> {
                           'Already a member?',
                           style: TextStyle(color: Colors.grey[700]),
                         ),
-                        const SizedBox(width: 4),
+                        SizedBox(width: width * 0.01),
                         TextButton(
                           onPressed: () {
                             Navigator.push(

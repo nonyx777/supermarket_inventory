@@ -20,6 +20,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
         body: SafeArea(
             child: Center(
@@ -34,7 +37,7 @@ class _HomePageState extends State<HomePage> {
               },
               child: Text("Log Out")),
           SizedBox(
-            height: 10,
+            height: height * 0.01,
           ),
           ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red),

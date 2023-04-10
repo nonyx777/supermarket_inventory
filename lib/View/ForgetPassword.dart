@@ -16,6 +16,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -32,7 +35,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           fontSize: 46,
                           fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: height * 0.01),
                     const Text(
                       'Forgot Password',
                       style: TextStyle(
@@ -40,13 +43,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         fontSize: 26,
                       ),
                     ),
-                    const SizedBox(height: 25),
+                    SizedBox(height: height * 0.04),
                     MyTextField(
                       controller: forgotPasswordController,
                       hintText: 'Email',
                       obscureText: false,
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: height * 0.015),
                     GestureDetector(
                       onTap: () async {
                         var forgotEmail = forgotPasswordController.text.trim();

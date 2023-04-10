@@ -71,6 +71,8 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -78,9 +80,9 @@ class _LoginFormState extends State<LoginForm> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 50),
+                SizedBox(height: height * 0.05),
                 Image.asset("images/logo.png"),
-                const SizedBox(height: 20),
+                SizedBox(height: height * 0.03),
                 const Text(
                   'Inventory',
                   style: TextStyle(
@@ -95,13 +97,13 @@ class _LoginFormState extends State<LoginForm> {
                     fontSize: 16,
                   ),
                 ),
-                const SizedBox(height: 25),
+                SizedBox(height: height * 0.04),
                 MyTextField(
                   controller: emailController,
                   hintText: 'Email',
                   obscureText: false,
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: height * 0.01),
                 MyTextField(
                   controller: passwordController,
                   hintText: 'Password',
@@ -134,7 +136,7 @@ class _LoginFormState extends State<LoginForm> {
                 MyButton(
                   onTap: signInUser,
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: height * 0.02),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -161,7 +163,7 @@ class _LoginFormState extends State<LoginForm> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: height * 0.01),
                 GestureDetector(
                   onTap: () async {
                     await signInWithGoogle();
@@ -186,7 +188,7 @@ class _LoginFormState extends State<LoginForm> {
                       'Not a member?',
                       style: TextStyle(color: Colors.grey[700]),
                     ),
-                    const SizedBox(width: 4),
+                    SizedBox(width: width * 0.01),
                     TextButton(
                       onPressed: () {
                         Navigator.push(
