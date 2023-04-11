@@ -48,7 +48,7 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
       }
 
       for (var key in productTotalPrice.keys) {
-        double price = 10;
+        double price = 0;
         for (var p in product) {
           if (key == p.productCategory) {
             num productPriceInt = p.productPrice;
