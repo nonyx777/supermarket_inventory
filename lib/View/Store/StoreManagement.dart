@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
@@ -36,6 +38,20 @@ class _StoreManagementState extends State<StoreManagement> {
           ),
           "Products",
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IconButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+              },
+              icon: Icon(
+                Icons.logout_rounded,
+                size: height * 0.035,
+              ),
+            ),
+          ),
+        ],
       ),
       body: BlocBuilder<StoreBloc, StoreState>(
         builder: (context, state) {
