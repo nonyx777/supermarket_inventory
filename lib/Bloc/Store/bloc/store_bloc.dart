@@ -60,6 +60,7 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
         productTotalPrice[key] = price;
       }
 
+      totalProductPrice = 0;
       //calculating the total product price
       for (var value in productTotalPrice.values) {
         totalProductPrice += value;
