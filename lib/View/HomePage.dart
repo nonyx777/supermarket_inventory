@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supermarket_inventory/View/LoginForm.dart';
+import 'package:supermarket_inventory/View/Profile/profile_screen.dart';
+import 'package:supermarket_inventory/View/Profile/profile_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -43,11 +45,17 @@ class _HomePageState extends State<HomePage> {
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
               onPressed: () async {
                 await googleLogout();
-
-                Navigator.push(context,
+                Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => const LoginForm()));
               },
-              child: Text("Google Log Out"))
+              child: Text("Google Log Out")),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => ProfileScreen()));
+              },
+              child: Text("Profile Page"))
         ],
       ),
     )));
