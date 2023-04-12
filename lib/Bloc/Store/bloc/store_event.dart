@@ -6,3 +6,8 @@ class GetDataButtonPressed extends StoreEvent {
   @override
   List<Object> get props => [];
 }
+
+class GetCategoryButtonPressed extends StoreEvent {
+  @override
+  List<Object> get props => [];
+}

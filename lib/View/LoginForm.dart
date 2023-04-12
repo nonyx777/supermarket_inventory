@@ -1,10 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
 import 'package:supermarket_inventory/View/ForgetPassword.dart';
 import 'package:supermarket_inventory/View/HomePage.dart';
 import 'package:supermarket_inventory/View/SignUp.dart';
+import 'package:supermarket_inventory/View/Store/StoreManagement.dart';
 import 'package:supermarket_inventory/View/components/LoginButton.dart';
 import 'package:supermarket_inventory/View/components/LoginTextfield.dart';
 import 'package:supermarket_inventory/View/components/square_tile.dart';
@@ -167,11 +170,17 @@ class _LoginFormState extends State<LoginForm> {
                 GestureDetector(
                   onTap: () async {
                     await signInWithGoogle();
+                    final storeBloc = StoreBloc();
                     if (mounted) {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BlocProvider.value(
+                            value: storeBloc,
+                            child: StoreManagement(),
+                          ),
+                        ),
+                      );
                     }
                   },
                   child: Row(
