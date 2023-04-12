@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:supermarket_inventory/Data/Model/Product.dart';
 import 'package:supermarket_inventory/Service/ApiService.dart';
 import 'package:supermarket_inventory/Service/Utility.dart';
 import 'package:supermarket_inventory/View/Store/ProductListTile.dart';
+import 'package:supermarket_inventory/View/Navigation/BottomNavBar.dart';
 
 class StoreManagement extends StatefulWidget {
   const StoreManagement({super.key});
@@ -28,6 +30,11 @@ class _StoreManagementState extends State<StoreManagement> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    //bottom navigation bar related variables
+    int _page = 0;
+    GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 20, 33, 61),
@@ -57,6 +64,20 @@ class _StoreManagementState extends State<StoreManagement> {
         builder: (context, state) {
           if (state is StoreInitialState) {
             return Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color.fromARGB(255, 238, 242, 245),
+                    Color.fromARGB(255, 255, 255, 255)
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [
+                    0.4,
+                    1,
+                  ],
+                ),
+              ),
               child: Padding(
                 padding: EdgeInsets.all(height * 0.03),
                 child: Column(
@@ -129,6 +150,20 @@ class _StoreManagementState extends State<StoreManagement> {
             );
           } else if (state is StoreLoadingState) {
             return Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color.fromARGB(255, 238, 242, 245),
+                    Color.fromARGB(255, 255, 255, 255)
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [
+                    0.4,
+                    1,
+                  ],
+                ),
+              ),
               child: Padding(
                 padding: EdgeInsets.all(height * 0.03),
                 child: Column(
@@ -205,8 +240,25 @@ class _StoreManagementState extends State<StoreManagement> {
             );
           } else if (state is StoreSuccessState) {
             return Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color.fromARGB(255, 238, 242, 245),
+                    Color.fromARGB(255, 255, 255, 255)
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [
+                    0.4,
+                    1,
+                  ],
+                ),
+              ),
               child: Padding(
-                padding: EdgeInsets.all(height * 0.03),
+                padding: EdgeInsets.only(
+                    top: height * 0.03,
+                    left: height * 0.03,
+                    right: height * 0.03), //height * 0.03
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -298,6 +350,7 @@ class _StoreManagementState extends State<StoreManagement> {
           return Container();
         },
       ),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }
