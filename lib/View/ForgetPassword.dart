@@ -53,7 +53,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     GestureDetector(
                       onTap: () async {
                         var forgotEmail = forgotPasswordController.text.trim();
-
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            });
                         try {
                           await FirebaseAuth.instance
                               .sendPasswordResetEmail(email: forgotEmail)
@@ -78,6 +84,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                               backgroundColor: Colors.red,
                               textColor: Colors.white);
                         }
+                        Navigator.pop(context);
                       },
                       child: Container(
                         padding: const EdgeInsets.all(25),

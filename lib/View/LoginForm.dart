@@ -26,6 +26,13 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   void signInUser() async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        });
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text.trim(),
@@ -48,6 +55,7 @@ class _LoginFormState extends State<LoginForm> {
             textColor: Colors.white);
       }
     }
+    Navigator.pop(context);
   }
 
   Future<void> signInWithGoogle() async {
