@@ -29,7 +29,7 @@ class _ProductTileState extends State<ProductTile> {
       elevation: 3,
       borderRadius: BorderRadius.circular(10),
       child: Container(
-        height: 200,
+        height: height * 0.245,
         width: width * .9,
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -39,7 +39,7 @@ class _ProductTileState extends State<ProductTile> {
           borderRadius: const BorderRadius.all(Radius.circular(10)),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(height * 0.01),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -93,8 +93,8 @@ class _ProductTileState extends State<ProductTile> {
                 ],
               ),
               Container(
-                width: 100,
-                height: 45,
+                width: width * 0.245,
+                height: height * 0.055,
                 child: ElevatedButton(
                   onPressed: () {},
                   style: const ButtonStyle(
