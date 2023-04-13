@@ -36,30 +36,6 @@ class _StoreManagementState extends State<StoreManagement> {
     GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 20, 33, 61),
-        title: const Text(
-          style: TextStyle(
-            color: Color.fromARGB(255, 252, 163, 17),
-            fontSize: 25,
-          ),
-          "Products",
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: IconButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-              },
-              icon: Icon(
-                Icons.logout_rounded,
-                size: height * 0.035,
-              ),
-            ),
-          ),
-        ],
-      ),
       body: BlocBuilder<StoreBloc, StoreState>(
         builder: (context, state) {
           if (state is StoreInitialState) {
@@ -350,7 +326,6 @@ class _StoreManagementState extends State<StoreManagement> {
           return Container();
         },
       ),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }
