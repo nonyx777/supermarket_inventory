@@ -18,16 +18,20 @@ class _BottomNavBarState extends State<BottomNavBar> {
       key: _bottomNavigationKey,
       index: 0,
       height: 60.0,
-      items: <Widget>[
-        Icon(Icons.store, size: 30),
-        Icon(Icons.shopping_cart_outlined, size: 30),
-        Icon(Icons.perm_identity, size: 30),
+      items: const <Widget>[
+        Icon(
+          Icons.store,
+          size: 30,
+          color: Colors.white,
+        ),
+        Icon(Icons.shopping_cart_outlined, size: 30, color: Colors.white),
+        Icon(Icons.perm_identity, size: 30, color: Colors.white),
       ],
-      color: Colors.white,
-      buttonBackgroundColor: Color.fromARGB(255, 252, 163, 17),
-      backgroundColor: Color.fromARGB(255, 20, 33, 61),
+      color: const Color.fromARGB(255, 20, 33, 61),
+      buttonBackgroundColor: const Color.fromARGB(255, 252, 163, 17),
+      backgroundColor: Colors.white,
       animationCurve: Curves.easeInOut,
-      animationDuration: Duration(milliseconds: 600),
+      animationDuration: const Duration(milliseconds: 600),
       onTap: (index) {
         setState(() {
           _page = index;
