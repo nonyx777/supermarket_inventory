@@ -8,7 +8,6 @@ import 'package:supermarket_inventory/Data/Model/Product.dart';
 import 'package:supermarket_inventory/Service/ApiService.dart';
 import 'package:supermarket_inventory/Service/Utility.dart';
 import 'package:supermarket_inventory/View/Store/ProductListTile.dart';
-import 'package:supermarket_inventory/View/Navigation/BottomNavBar.dart';
 
 class StoreManagement extends StatefulWidget {
   const StoreManagement({super.key});
