@@ -60,9 +60,6 @@ class _MarketPageState extends State<MarketPage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Market Page"),
-      ),
       body: _products == null
           ? const Center(child: CircularProgressIndicator())
           : Column(
