@@ -1,7 +1,13 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:supermarket_inventory/Bloc/Market_Bloc/market_bloc.dart';
+import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
+import 'package:supermarket_inventory/View/Market/market_page.dart';
+import 'package:supermarket_inventory/View/Profile/profile_screen.dart';
+import 'package:supermarket_inventory/View/Store/StoreManagement.dart';
 
-void main() => runApp(MaterialApp(home: BottomNavBar()));
+// void main() => runApp(MaterialApp(home: BottomNavBar()));
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -14,9 +20,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    _page = 0;
     return CurvedNavigationBar(
       key: _bottomNavigationKey,
-      index: 0,
+      index: _page,
       height: 60.0,
       items: const <Widget>[
         Icon(
