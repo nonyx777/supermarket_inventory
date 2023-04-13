@@ -53,7 +53,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     GestureDetector(
                       onTap: () async {
                         var forgotEmail = forgotPasswordController.text.trim();
-
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            });
                         try {
                           await FirebaseAuth.instance
                               .sendPasswordResetEmail(email: forgotEmail)
@@ -64,7 +70,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                         gravity: ToastGravity.BOTTOM,
                                         backgroundColor: Colors.red,
                                         textColor: Colors.white),
-                                    Navigator.push(
+                                    Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => LoginForm()),
@@ -78,6 +84,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                               backgroundColor: Colors.red,
                               textColor: Colors.white);
                         }
+                        Navigator.pop(context);
                       },
                       child: Container(
                         padding: const EdgeInsets.all(25),
@@ -97,6 +104,32 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           ),
                         ),
                       ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Remeber your password?',
+                          style: TextStyle(color: Colors.grey[700]),
+                        ),
+                        SizedBox(width: width * 0.01),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginForm()),
+                            );
+                          },
+                          child: const Text(
+                            'Login now',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 252, 163, 17),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        )
+                      ],
                     )
                   ]),
             ),

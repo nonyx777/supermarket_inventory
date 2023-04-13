@@ -60,12 +60,14 @@ class _SignUpFormState extends State<SignUpForm> {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SizedBox(height: height * 0.05),
                     Image.asset("images/logo.png"),
+                    SizedBox(height: height * 0.03),
                     const Text(
                       'Inventory',
                       style: TextStyle(
                           color: Color.fromARGB(255, 20, 33, 61),
-                          fontSize: 46,
+                          fontSize: 36,
                           fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: height * 0.01),
@@ -73,7 +75,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       'Sign Up',
                       style: TextStyle(
                         color: Color.fromARGB(255, 20, 33, 61),
-                        fontSize: 26,
+                        fontSize: 16,
                       ),
                     ),
                     SizedBox(height: height * 0.04),
@@ -95,7 +97,7 @@ class _SignUpFormState extends State<SignUpForm> {
                             email: emailController.text.trim(),
                             password: passwordController.text.trim());
 
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => LoginForm()),
                         );
@@ -134,7 +136,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       onTap: () async {
                         await signInWithGoogle();
                         if (mounted) {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const HomePage()));
@@ -157,7 +159,7 @@ class _SignUpFormState extends State<SignUpForm> {
                         SizedBox(width: width * 0.01),
                         TextButton(
                           onPressed: () {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => LoginForm()),

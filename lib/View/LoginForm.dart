@@ -26,6 +26,13 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   void signInUser() async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        });
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text.trim(),
@@ -48,6 +55,7 @@ class _LoginFormState extends State<LoginForm> {
             textColor: Colors.white);
       }
     }
+    Navigator.pop(context);
   }
 
   Future<void> signInWithGoogle() async {
@@ -119,7 +127,7 @@ class _LoginFormState extends State<LoginForm> {
                     children: [
                       TextButton(
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => ForgetPassword()),
@@ -172,7 +180,7 @@ class _LoginFormState extends State<LoginForm> {
                     await signInWithGoogle();
                     final storeBloc = StoreBloc();
                     if (mounted) {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => BlocProvider.value(
@@ -200,7 +208,7 @@ class _LoginFormState extends State<LoginForm> {
                     SizedBox(width: width * 0.01),
                     TextButton(
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => SignUpForm()),
                         );
