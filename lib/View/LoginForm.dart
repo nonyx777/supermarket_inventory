@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
 import 'package:supermarket_inventory/View/ForgetPassword.dart';
 import 'package:supermarket_inventory/View/HomePage.dart';
+import 'package:supermarket_inventory/View/Navigation/ParentPage.dart';
 import 'package:supermarket_inventory/View/SignUp.dart';
 import 'package:supermarket_inventory/View/Store/StoreManagement.dart';
 import 'package:supermarket_inventory/View/components/LoginButton.dart';
@@ -185,7 +186,7 @@ class _LoginFormState extends State<LoginForm> {
                         MaterialPageRoute(
                           builder: (context) => BlocProvider.value(
                             value: storeBloc,
-                            child: StoreManagement(),
+                            child: const ParentPage(),
                           ),
                         ),
                       );
