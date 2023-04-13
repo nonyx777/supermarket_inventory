@@ -6,7 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
 import 'package:supermarket_inventory/View/HomePage.dart';
 import 'package:supermarket_inventory/View/LoginForm.dart';
+import 'package:supermarket_inventory/View/Navigation/ParentPage.dart';
 import 'package:supermarket_inventory/View/Store/StoreManagement.dart';
+import 'package:supermarket_inventory/Service/Utility.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +22,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,7 +33,7 @@ class MyApp extends StatelessWidget {
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return const StoreManagement();
+                return const ParentPage();
               } else {
                 return LoginForm();
               }
