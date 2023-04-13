@@ -46,7 +46,8 @@ dependencies:
   firebase_core: ^2.9.0
   fluttertoast: ^8.2.1
   google_sign_in: ^6.1.0
-  image_picker: ^0.8.7+1
+  image_picker: ^0.8.7+2
+  curved_navigation_bar: ^1.0.3
 
 dev_dependencies:
   flutter_test:
