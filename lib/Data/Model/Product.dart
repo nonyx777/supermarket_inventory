@@ -4,25 +4,30 @@ class Product {
   double productPrice;
   String productImage;
   String productCategory;
+  double productQuantity;
 
   Product(
       {required this.id,
       required this.productName,
       required this.productPrice,
       required this.productImage,
-      required this.productCategory});
+      required this.productCategory,
+      required this.productQuantity});
 
   factory Product.fromJson(Map<String, dynamic> json) {
     int id = json['id'];
     int productPriceInt = json['productPrice'];
     double productPrice = productPriceInt.toDouble();
+    int productQuantityInt = json['productQuantity'];
+    double productQuantity = productQuantityInt.toDouble();
 
     return Product(
         id: id,
         productName: json['productName'],
         productPrice: productPrice,
         productImage: json['productImage'],
-        productCategory: json['productCategory']);
+        productCategory: json['productCategory'],
+        productQuantity: productQuantity);
   }
 
   static List productList(List product_api) {
