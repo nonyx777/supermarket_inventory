@@ -52,6 +52,7 @@ class _StorePageState extends State<StorePage> {
                         productName: product.productName,
                         productPrice: product.productPrice,
                         productImage: product.productImage,
+                        productQuantity: product.productQuantity,
                       ),
                     ],
                   ),
