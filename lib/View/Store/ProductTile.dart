@@ -7,12 +7,14 @@ class ProductTile extends StatefulWidget {
   final String productName;
   final double productPrice;
   final String productImage;
+  final double productQuantity;
 
   const ProductTile(
       {required this.id,
       required this.productName,
       required this.productPrice,
       required this.productImage,
+      required this.productQuantity,
       super.key});
 
   @override
@@ -92,24 +94,47 @@ class _ProductTileState extends State<ProductTile> {
                   ),
                 ],
               ),
-              Container(
-                width: width * 0.245,
-                height: height * 0.055,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(
-                        Color.fromARGB(255, 252, 248, 248)),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.add),
+                      ),
+                      Text(
+                        "${widget.productQuantity}",
+                        style: const TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.remove),
+                      )
+                    ],
                   ),
-                  child: const Text(
-                    "Add",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                  Container(
+                    width: width * 0.245,
+                    height: height * 0.055,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: const ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(
+                            Color.fromARGB(255, 252, 248, 248)),
+                      ),
+                      child: const Text(
+                        "Add",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
             ],
           ),
