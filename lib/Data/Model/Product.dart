@@ -45,6 +45,7 @@ class Product {
     json['productPrice'] = productPrice;
     json['productImage'] = productImage;
     json['productCategory'] = productCategory;
+    json['productQuantity'] = productQuantity;
 
     return json;
   }

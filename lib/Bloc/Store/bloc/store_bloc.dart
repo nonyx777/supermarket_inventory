@@ -17,11 +17,13 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
     on<GetDataButtonPressed>((event, emit) async {
       emit(StoreLoadingState());
 
-      final product = await _apiServiceProvider.fetchProduct();
+      // final products = await _apiServiceProvider.fetchProduct();
+      addedProducts.clear();
+      readFromDatabase();
       final selectedProducts = [];
-      for (var p in product!) {
-        if (p.productCategory == selectedCategory) {
-          selectedProducts.add(p);
+      for (var product in addedProducts) {
+        if (product.productCategory == selectedCategory) {
+          selectedProducts.add(product);
         }
       }
       emit(StoreSuccessState(selectedProducts));
@@ -45,8 +47,9 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
         //adding the quantity of the same product
         for (var dbp in addedProducts) {
           for (var apip in apiProduct!) {
+            double quantity = 0;
             if (dbp.id == apip.id) {
-              dbp.productQuantity += apip.productQuantity();
+              dbp.productQuantity += apip.productQuantity;
               //updating the product in the database
               _service.updateProduct(dbp);
             }
@@ -95,10 +98,6 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
       //calculating the total product price
       for (var value in productTotalPrice.values) {
         totalProductPrice += value;
-      }
-
-      for (var c in category) {
-        print(c.productName);
       }
 
       emit(StoreSuccessState(category));
