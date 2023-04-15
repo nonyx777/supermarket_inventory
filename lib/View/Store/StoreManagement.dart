@@ -324,7 +324,10 @@ class _StoreManagementState extends State<StoreManagement> {
                                 Color.fromARGB(255, 20, 33, 61),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              BlocProvider.of<StoreBloc>(context)
+                                  .add(GetCategoryButtonPressed());
+                            },
                             child: const Text(
                               "Request",
                               style: TextStyle(

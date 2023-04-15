@@ -16,10 +16,9 @@ class Product {
 
   factory Product.fromJson(Map<String, dynamic> json) {
     int id = json['id'];
-    int productPriceInt = json['productPrice'];
-    double productPrice = productPriceInt.toDouble();
-    int productQuantityInt = json['productQuantity'];
-    double productQuantity = productQuantityInt.toDouble();
+    double productPrice = double.parse(json['productPrice'].toString());
+    double productQuantity =
+        double.tryParse(json['productQuantity'].toString()) ?? 0;
 
     return Product(
         id: id,
@@ -46,6 +45,7 @@ class Product {
     json['productPrice'] = productPrice;
     json['productImage'] = productImage;
     json['productCategory'] = productCategory;
+    json['productQuantity'] = productQuantity;
 
     return json;
   }
