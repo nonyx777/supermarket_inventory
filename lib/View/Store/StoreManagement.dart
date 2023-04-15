@@ -21,7 +21,6 @@ class _StoreManagementState extends State<StoreManagement> {
 
   @override
   void initState() {
-    BlocProvider.of<StoreBloc>(context).add(GetCategoryButtonPressed());
     super.initState();
   }
 
@@ -104,19 +103,43 @@ class _StoreManagementState extends State<StoreManagement> {
                     SizedBox(
                       height: height * 0.02,
                     ),
-                    const Text(
-                      "Product List",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Product List",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                          ),
+                        ),
+                        ElevatedButton(
+                          style: const ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll(
+                              Color.fromARGB(255, 20, 33, 61),
+                            ),
+                          ),
+                          onPressed: () {
+                            BlocProvider.of<StoreBloc>(context)
+                                .add(GetCategoryButtonPressed());
+                          },
+                          child: const Text(
+                            "Request",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 252, 163, 17),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     //...
-                    const Text(
-                      "No available products",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w600,
+                    const Center(
+                      child: Text(
+                        "No available products",
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ],
@@ -285,12 +308,31 @@ class _StoreManagementState extends State<StoreManagement> {
                         height: height * 0.02,
                       ),
                       //product list(scrollable)
-                      const Text(
-                        "Product List",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Product List",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 20,
+                            ),
+                          ),
+                          ElevatedButton(
+                            style: const ButtonStyle(
+                              backgroundColor: MaterialStatePropertyAll(
+                                Color.fromARGB(255, 20, 33, 61),
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: const Text(
+                              "Request",
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 252, 163, 17),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       //....
                       SizedBox(

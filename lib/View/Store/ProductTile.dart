@@ -22,6 +22,8 @@ class ProductTile extends StatefulWidget {
 }
 
 class _ProductTileState extends State<ProductTile> {
+  double quantity = 1;
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -100,17 +102,29 @@ class _ProductTileState extends State<ProductTile> {
                   Row(
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (quantity < widget.productQuantity) {
+                            setState(() {
+                              quantity++;
+                            });
+                          }
+                        },
                         icon: const Icon(Icons.add),
                       ),
                       Text(
-                        "${widget.productQuantity}",
+                        quantity.toString(),
                         style: const TextStyle(
                           fontSize: 20,
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (quantity > 1) {
+                            setState(() {
+                              quantity--;
+                            });
+                          }
+                        },
                         icon: const Icon(Icons.remove),
                       )
                     ],
