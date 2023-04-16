@@ -16,7 +16,7 @@ class ParentPage extends StatefulWidget {
 }
 
 class _ParentPageState extends State<ParentPage> {
-  GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+  final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   double height = 0;
   double width = 0;
   int page = 0;
