@@ -21,6 +21,7 @@ class _StoreManagementState extends State<StoreManagement> {
 
   @override
   void initState() {
+    BlocProvider.of<StoreBloc>(context).add(GetCategoryInitially());
     super.initState();
   }
 
@@ -28,10 +29,6 @@ class _StoreManagementState extends State<StoreManagement> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
-    //bottom navigation bar related variables
-    int _page = 0;
-    GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
     return Scaffold(
       body: BlocBuilder<StoreBloc, StoreState>(
@@ -343,7 +340,7 @@ class _StoreManagementState extends State<StoreManagement> {
                       ),
                       //....
 
-                      //display all the available categories from the api
+                      //display all the available categories from the database
                       for (var product in state.product)
                         Container(
                           child: Column(

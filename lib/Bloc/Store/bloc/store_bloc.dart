@@ -14,6 +14,57 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
   final _apiServiceProvider = ApiServiceProvider();
 
   StoreBloc() : super(StoreInitialState()) {
+    on<GetCategoryInitially>((event, emit) async {
+      emit(StoreLoadingState());
+      addedProducts.clear();
+      readFromDatabase();
+      if (addedProducts.isEmpty) {
+        emit(StoreInitialState());
+      } else {
+        dynamic category = [];
+
+        //removing duplicates
+        for (var p in addedProducts) {
+          int count = 0;
+          for (var c in category) {
+            if (p.productCategory == c.productCategory) {
+              count++;
+            }
+          }
+          if (count == 0) {
+            category.add(p);
+          }
+        }
+
+        //Adding products' categories as keys
+        //getting the total price of products in the same category
+        for (var c in category) {
+          productTotalPrice[c.productCategory] = 0;
+        }
+
+        for (var key in productTotalPrice.keys) {
+          double price = 0;
+          for (var p in addedProducts) {
+            if (key == p.productCategory) {
+              num productPriceInt = p.productPrice;
+              double productPrice = productPriceInt.toDouble();
+              price += productPrice;
+            }
+          }
+
+          productTotalPrice[key] = price;
+        }
+
+        totalProductPrice = 0;
+        //calculating the total product price
+        for (var value in productTotalPrice.values) {
+          totalProductPrice += value;
+        }
+
+        emit(StoreSuccessState(category));
+      }
+    });
+
     on<GetDataButtonPressed>((event, emit) async {
       emit(StoreLoadingState());
 
@@ -47,7 +98,6 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
         //adding the quantity of the same product
         for (var dbp in addedProducts) {
           for (var apip in apiProduct!) {
-            double quantity = 0;
             if (dbp.id == apip.id) {
               dbp.productQuantity += apip.productQuantity;
               //updating the product in the database
