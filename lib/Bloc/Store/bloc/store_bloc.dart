@@ -16,8 +16,10 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
   StoreBloc() : super(StoreInitialState()) {
     on<GetCategoryInitially>((event, emit) async {
       emit(StoreLoadingState());
+
       addedProducts.clear();
-      readFromDatabase();
+      await readFromDatabase();
+
       if (addedProducts.isEmpty) {
         emit(StoreInitialState());
       } else {
@@ -68,9 +70,9 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
     on<GetDataButtonPressed>((event, emit) async {
       emit(StoreLoadingState());
 
-      // final products = await _apiServiceProvider.fetchProduct();
       addedProducts.clear();
-      readFromDatabase();
+      await readFromDatabase();
+
       final selectedProducts = [];
       for (var product in addedProducts) {
         if (product.productCategory == selectedCategory) {
@@ -84,7 +86,7 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
       emit(StoreLoadingState());
 
       addedProducts.clear();
-      readFromDatabase();
+      await readFromDatabase();
       final apiProduct = await _apiServiceProvider.fetchProduct();
 
       //checking if the db is empty
@@ -107,7 +109,7 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
         }
 
         addedProducts.clear();
-        readFromDatabase();
+        await readFromDatabase();
       }
 
       dynamic category = [];
@@ -155,11 +157,12 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
   }
 }
 
-void readFromDatabase() {
-  _service.readProduct().then((value) => productData = value);
+Future<List?> readFromDatabase() async {
+  await _service.readProduct().then((value) => productData = value);
   if (productData != null) {
     for (var i = 0; i < productData!.length; i++) {
       addedProducts.add(Product.fromJson(productData![i]));
     }
   }
+  return addedProducts;
 }
