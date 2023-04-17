@@ -1,6 +1,8 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:supermarket_inventory/Bloc/Market_Bloc/market_bloc.dart';
 import 'package:supermarket_inventory/Data/Model/Product.dart';
 import 'package:supermarket_inventory/View/Market/market_detail.dart';
 
@@ -51,6 +53,7 @@ class _MarketPageState extends State<MarketPage> {
   @override
   void initState() {
     super.initState();
+    BlocProvider.of<MarketBloc>(context).add(MarketFetch());
     _fetchProducts();
     _selectedCategory = "all";
   }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:supermarket_inventory/Bloc/Market_Bloc/market_bloc.dart';
 import 'package:supermarket_inventory/Data/Model/Product.dart';
+import 'package:supermarket_inventory/Service/Utility.dart';
 import 'package:supermarket_inventory/main.dart';
 
 class ProductTile extends StatefulWidget {
@@ -133,7 +136,20 @@ class _ProductTileState extends State<ProductTile> {
                     width: width * 0.245,
                     height: height * 0.055,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        //instantiating an object
+                        //triggering an event to save the product into the database
+                        market_product = Product(
+                            id: widget.id,
+                            productName: widget.productName,
+                            productPrice: widget.productPrice,
+                            productImage: widget.productImage,
+                            productCategory: selectedCategory,
+                            productQuantity: widget.productQuantity);
+
+                        // BlocProvider.of<MarketBloc>(context).add(MarketSave());
+                        await saveToDatabase(market_product);
+                      },
                       style: const ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(
                             Color.fromARGB(255, 252, 248, 248)),
