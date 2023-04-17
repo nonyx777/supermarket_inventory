@@ -44,13 +44,22 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
           productTotalPrice[c.productCategory] = 0;
         }
 
+        //reseting total product quantity for re-calculation
+        totalProductQuantity = 0;
         for (var key in productTotalPrice.keys) {
           double price = 0;
           for (var p in addedProducts) {
             if (key == p.productCategory) {
+              //casting product price
               num productPriceInt = p.productPrice;
               double productPrice = productPriceInt.toDouble();
-              price += productPrice;
+              //casting product quantity
+              num productQuantityInt = p.productQuantity;
+              double productQuantity = productQuantityInt.toDouble();
+              price += productPrice * productQuantity;
+
+              //adding to the totalProductQuantity
+              totalProductQuantity += productQuantity;
             }
           }
 

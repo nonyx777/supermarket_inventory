@@ -291,9 +291,9 @@ class _StoreManagementState extends State<StoreManagement> {
                               fontSize: 30,
                             ),
                           ),
-                          const Text(
-                            "2345",
-                            style: TextStyle(
+                          Text(
+                            totalProductQuantity.toString(),
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 30,
                             ),
