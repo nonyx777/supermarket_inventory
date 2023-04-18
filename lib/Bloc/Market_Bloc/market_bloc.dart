@@ -8,6 +8,7 @@ part 'market_event.dart';
 part 'market_state.dart';
 
 final _service = Service();
+late bool already_in_database;
 
 class MarketBloc extends Bloc<MarketEvent, MarketState> {
   MarketBloc() : super(MarketInitial()) {
@@ -15,12 +16,28 @@ class MarketBloc extends Bloc<MarketEvent, MarketState> {
       emit(MarketLoadingState());
       // final product = await _apiServiceProvider.fetchProduct();
       await readFromDatabase();
-      print(marketProducts.length);
+      // print(marketProducts.length);
       emit(MarketSuccessState(marketProducts));
     });
 
     on<MarketSave>((event, emit) async {
-      await saveToDatabase(market_product);
+      emit(MarketLoadingState());
+      marketProducts.clear();
+      await readFromDatabase();
+
+      //checking if the product is already in the market database
+      for (var product in marketProducts) {
+        if (market_product.id == product.id) {
+          market_product.productQuantity += product.productQuantity;
+          _service.updateProduct(market_product);
+          already_in_database = true;
+        }
+      }
+
+      if (!already_in_database) {
+        await saveToDatabase(market_product);
+        already_in_database = false;
+      }
     });
   }
 }
@@ -30,12 +47,11 @@ Future<Product?> saveToDatabase(Product product) async {
   return product;
 }
 
-Future<List?> readFromDatabase() async {
+Future<void> readFromDatabase() async {
   await _service.readProduct().then((value) => productData = value);
   if (productData != null) {
     for (var i = 0; i < productData!.length; i++) {
-      marketProducts.add(productData![i]);
+      marketProducts.add(Product.fromJson(productData![i]));
     }
   }
-  return marketProducts;
 }

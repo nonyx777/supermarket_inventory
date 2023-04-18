@@ -12,4 +12,4 @@ List addedProducts = [];
 
 //related with the market
 late Product market_product;
-List marketProducts = [];
+List<Product> marketProducts = [];

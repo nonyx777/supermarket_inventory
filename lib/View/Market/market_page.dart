@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:supermarket_inventory/Bloc/Market_Bloc/market_bloc.dart';
 import 'package:supermarket_inventory/Data/Model/Product.dart';
+import 'package:supermarket_inventory/Service/Utility.dart';
 import 'package:supermarket_inventory/View/Market/market_detail.dart';
 
 class MarketPage extends StatefulWidget {
@@ -33,7 +34,8 @@ class _MarketPageState extends State<MarketPage> {
     }
 
     setState(() {
-      _products = fetchedProducts;
+      BlocProvider.of<MarketBloc>(context).add(MarketFetch());
+      _products = marketProducts;
       _categories = _products.map((p) => p.productCategory).toSet().toList();
     });
   }
