@@ -15,10 +15,6 @@ class MarketPage extends StatefulWidget {
 }
 
 class _MarketPageState extends State<MarketPage> {
-  List<Product> _products = [];
-  List<String> _categories = [];
-  String _selectedCategory = "all";
-
   Future<void> _fetchProducts() async {
     final response = await http.get(Uri.parse(
         'https://642b0a1db11efeb759a930cb.mockapi.io/api/supermarket/products'));
@@ -29,35 +25,27 @@ class _MarketPageState extends State<MarketPage> {
       for (var json in productsJson) {
         final product = Product.fromJson(json);
         fetchedProducts.add(product);
-        _selectedCategory = 'all';
+        selectedCategory_ = 'all';
       }
     }
-
-    setState(() {
-      BlocProvider.of<MarketBloc>(context).add(MarketFetch());
-      _products = marketProducts;
-      _categories = _products.map((p) => p.productCategory).toSet().toList();
-    });
   }
 
   List<Product> _getFilteredProducts() {
-    if (_selectedCategory.isEmpty || _products == null) {
+    if (selectedCategory_.isEmpty || products_ == null) {
       return [];
-    } else if (_selectedCategory == "all" || _selectedCategory.isEmpty) {
-      return _products;
+    } else if (selectedCategory_ == "all" || selectedCategory_.isEmpty) {
+      return products_;
     } else {
-      return _products
-          .where((p) => p.productCategory == _selectedCategory)
+      return products_
+          .where((p) => p.productCategory == selectedCategory_)
           .toList();
     }
   }
 
   @override
   void initState() {
-    super.initState();
     BlocProvider.of<MarketBloc>(context).add(MarketFetch());
-    _fetchProducts();
-    _selectedCategory = "all";
+    super.initState();
   }
 
   @override
@@ -65,7 +53,7 @@ class _MarketPageState extends State<MarketPage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: _products == null
+      body: products_ == null
           ? const Center(child: CircularProgressIndicator())
           : Column(
               children: [
@@ -110,7 +98,7 @@ class _MarketPageState extends State<MarketPage> {
                           left: width * 0.03, right: width * 0.03),
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
-                        itemCount: _categories.length + 1,
+                        itemCount: categories_.length + 1,
                         separatorBuilder: (BuildContext context, int index) {
                           return SizedBox(width: width * 0.03);
                         },
@@ -119,12 +107,12 @@ class _MarketPageState extends State<MarketPage> {
                             return InkWell(
                               onTap: () {
                                 setState(() {
-                                  _selectedCategory = "all";
+                                  selectedCategory_ = "all";
                                 });
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: _selectedCategory == "all"
+                                  color: selectedCategory_ == "all"
                                       ? Colors.blue
                                       : Colors.white,
                                   borderRadius: BorderRadius.circular(25),
@@ -134,7 +122,7 @@ class _MarketPageState extends State<MarketPage> {
                                 child: Text(
                                   "All",
                                   style: TextStyle(
-                                    color: _selectedCategory == "all"
+                                    color: selectedCategory_ == "all"
                                         ? Colors.white
                                         : Colors.black,
                                   ),
@@ -142,16 +130,16 @@ class _MarketPageState extends State<MarketPage> {
                               ),
                             );
                           } else {
-                            final category = _categories[index - 1];
+                            final category = categories_[index - 1];
                             return InkWell(
                               onTap: () {
                                 setState(() {
-                                  _selectedCategory = category;
+                                  selectedCategory_ = category;
                                 });
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: _selectedCategory == category
+                                  color: selectedCategory_ == category
                                       ? Colors.blue
                                       : Colors.white,
                                   borderRadius: BorderRadius.circular(25),
@@ -161,7 +149,7 @@ class _MarketPageState extends State<MarketPage> {
                                 child: Text(
                                   category,
                                   style: TextStyle(
-                                    color: _selectedCategory == category
+                                    color: selectedCategory_ == category
                                         ? Colors.white
                                         : Colors.black,
                                   ),

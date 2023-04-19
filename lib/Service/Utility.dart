@@ -13,3 +13,6 @@ List addedProducts = [];
 //related with the market
 late Product market_product;
 List<Product> marketProducts = [];
+List<Product> products_ = [];
+List<String> categories_ = [];
+String selectedCategory_ = 'all';
