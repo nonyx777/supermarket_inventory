@@ -45,10 +45,10 @@ class _ParentPageState extends State<ParentPage> {
         backgroundColor: const Color.fromARGB(255, 20, 33, 61),
         title: const Text(
           style: TextStyle(
-            color: Color.fromARGB(255, 252, 163, 17),
+            color: Colors.white,
             fontSize: 25,
           ),
-          "Products",
+          "Inventory",
         ),
         actions: [
           Padding(
