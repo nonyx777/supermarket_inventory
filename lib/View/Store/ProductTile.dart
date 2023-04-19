@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Market_Bloc/market_bloc.dart';
 import 'package:supermarket_inventory/Data/Model/Product.dart';
+import 'package:supermarket_inventory/Data/Repository/Market/service.dart';
 import 'package:supermarket_inventory/Service/Utility.dart';
 import 'package:supermarket_inventory/main.dart';
 
@@ -147,8 +148,7 @@ class _ProductTileState extends State<ProductTile> {
                             productCategory: selectedCategory,
                             productQuantity: widget.productQuantity);
 
-                        // BlocProvider.of<MarketBloc>(context).add(MarketSave());
-                        await saveToDatabase(market_product);
+                        saveToMarketDatabase();
                       },
                       style: const ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(
@@ -171,5 +171,16 @@ class _ProductTileState extends State<ProductTile> {
         ),
       ),
     );
+  }
+}
+
+void saveToMarketDatabase() async {
+  final _service = Service();
+
+  if (marketProducts.contains(market_product)) {
+    market_product.productQuantity += market_product.productQuantity;
+    _service.updateProduct(market_product);
+  } else {
+    _service.saveProduct(market_product);
   }
 }

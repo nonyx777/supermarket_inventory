@@ -8,18 +8,25 @@ part 'market_event.dart';
 part 'market_state.dart';
 
 final _service = Service();
+late bool already_in_database;
 
 class MarketBloc extends Bloc<MarketEvent, MarketState> {
   MarketBloc() : super(MarketInitial()) {
     on<MarketFetch>((event, emit) async {
       emit(MarketLoadingState());
-      // final product = await _apiServiceProvider.fetchProduct();
+      marketProducts.clear();
       await readFromDatabase();
-      print(marketProducts.length);
+      products_ = marketProducts;
+      categories_ = products_.map((p) => p.productCategory).toSet().toList();
+      selectedCategory_ = 'all';
       emit(MarketSuccessState(marketProducts));
     });
 
     on<MarketSave>((event, emit) async {
+      emit(MarketLoadingState());
+      marketProducts.clear();
+      await readFromDatabase();
+
       await saveToDatabase(market_product);
     });
   }
@@ -34,7 +41,7 @@ Future<List?> readFromDatabase() async {
   await _service.readProduct().then((value) => productData = value);
   if (productData != null) {
     for (var i = 0; i < productData!.length; i++) {
-      marketProducts.add(productData![i]);
+      marketProducts.add(Product.fromJson(productData![i]));
     }
   }
   return marketProducts;

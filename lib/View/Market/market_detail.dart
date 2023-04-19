@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import '../../Data/Model/Product.dart';
+
+import 'package:http/http.dart' as http;
 
 class MarketDetailPage extends StatefulWidget {
   final Product product;
@@ -12,7 +16,50 @@ class MarketDetailPage extends StatefulWidget {
 }
 
 class _MarketDetailPageState extends State<MarketDetailPage> {
+  List<Product> _products = [];
+  List<String> _categories = [];
+  String _selectedCategory = "all";
+
   int _quantity = 1;
+
+  Future<void> _fetchProducts() async {
+    final response = await http.get(Uri.parse(
+        'https://642b0a1db11efeb759a930cb.mockapi.io/api/supermarket/products'));
+    final List<Product> fetchedProducts = [];
+
+    if (response.statusCode == 200) {
+      final List<dynamic> productsJson = json.decode(response.body);
+      for (var json in productsJson) {
+        final product = Product.fromJson(json);
+        fetchedProducts.add(product);
+        _selectedCategory = 'all';
+      }
+    }
+
+    setState(() {
+      _products = fetchedProducts;
+      _categories = _products.map((p) => p.productCategory).toSet().toList();
+    });
+  }
+
+  List<Product> _getFilteredProducts() {
+    if (_selectedCategory.isEmpty || _products == null) {
+      return [];
+    } else if (_selectedCategory == "all" || _selectedCategory.isEmpty) {
+      return _products;
+    } else {
+      return _products
+          .where((p) => p.productCategory == _selectedCategory)
+          .toList();
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchProducts();
+    _selectedCategory = "all";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +69,7 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.product.productName),
+        backgroundColor: const Color.fromARGB(255, 20, 33, 61),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -37,52 +85,162 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    widget.product.productName,
-                    style: const TextStyle(fontSize: 24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        widget.product.productName,
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      Text(
+                        '\$${widget.product.productPrice}',
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                    ],
                   ),
-                  SizedBox(height: height * 0.01),
-                  Text(
-                    '\$${widget.product.productPrice}',
-                    style: const TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  const SizedBox(
+                    height: 30,
                   ),
-                  SizedBox(height: height * 0.02),
-                  const Text('Quantity'),
-                  SizedBox(height: height * 0.01),
                   Row(
                     children: [
-                      IconButton(
-                        icon: const Icon(Icons.remove),
-                        onPressed: () {
-                          if (_quantity > 1) {
+                      InkWell(
+                        onTap: () {
+                          if (_quantity >= 1) {
                             setState(() {
                               _quantity--;
                             });
                           }
                         },
+                        child: const CircleAvatar(
+                          radius: 20,
+                          backgroundColor: Color.fromARGB(255, 20, 33, 61),
+                          child: Icon(Icons.remove),
+                        ),
                       ),
-                      Text(
-                        _quantity.toString(),
-                        style: const TextStyle(fontSize: 20),
+                      const SizedBox(
+                        width: 10,
                       ),
-                      IconButton(
-                        icon: const Icon(Icons.add),
-                        onPressed: () {
+                      Text(_quantity.toString()),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      InkWell(
+                        onTap: () {
                           setState(() {
                             _quantity++;
                           });
                         },
+                        child: const CircleAvatar(
+                          radius: 20,
+                          backgroundColor: Color.fromARGB(255, 20, 33, 61),
+                          child: Icon(Icons.add),
+                        ),
                       ),
+                      const SizedBox(
+                        width: 129,
+                      ),
+                      ElevatedButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                  const Color.fromARGB(255, 20, 33, 61)),
+                              fixedSize: MaterialStateProperty.all(
+                                  Size(double.infinity, 50)),
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(10.0)))),
+                          child: const Text(
+                            "Sell / Add",
+                          )),
                     ],
                   ),
-                  SizedBox(height: height * 0.02),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Text('Sell'),
+                  const SizedBox(
+                    height: 30,
                   ),
+                  const Text(
+                    "Similar Items",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Container(
+                    height: 200,
+                    //color: Colors.red,
+                    child: ListView.builder(
+                        itemCount: _getFilteredProducts().length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (BuildContext context, int index) {
+                          final product = _getFilteredProducts()[index];
+
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      MarketDetailPage(product: product),
+                                ),
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: InkWell(
+                                onTap: () {},
+                                child: Container(
+                                  //width: 100,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white,
+                                  ),
+                                  child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.all(5),
+                                          margin: const EdgeInsets.symmetric(
+                                              horizontal: 11, vertical: 5),
+                                          color: Colors.white,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    image: NetworkImage(
+                                                        product.productImage))),
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                .1,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                .3,
+                                          ),
+                                        ),
+                                        Text(
+                                          product.productName,
+                                          style: const TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black,
+                                              fontFamily: "Poppins"),
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        Text(
+                                          '\$${product.productPrice}',
+                                          style: const TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black,
+                                              fontFamily: 'Poppins',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ]),
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
+                  )
                 ],
               ),
             ),
