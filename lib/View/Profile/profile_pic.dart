@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 File? imgFile;
 String? imgPath;
@@ -59,9 +60,9 @@ class _ProfilePicState extends State<ProfilePic> {
                     style: TextButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
-                        side: BorderSide(color: Colors.white),
+                        side: BorderSide(color: pureWhite),
                       ),
-                      backgroundColor: Color(0xFFF5F6F9),
+                      backgroundColor: pureWhite,
                     ),
                     onPressed: () async {
                       selectImage();
@@ -76,10 +77,14 @@ class _ProfilePicState extends State<ProfilePic> {
         ),
         Text(user.email!),
         ElevatedButton(
-            onPressed: () {
-              deleteData();
-            },
-            child: Text("Delete image"))
+          onPressed: () {
+            deleteData();
+          },
+          child: Text("Delete image"),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(dangerRed),
+          ),
+        )
       ],
     );
   }

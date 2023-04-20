@@ -5,6 +5,7 @@ import 'package:supermarket_inventory/View/LoginForm.dart';
 import 'package:supermarket_inventory/View/Profile/change_password.dart';
 import 'package:supermarket_inventory/View/Profile/profile_menu.dart';
 import 'package:supermarket_inventory/View/Profile/profile_pic.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -32,8 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(height: height * 0.05),
             ProfileMenu(
               text: "Change Password",
-              icon: const Icon(Icons.change_circle,
-                  color: Color.fromARGB(255, 252, 163, 17)),
+              icon: const Icon(Icons.change_circle, color: orangeAccent),
               press: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => ChangePassword()));
@@ -43,7 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               text: "Language",
               icon: const Icon(
                 Icons.language,
-                color: Color.fromARGB(255, 252, 163, 17),
+                color: orangeAccent,
               ),
               press: () {
                 Navigator.push(
@@ -56,7 +56,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               text: "Theme",
               icon: const Icon(
                 Icons.theater_comedy,
-                color: Color.fromARGB(255, 252, 163, 17),
+                color: orangeAccent,
               ),
               press: () {
                 Navigator.push(
@@ -69,7 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               text: "Log Out",
               icon: const Icon(
                 Icons.logout,
-                color: Color.fromARGB(255, 252, 163, 17),
+                color: orangeAccent,
               ),
               press: () async {
                 await googleLogout();

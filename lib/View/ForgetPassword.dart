@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:supermarket_inventory/View/LoginForm.dart';
 import 'package:supermarket_inventory/View/components/LoginTextfield.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
@@ -31,7 +32,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     const Text(
                       'Inventory',
                       style: TextStyle(
-                          color: Color.fromARGB(255, 20, 33, 61),
+                          color: blueBlack,
                           fontSize: 46,
                           fontWeight: FontWeight.bold),
                     ),
@@ -39,7 +40,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     const Text(
                       'Forgot Password',
                       style: TextStyle(
-                        color: Color.fromARGB(255, 20, 33, 61),
+                        color: blueBlack,
                         fontSize: 26,
                       ),
                     ),
@@ -68,8 +69,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                         msg: "Email Sent",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
-                                        backgroundColor: Colors.red,
-                                        textColor: Colors.white),
+                                        backgroundColor: dangerRed,
+                                        textColor: pureWhite),
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
@@ -81,8 +82,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                               msg: "Error While Sending the Email! Try Again",
                               toastLength: Toast.LENGTH_SHORT,
                               gravity: ToastGravity.BOTTOM,
-                              backgroundColor: Colors.red,
-                              textColor: Colors.white);
+                              backgroundColor: dangerRed,
+                              textColor: pureWhite);
                         }
                         Navigator.pop(context);
                       },
@@ -90,14 +91,14 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         padding: const EdgeInsets.all(25),
                         margin: const EdgeInsets.symmetric(horizontal: 25),
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 20, 33, 61),
+                          color: blueBlack,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Center(
                           child: Text(
                             "Send Verification",
                             style: TextStyle(
-                              color: Color.fromARGB(255, 252, 163, 17),
+                              color: orangeAccent,
                               fontWeight: FontWeight.w900,
                               fontSize: 20,
                             ),
@@ -124,7 +125,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           child: const Text(
                             'Login now',
                             style: TextStyle(
-                              color: Color.fromARGB(255, 252, 163, 17),
+                              color: orangeAccent,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

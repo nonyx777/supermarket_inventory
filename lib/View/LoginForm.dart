@@ -12,6 +12,7 @@ import 'package:supermarket_inventory/View/Store/StoreManagement.dart';
 import 'package:supermarket_inventory/View/components/LoginButton.dart';
 import 'package:supermarket_inventory/View/components/LoginTextfield.dart';
 import 'package:supermarket_inventory/View/components/square_tile.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -44,16 +45,16 @@ class _LoginFormState extends State<LoginForm> {
             msg: "Incorrect Email",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.BOTTOM,
-            backgroundColor: Colors.red,
-            textColor: Colors.white);
+            backgroundColor: dangerRed,
+            textColor: pureWhite);
       }
       if (e.code == 'wrong-password') {
         Fluttertoast.showToast(
             msg: "Incorrect Password",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.BOTTOM,
-            backgroundColor: Colors.red,
-            textColor: Colors.white);
+            backgroundColor: dangerRed,
+            textColor: pureWhite);
       }
     }
     Navigator.pop(context);
@@ -98,14 +99,14 @@ class _LoginFormState extends State<LoginForm> {
                 const Text(
                   'Inventory',
                   style: TextStyle(
-                      color: Color.fromARGB(255, 20, 33, 61),
+                      color: blueBlack,
                       fontSize: 36,
                       fontWeight: FontWeight.bold),
                 ),
                 const Text(
                   'Welcome back, Manager',
                   style: TextStyle(
-                    color: Color.fromARGB(255, 20, 33, 61),
+                    color: blueBlack,
                     fontSize: 16,
                   ),
                 ),
@@ -217,7 +218,7 @@ class _LoginFormState extends State<LoginForm> {
                       child: const Text(
                         'Register now',
                         style: TextStyle(
-                          color: Color.fromARGB(255, 252, 163, 17),
+                          color: orangeAccent,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supermarket_inventory/View/components/LoginTextfield.dart';
+import 'package:supermarket_inventory/color/color.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 import '../LoginForm.dart';
 
@@ -33,8 +35,8 @@ class _ChangePasswordState extends State<ChangePassword> {
           msg: "Password Changed Succesfully",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
-          backgroundColor: Colors.red,
-          textColor: Colors.white);
+          backgroundColor: dangerRed,
+          textColor: pureWhite);
     } catch (error) {}
   }
 
@@ -59,7 +61,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                     const Text(
                       'Inventory',
                       style: TextStyle(
-                          color: Color.fromARGB(255, 20, 33, 61),
+                          color: blueBlack,
                           fontSize: 46,
                           fontWeight: FontWeight.bold),
                     ),
@@ -67,7 +69,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                     const Text(
                       'Change Password',
                       style: TextStyle(
-                        color: Color.fromARGB(255, 20, 33, 61),
+                        color: blueBlack,
                         fontSize: 26,
                       ),
                     ),
@@ -95,14 +97,14 @@ class _ChangePasswordState extends State<ChangePassword> {
                         padding: const EdgeInsets.all(25),
                         margin: const EdgeInsets.symmetric(horizontal: 25),
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 20, 33, 61),
+                          color: blueBlack,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Center(
                           child: Text(
                             "Change Password",
                             style: TextStyle(
-                              color: Color.fromARGB(255, 252, 163, 17),
+                              color: orangeAccent,
                               fontWeight: FontWeight.w900,
                               fontSize: 20,
                             ),
