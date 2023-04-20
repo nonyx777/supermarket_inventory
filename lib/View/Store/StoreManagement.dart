@@ -8,6 +8,7 @@ import 'package:supermarket_inventory/Data/Model/Product.dart';
 import 'package:supermarket_inventory/Service/ApiService.dart';
 import 'package:supermarket_inventory/Service/Utility.dart';
 import 'package:supermarket_inventory/View/Store/ProductListTile.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 class StoreManagement extends StatefulWidget {
   const StoreManagement({super.key});
@@ -113,7 +114,7 @@ class _StoreManagementState extends State<StoreManagement> {
                         ElevatedButton(
                           style: const ButtonStyle(
                             backgroundColor: MaterialStatePropertyAll(
-                              Color.fromARGB(255, 20, 33, 61),
+                              blueBlack,
                             ),
                           ),
                           onPressed: () {
@@ -123,7 +124,7 @@ class _StoreManagementState extends State<StoreManagement> {
                           child: const Text(
                             "Request",
                             style: TextStyle(
-                              color: Color.fromARGB(255, 252, 163, 17),
+                              color: orangeAccent,
                             ),
                           ),
                         ),
@@ -318,7 +319,7 @@ class _StoreManagementState extends State<StoreManagement> {
                           ElevatedButton(
                             style: const ButtonStyle(
                               backgroundColor: MaterialStatePropertyAll(
-                                Color.fromARGB(255, 20, 33, 61),
+                                blueBlack,
                               ),
                             ),
                             onPressed: () {
@@ -328,7 +329,7 @@ class _StoreManagementState extends State<StoreManagement> {
                             child: const Text(
                               "Request",
                               style: TextStyle(
-                                color: Color.fromARGB(255, 252, 163, 17),
+                                color: orangeAccent,
                               ),
                             ),
                           ),
