@@ -24,6 +24,7 @@ class _StorePageState extends State<StorePage> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
+        title: Text("Product"),
         backgroundColor: blueBlack,
       ),
       body: BlocBuilder<StoreBloc, StoreState>(
