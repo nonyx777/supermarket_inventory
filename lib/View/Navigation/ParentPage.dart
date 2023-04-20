@@ -7,6 +7,7 @@ import 'package:supermarket_inventory/Service/Utility.dart';
 import 'package:supermarket_inventory/View/Market/market_page.dart';
 import 'package:supermarket_inventory/View/Profile/profile_screen.dart';
 import 'package:supermarket_inventory/View/Store/StoreManagement.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 class ParentPage extends StatefulWidget {
   const ParentPage({super.key});
@@ -42,10 +43,10 @@ class _ParentPageState extends State<ParentPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 20, 33, 61),
+        backgroundColor: blueBlack,
         title: const Text(
           style: TextStyle(
-            color: Colors.white,
+            color: pureWhite,
             fontSize: 25,
           ),
           "Inventory",
@@ -76,14 +77,14 @@ class _ParentPageState extends State<ParentPage> {
           Icon(
             Icons.store,
             size: 30,
-            color: Colors.white,
+            color: pureWhite,
           ),
-          Icon(Icons.shopping_cart_outlined, size: 30, color: Colors.white),
-          Icon(Icons.perm_identity, size: 30, color: Colors.white),
+          Icon(Icons.shopping_cart_outlined, size: 30, color: pureWhite),
+          Icon(Icons.perm_identity, size: 30, color: pureWhite),
         ],
-        color: const Color.fromARGB(255, 20, 33, 61),
-        buttonBackgroundColor: const Color.fromARGB(255, 252, 163, 17),
-        backgroundColor: Colors.white,
+        color: blueBlack,
+        buttonBackgroundColor: orangeAccent,
+        backgroundColor: pureWhite,
         animationCurve: Curves.easeInOut,
         animationDuration: const Duration(milliseconds: 600),
         onTap: (index) {
