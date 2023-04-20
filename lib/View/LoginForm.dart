@@ -138,7 +138,7 @@ class _LoginFormState extends State<LoginForm> {
                         child: Text(
                           'forgot password?',
                           style: TextStyle(
-                            color: Colors.grey[600],
+                            color: grey500,
                             fontSize: 11,
                           ),
                         ),
@@ -157,20 +157,20 @@ class _LoginFormState extends State<LoginForm> {
                       Expanded(
                         child: Divider(
                           thickness: 0.5,
-                          color: Colors.grey[700],
+                          color: grey700,
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
                           'Or continue with',
-                          style: TextStyle(color: Colors.grey[700]),
+                          style: TextStyle(color: grey700),
                         ),
                       ),
                       Expanded(
                         child: Divider(
                           thickness: 0.5,
-                          color: Colors.grey[700],
+                          color: grey700,
                         ),
                       ),
                     ],
@@ -205,7 +205,7 @@ class _LoginFormState extends State<LoginForm> {
                   children: [
                     Text(
                       'Not a member?',
-                      style: TextStyle(color: Colors.grey[700]),
+                      style: TextStyle(color: grey700),
                     ),
                     SizedBox(width: width * 0.01),
                     TextButton(

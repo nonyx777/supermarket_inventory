@@ -25,52 +25,7 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
       } else {
         dynamic category = [];
 
-        //removing duplicates
-        for (var p in addedProducts) {
-          int count = 0;
-          for (var c in category) {
-            if (p.productCategory == c.productCategory) {
-              count++;
-            }
-          }
-          if (count == 0) {
-            category.add(p);
-          }
-        }
-
-        //Adding products' categories as keys
-        //getting the total price of products in the same category
-        for (var c in category) {
-          productTotalPrice[c.productCategory] = 0;
-        }
-
-        //reseting total product quantity for re-calculation
-        totalProductQuantity = 0;
-        for (var key in productTotalPrice.keys) {
-          double price = 0;
-          for (var p in addedProducts) {
-            if (key == p.productCategory) {
-              //casting product price
-              num productPriceInt = p.productPrice;
-              double productPrice = productPriceInt.toDouble();
-              //casting product quantity
-              num productQuantityInt = p.productQuantity;
-              double productQuantity = productQuantityInt.toDouble();
-              price += productPrice * productQuantity;
-
-              //adding to the totalProductQuantity
-              totalProductQuantity += productQuantity;
-            }
-          }
-
-          productTotalPrice[key] = price;
-        }
-
-        totalProductPrice = 0;
-        //calculating the total product price
-        for (var value in productTotalPrice.values) {
-          totalProductPrice += value;
-        }
+        setUpProduct(category);
 
         emit(StoreSuccessState(category));
       }
@@ -123,58 +78,14 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
 
       dynamic category = [];
 
-      //removing duplicates
-      for (var p in addedProducts) {
-        int count = 0;
-        for (var c in category) {
-          if (p.productCategory == c.productCategory) {
-            count++;
-          }
-        }
-        if (count == 0) {
-          category.add(p);
-        }
-      }
-
-      //Adding products' categories as keys
-      //getting the total price of products in the same category
-      for (var c in category) {
-        productTotalPrice[c.productCategory] = 0;
-      }
-
-      //reseting total product quantity for re-calculation
-      totalProductQuantity = 0;
-      for (var key in productTotalPrice.keys) {
-        double price = 0;
-        for (var p in addedProducts) {
-          if (key == p.productCategory) {
-            //casting product price
-            num productPriceInt = p.productPrice;
-            double productPrice = productPriceInt.toDouble();
-            //casting product quantity
-            num productQuantityInt = p.productQuantity;
-            double productQuantity = productQuantityInt.toDouble();
-            price += productPrice * productQuantity;
-
-            //adding to the totalProductQuantity
-            totalProductQuantity += productQuantity;
-          }
-        }
-
-        productTotalPrice[key] = price;
-      }
-
-      totalProductPrice = 0;
-      //calculating the total product price
-      for (var value in productTotalPrice.values) {
-        totalProductPrice += value;
-      }
+      setUpProduct(category);
 
       emit(StoreSuccessState(category));
     });
   }
 }
 
+//custom functions
 Future<List?> readFromDatabase() async {
   await _service.readProduct().then((value) => productData = value);
   if (productData != null) {
@@ -183,4 +94,53 @@ Future<List?> readFromDatabase() async {
     }
   }
   return addedProducts;
+}
+
+void setUpProduct(dynamic category) {
+  //removing duplicates
+  for (var p in addedProducts) {
+    int count = 0;
+    for (var c in category) {
+      if (p.productCategory == c.productCategory) {
+        count++;
+      }
+    }
+    if (count == 0) {
+      category.add(p);
+    }
+  }
+
+  //Adding products' categories as keys
+  //getting the total price of products in the same category
+  for (var c in category) {
+    productTotalPrice[c.productCategory] = 0;
+  }
+
+  //reseting total product quantity for re-calculation
+  totalProductQuantity = 0;
+  for (var key in productTotalPrice.keys) {
+    double price = 0;
+    for (var p in addedProducts) {
+      if (key == p.productCategory) {
+        //casting product price
+        num productPriceInt = p.productPrice;
+        double productPrice = productPriceInt.toDouble();
+        //casting product quantity
+        num productQuantityInt = p.productQuantity;
+        double productQuantity = productQuantityInt.toDouble();
+        price += productPrice * productQuantity;
+
+        //adding to the totalProductQuantity
+        totalProductQuantity += productQuantity;
+      }
+    }
+
+    productTotalPrice[key] = price;
+  }
+
+  totalProductPrice = 0;
+  //calculating the total product price
+  for (var value in productTotalPrice.values) {
+    totalProductPrice += value;
+  }
 }

@@ -113,7 +113,7 @@ class _SignUpFormState extends State<SignUpForm> {
                           Expanded(
                             child: Divider(
                               thickness: 0.5,
-                              color: Colors.grey[700],
+                              color: grey700,
                             ),
                           ),
                           Padding(
@@ -121,13 +121,13 @@ class _SignUpFormState extends State<SignUpForm> {
                                 const EdgeInsets.symmetric(horizontal: 10.0),
                             child: Text(
                               'Or continue with',
-                              style: TextStyle(color: Colors.grey[700]),
+                              style: TextStyle(color: grey700),
                             ),
                           ),
                           Expanded(
                             child: Divider(
                               thickness: 0.5,
-                              color: Colors.grey[700],
+                              color: grey700,
                             ),
                           ),
                         ],
@@ -156,7 +156,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       children: [
                         Text(
                           'Already a member?',
-                          style: TextStyle(color: Colors.grey[700]),
+                          style: TextStyle(color: grey700),
                         ),
                         SizedBox(width: width * 0.01),
                         TextButton(

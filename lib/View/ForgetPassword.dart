@@ -111,7 +111,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       children: [
                         Text(
                           'Remeber your password?',
-                          style: TextStyle(color: Colors.grey[700]),
+                          style: TextStyle(color: grey700),
                         ),
                         SizedBox(width: width * 0.01),
                         TextButton(
