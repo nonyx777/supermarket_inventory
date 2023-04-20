@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
 import 'package:supermarket_inventory/Data/Model/Product.dart';
 import 'package:supermarket_inventory/View/Store/ProductTile.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 class StorePage extends StatefulWidget {
   const StorePage({super.key});
@@ -23,7 +24,7 @@ class _StorePageState extends State<StorePage> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 20, 33, 61),
+        backgroundColor: blueBlack,
       ),
       body: BlocBuilder<StoreBloc, StoreState>(
         builder: (context, state) {
