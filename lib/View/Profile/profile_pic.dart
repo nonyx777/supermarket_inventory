@@ -3,6 +3,11 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supermarket_inventory/color/color.dart';
+
+File? imgFile;
+String? imgPath;
 
 class ProfilePic extends StatefulWidget {
   const ProfilePic({
@@ -15,7 +20,13 @@ class ProfilePic extends StatefulWidget {
 
 class _ProfilePicState extends State<ProfilePic> {
   final user = FirebaseAuth.instance.currentUser!;
-  String selectedImagePath = '';
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -30,19 +41,15 @@ class _ProfilePicState extends State<ProfilePic> {
             fit: StackFit.expand,
             clipBehavior: Clip.none,
             children: [
-              selectedImagePath == ''
-                  ? Image.asset(
-                      'images/google.png',
-                      height: 200,
-                      width: 200,
-                      fit: BoxFit.fitWidth,
-                    )
-                  : Image.file(
-                      File(selectedImagePath),
-                      height: 200,
-                      width: 200,
-                      fit: BoxFit.fitWidth,
-                    ),
+              if (imgPath != null)
+                Container(
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(50)),
+                  child: Image.file(
+                    File(imgPath!),
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
               Positioned(
                 right: -16,
                 bottom: 0,
@@ -53,9 +60,9 @@ class _ProfilePicState extends State<ProfilePic> {
                     style: TextButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
-                        side: BorderSide(color: Colors.white),
+                        side: BorderSide(color: pureWhite),
                       ),
-                      backgroundColor: Color(0xFFF5F6F9),
+                      backgroundColor: pureWhite,
                     ),
                     onPressed: () async {
                       selectImage();
@@ -69,6 +76,15 @@ class _ProfilePicState extends State<ProfilePic> {
           ),
         ),
         Text(user.email!),
+        ElevatedButton(
+          onPressed: () {
+            deleteData();
+          },
+          child: Text("Delete image"),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(dangerRed),
+          ),
+        )
       ],
     );
   }
@@ -97,18 +113,7 @@ class _ProfilePicState extends State<ProfilePic> {
                       children: [
                         GestureDetector(
                           onTap: () async {
-                            selectedImagePath = await selectImageFromGallery();
-                            print('Image_Path:-');
-                            print(selectedImagePath);
-                            if (selectedImagePath != '') {
-                              Navigator.pop(context);
-                              setState(() {});
-                            } else {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(
-                                content: Text("No Image Selected !"),
-                              ));
-                            }
+                            getImgFromGallery();
                           },
                           child: Card(
                               elevation: 5,
@@ -128,19 +133,7 @@ class _ProfilePicState extends State<ProfilePic> {
                         ),
                         GestureDetector(
                           onTap: () async {
-                            selectedImagePath = await selectImageFromCamera();
-                            print('Image_Path:-');
-                            print(selectedImagePath);
-
-                            if (selectedImagePath != '') {
-                              Navigator.pop(context);
-                              setState(() {});
-                            } else {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(
-                                content: Text("No Image Captured !"),
-                              ));
-                            }
+                            getImgFromCamera();
                           },
                           child: Card(
                               elevation: 5,
@@ -168,24 +161,44 @@ class _ProfilePicState extends State<ProfilePic> {
         });
   }
 
-  selectImageFromGallery() async {
-    XFile? file = await ImagePicker()
-        .pickImage(source: ImageSource.gallery, imageQuality: 10);
-    if (file != null) {
-      return file.path;
-    } else {
-      return '';
+  void getImgFromGallery() async {
+    final pickedImage =
+        await ImagePicker().getImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      saveData(pickedImage.path.toString()); // path cache
+      setState(() {
+        imgFile = File(pickedImage.path);
+      });
     }
   }
 
-  //
-  selectImageFromCamera() async {
-    XFile? file = await ImagePicker()
-        .pickImage(source: ImageSource.camera, imageQuality: 10);
-    if (file != null) {
-      return file.path;
-    } else {
-      return '';
+  void getImgFromCamera() async {
+    final pickedImage =
+        await ImagePicker().getImage(source: ImageSource.camera);
+    if (pickedImage != null) {
+      saveData(pickedImage.path.toString()); // path cache
+      setState(() {
+        imgFile = File(pickedImage.path);
+      });
     }
+  }
+
+  void saveData(String val) async {
+    final sharedPref = await SharedPreferences.getInstance();
+    sharedPref.setString('path', val);
+    getData();
+  }
+
+  void getData() async {
+    final sharedPref = await SharedPreferences.getInstance();
+    setState(() {
+      imgPath = sharedPref.getString('path');
+    });
+  }
+
+  void deleteData() async {
+    final sharedPref = await SharedPreferences.getInstance();
+    sharedPref.remove('path');
+    getData();
   }
 }

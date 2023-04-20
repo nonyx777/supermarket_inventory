@@ -9,3 +9,5 @@ Color grey300 = Colors.grey.shade300;
 Color grey400 = Colors.grey.shade400;
 Color grey500 = Colors.grey.shade500;
 Color grey700 = Colors.grey.shade700;
+
+const dangerRed = Colors.red;

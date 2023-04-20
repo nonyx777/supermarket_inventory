@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({
@@ -23,7 +24,7 @@ class ProfileMenu extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          backgroundColor: const Color(0xFFF5F6F9),
+          backgroundColor: pureWhite,
         ),
         onPressed: press,
         child: Row(
@@ -33,12 +34,12 @@ class ProfileMenu extends StatelessWidget {
             Expanded(
               child: Text(
                 text,
-                style: const TextStyle(color: Color.fromARGB(255, 20, 33, 61)),
+                style: const TextStyle(color: blueBlack),
               ),
             ),
             const Icon(
               Icons.arrow_forward_ios,
-              color: Color.fromARGB(255, 252, 163, 17),
+              color: orangeAccent,
             ),
           ],
         ),

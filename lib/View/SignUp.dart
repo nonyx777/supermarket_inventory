@@ -6,6 +6,8 @@ import 'package:supermarket_inventory/View/LoginForm.dart';
 import 'package:supermarket_inventory/View/components/LoginTextfield.dart';
 import 'package:supermarket_inventory/View/components/SignUpButton.dart';
 import 'package:supermarket_inventory/View/components/square_tile.dart';
+import 'package:supermarket_inventory/color/color.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -66,7 +68,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     const Text(
                       'Inventory',
                       style: TextStyle(
-                          color: Color.fromARGB(255, 20, 33, 61),
+                          color: blueBlack,
                           fontSize: 36,
                           fontWeight: FontWeight.bold),
                     ),
@@ -74,7 +76,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     const Text(
                       'Sign Up',
                       style: TextStyle(
-                        color: Color.fromARGB(255, 20, 33, 61),
+                        color: blueBlack,
                         fontSize: 16,
                       ),
                     ),
@@ -111,7 +113,7 @@ class _SignUpFormState extends State<SignUpForm> {
                           Expanded(
                             child: Divider(
                               thickness: 0.5,
-                              color: Colors.grey[700],
+                              color: grey700,
                             ),
                           ),
                           Padding(
@@ -119,13 +121,13 @@ class _SignUpFormState extends State<SignUpForm> {
                                 const EdgeInsets.symmetric(horizontal: 10.0),
                             child: Text(
                               'Or continue with',
-                              style: TextStyle(color: Colors.grey[700]),
+                              style: TextStyle(color: grey700),
                             ),
                           ),
                           Expanded(
                             child: Divider(
                               thickness: 0.5,
-                              color: Colors.grey[700],
+                              color: grey700,
                             ),
                           ),
                         ],
@@ -154,7 +156,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       children: [
                         Text(
                           'Already a member?',
-                          style: TextStyle(color: Colors.grey[700]),
+                          style: TextStyle(color: grey700),
                         ),
                         SizedBox(width: width * 0.01),
                         TextButton(
@@ -168,7 +170,7 @@ class _SignUpFormState extends State<SignUpForm> {
                           child: const Text(
                             'Login Now',
                             style: TextStyle(
-                              color: Color.fromARGB(255, 252, 163, 17),
+                              color: orangeAccent,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
