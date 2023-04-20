@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
 import 'package:supermarket_inventory/Service/Utility.dart';
 import 'package:supermarket_inventory/View/Store/StorePage.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 class ProductListTile extends StatefulWidget {
   final String productCategory;
@@ -32,7 +33,7 @@ class _ProductListTileState extends State<ProductListTile> {
         height: height * 0.13,
         width: width * .9,
         decoration: const BoxDecoration(
-          color: Color.fromARGB(255, 229, 229, 229),
+          color: productTileColor,
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: Padding(

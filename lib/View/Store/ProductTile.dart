@@ -1,8 +1,12 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Market_Bloc/market_bloc.dart';
 import 'package:supermarket_inventory/Data/Model/Product.dart';
+import 'package:supermarket_inventory/Data/Repository/Market/service.dart';
+import 'package:supermarket_inventory/Service/Notification.dart';
 import 'package:supermarket_inventory/Service/Utility.dart';
+import 'package:supermarket_inventory/color/color.dart';
 import 'package:supermarket_inventory/main.dart';
 
 class ProductTile extends StatefulWidget {
@@ -72,7 +76,7 @@ class _ProductTileState extends State<ProductTile> {
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 0.2
-                              ..color = Colors.white),
+                              ..color = pureWhite),
                       ),
                     ],
                   ),
@@ -93,7 +97,7 @@ class _ProductTileState extends State<ProductTile> {
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 0.2
-                              ..color = Colors.white),
+                              ..color = pureWhite),
                       ),
                     ],
                   ),
@@ -147,19 +151,28 @@ class _ProductTileState extends State<ProductTile> {
                             productCategory: selectedCategory,
                             productQuantity: widget.productQuantity);
 
-                        // BlocProvider.of<MarketBloc>(context).add(MarketSave());
-                        await saveToDatabase(market_product);
+                        saveToMarketDatabase();
+                        await NotificationService.showNotification(
+                          title: "Product Added To Market",
+                          body: "You have added " +
+                              quantity.toString() +
+                              " amount of " +
+                              widget.productName +
+                              " into the Market",
+                          notificationLayout: NotificationLayout.BigPicture,
+                          bigPicture: widget.productImage,
+                        );
                       },
                       style: const ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll(
-                            Color.fromARGB(255, 252, 248, 248)),
+                        backgroundColor:
+                            MaterialStatePropertyAll(productTileButtonColor),
                       ),
                       child: const Text(
                         "Add",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: pureBlack,
                         ),
                       ),
                     ),
@@ -171,5 +184,16 @@ class _ProductTileState extends State<ProductTile> {
         ),
       ),
     );
+  }
+}
+
+void saveToMarketDatabase() async {
+  final _service = Service();
+
+  if (marketProducts.contains(market_product)) {
+    market_product.productQuantity += market_product.productQuantity;
+    _service.updateProduct(market_product);
+  } else {
+    _service.saveProduct(market_product);
   }
 }

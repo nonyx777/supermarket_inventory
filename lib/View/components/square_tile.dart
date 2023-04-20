@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 class SquareTile extends StatelessWidget {
   final String imagePath;
@@ -12,9 +13,9 @@ class SquareTile extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.white),
+        border: Border.all(color: pureWhite),
         borderRadius: BorderRadius.circular(16),
-        color: Colors.grey[200],
+        color: grey200,
       ),
       child: Image.asset(
         imagePath,

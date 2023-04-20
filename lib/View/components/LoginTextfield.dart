@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 class MyTextField extends StatelessWidget {
   final controller;
@@ -21,15 +22,15 @@ class MyTextField extends StatelessWidget {
         obscureText: obscureText,
         decoration: InputDecoration(
             enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
+              borderSide: BorderSide(color: pureWhite),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade400),
+              borderSide: BorderSide(color: grey400),
             ),
             fillColor: Colors.grey.shade200,
             filled: true,
             hintText: hintText,
-            hintStyle: TextStyle(color: Colors.grey[500])),
+            hintStyle: TextStyle(color: grey500)),
       ),
     );
   }
