@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Market_Bloc/market_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:supermarket_inventory/Data/Model/Product.dart';
 import 'package:supermarket_inventory/Data/Repository/Market/service.dart';
 import 'package:supermarket_inventory/Service/Notification.dart';
 import 'package:supermarket_inventory/Service/Utility.dart';
+import 'package:supermarket_inventory/View/Notifaication/NotificationButton.dart';
 import 'package:supermarket_inventory/main.dart';
 
 class ProductTile extends StatefulWidget {
@@ -151,12 +153,14 @@ class _ProductTileState extends State<ProductTile> {
 
                         saveToMarketDatabase();
                         await NotificationService.showNotification(
-                          title: "Product Added",
+                          title: "Product Added To Market",
                           body: "You have added " +
                               quantity.toString() +
                               " amount of " +
                               widget.productName +
                               " into the Market",
+                          notificationLayout: NotificationLayout.BigPicture,
+                          bigPicture: widget.productImage,
                         );
                       },
                       style: const ButtonStyle(
