@@ -1,7 +1,5 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:supermarket_inventory/View/Profile/profile_screen.dart';
-import 'package:supermarket_inventory/main.dart';
 
 class NotificationService {
   static Future<void> initializeNotification() async {
@@ -13,6 +11,8 @@ class NotificationService {
           channelKey: 'high_importance_channel',
           channelName: 'Basic notifications',
           channelDescription: 'Notification channel for basic tests',
+          defaultColor: const Color(0xFF9D50DD),
+          ledColor: Colors.white,
           importance: NotificationImportance.Max,
           channelShowBadge: true,
           onlyAlertOnce: true,
@@ -68,26 +68,45 @@ class NotificationService {
       ReceivedAction receivedAction) async {
     debugPrint('onActionReceivedMethod');
     final payload = receivedAction.payload ?? {};
-    if (payload["navigate"] == "true") {
-      MyApp.navigatorKey.currentState?.push(
-        MaterialPageRoute(
-          builder: (_) => ProfileScreen(),
-        ),
-      );
-    }
   }
 
   static Future<void> showNotification({
     required final String title,
     required final String body,
+    final String? summary,
+    final Map<String, String>? payload,
+    final ActionType actionType = ActionType.Default,
+    final NotificationLayout notificationLayout = NotificationLayout.Default,
+    final NotificationCategory? category,
+    final String? bigPicture,
+    final List<NotificationActionButton>? actionButtons,
+    final bool scheduled = false,
+    final int? interval,
   }) async {
+    assert(!scheduled || (scheduled && interval != null));
+
     await AwesomeNotifications().createNotification(
       content: NotificationContent(
         id: -1,
         channelKey: 'high_importance_channel',
         title: title,
         body: body,
+        actionType: actionType,
+        notificationLayout: notificationLayout,
+        summary: summary,
+        category: category,
+        payload: payload,
+        bigPicture: bigPicture,
       ),
+      actionButtons: actionButtons,
+      schedule: scheduled
+          ? NotificationInterval(
+              interval: interval,
+              timeZone:
+                  await AwesomeNotifications().getLocalTimeZoneIdentifier(),
+              preciseAlarm: true,
+            )
+          : null,
     );
   }
 }
