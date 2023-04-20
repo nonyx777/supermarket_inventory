@@ -1,15 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
 import 'package:supermarket_inventory/View/LoginForm.dart';
 import 'package:supermarket_inventory/View/Profile/change_password.dart';
 import 'package:supermarket_inventory/View/Profile/profile_menu.dart';
 import 'package:supermarket_inventory/View/Profile/profile_pic.dart';
-import 'package:supermarket_inventory/View/Profile/profile_screen.dart';
-import 'package:supermarket_inventory/View/Store/StoreManagement.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -37,31 +33,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(height: height * 0.05),
             ProfileMenu(
               text: "Change Password",
-              icon: Icon(Icons.change_circle,
-                  color: Color.fromARGB(255, 252, 163, 17)),
+              icon: const Icon(Icons.change_circle, color: orangeAccent),
               press: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => ChangePassword()));
               },
             ),
             ProfileMenu(
-              text: "Notifications",
-              icon: Icon(
-                Icons.notifications_active,
-                color: Color.fromARGB(255, 252, 163, 17),
+              text: "Language",
+              icon: const Icon(
+                Icons.language,
+                color: orangeAccent,
               ),
-              press: () {},
+              press: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Placeholder()));
+              },
+            ),
+            ProfileMenu(
+              text: "Theme",
+              icon: const Icon(
+                Icons.theater_comedy,
+                color: orangeAccent,
+              ),
+              press: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Placeholder()));
+              },
             ),
             ProfileMenu(
               text: "Log Out",
-              icon: Icon(
+              icon: const Icon(
                 Icons.logout,
-                color: Color.fromARGB(255, 252, 163, 17),
+                color: orangeAccent,
               ),
               press: () async {
                 await googleLogout();
                 FirebaseAuth.instance.signOut();
-                Navigator.pushReplacement(context,
+                Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const LoginForm()));
               },
             ),

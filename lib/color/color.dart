@@ -12,3 +12,4 @@ Color grey700 = Colors.grey.shade700;
 const productTileColor = Color.fromARGB(255, 229, 229, 229);
 const productTileButtonColor = Color.fromARGB(255, 252, 248, 248);
 const pureBlack = Colors.black;
+const dangerRed = Colors.red;
