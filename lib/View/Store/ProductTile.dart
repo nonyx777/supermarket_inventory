@@ -4,6 +4,7 @@ import 'package:supermarket_inventory/Bloc/Market_Bloc/market_bloc.dart';
 import 'package:supermarket_inventory/Data/Model/Product.dart';
 import 'package:supermarket_inventory/Data/Repository/Market/service.dart';
 import 'package:supermarket_inventory/Service/Utility.dart';
+import 'package:supermarket_inventory/color/color.dart';
 import 'package:supermarket_inventory/main.dart';
 
 class ProductTile extends StatefulWidget {
@@ -73,7 +74,7 @@ class _ProductTileState extends State<ProductTile> {
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 0.2
-                              ..color = Colors.white),
+                              ..color = pureWhite),
                       ),
                     ],
                   ),
@@ -94,7 +95,7 @@ class _ProductTileState extends State<ProductTile> {
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
                               ..strokeWidth = 0.2
-                              ..color = Colors.white),
+                              ..color = pureWhite),
                       ),
                     ],
                   ),
@@ -151,15 +152,15 @@ class _ProductTileState extends State<ProductTile> {
                         saveToMarketDatabase();
                       },
                       style: const ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll(
-                            Color.fromARGB(255, 252, 248, 248)),
+                        backgroundColor:
+                            MaterialStatePropertyAll(productTileButtonColor),
                       ),
                       child: const Text(
                         "Add",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: pureBlack,
                         ),
                       ),
                     ),
