@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -50,6 +51,7 @@ class _MarketPageState extends State<MarketPage> {
 
   @override
   Widget build(BuildContext context) {
+    context.locale = Locale('am', 'ETH');
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -74,10 +76,10 @@ class _MarketPageState extends State<MarketPage> {
                   ),
                   child: Row(
                     children: [
-                      const Expanded(
+                      Expanded(
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: "Search",
+                            hintText: "search".tr(),
                             border: InputBorder.none,
                           ),
                         ),
@@ -198,7 +200,7 @@ class _MarketPageState extends State<MarketPage> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        product.productName,
+                                        product.productName.tr(),
                                         style: const TextStyle(fontSize: 16),
                                       ),
                                       SizedBox(height: height * 0.005),
