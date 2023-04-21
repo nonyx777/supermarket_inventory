@@ -9,6 +9,8 @@ import 'package:supermarket_inventory/Service/Utility.dart';
 import 'package:supermarket_inventory/color/color.dart';
 import 'package:supermarket_inventory/main.dart';
 
+double quantity = 1;
+
 class ProductTile extends StatefulWidget {
   final int id;
   final String productName;
@@ -29,8 +31,6 @@ class ProductTile extends StatefulWidget {
 }
 
 class _ProductTileState extends State<ProductTile> {
-  double quantity = 1;
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -190,10 +190,15 @@ class _ProductTileState extends State<ProductTile> {
 void saveToMarketDatabase() async {
   final _service = Service();
 
+  await readFromDatabase();
+
   if (marketProducts.contains(market_product)) {
-    market_product.productQuantity += market_product.productQuantity;
+    market_product.productQuantity += quantity;
     _service.updateProduct(market_product);
   } else {
     _service.saveProduct(market_product);
   }
+
+  //revert quantity to 1
+  quantity = 1;
 }

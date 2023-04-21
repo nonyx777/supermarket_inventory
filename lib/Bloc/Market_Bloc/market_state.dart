@@ -2,14 +2,14 @@ part of 'market_bloc.dart';
 
 abstract class MarketState extends Equatable {
   const MarketState();
-  
+
   @override
   List<Object> get props => [];
 }
 
 class MarketInitial extends MarketState {
   @override
-  List<Object> get props => []; 
+  List<Object> get props => [];
 }
 
 class MarketLoadingState extends MarketState {
@@ -18,7 +18,7 @@ class MarketLoadingState extends MarketState {
 }
 
 class MarketSuccessState extends MarketState {
-  final List product;
+  final List<Product> product;
 
   const MarketSuccessState(
     this.product,
