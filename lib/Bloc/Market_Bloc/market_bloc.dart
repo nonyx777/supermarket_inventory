@@ -37,6 +37,7 @@ Future<Product?> saveToDatabase(Product product) async {
 }
 
 Future<List?> readFromDatabase() async {
+  marketProducts.clear();
   await _service.readProduct().then((value) => productData = value);
   if (productData != null) {
     for (var i = 0; i < productData!.length; i++) {
