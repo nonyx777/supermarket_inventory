@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -32,7 +33,7 @@ class _ChangePasswordState extends State<ChangePassword> {
     try {
       await currentUser!.updatePassword(newPassword);
       Fluttertoast.showToast(
-          msg: "Password Changed Succesfully",
+          msg: "Password Changed Succesfully".tr(),
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           backgroundColor: dangerRed,
@@ -58,17 +59,17 @@ class _ChangePasswordState extends State<ChangePassword> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset("images/logo.png"),
-                    const Text(
-                      'Inventory',
-                      style: TextStyle(
+                    Text(
+                      'Inventory'.tr(),
+                      style: const TextStyle(
                           color: blueBlack,
                           fontSize: 46,
                           fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: height * 0.01),
-                    const Text(
-                      'Change Password',
-                      style: TextStyle(
+                    Text(
+                      'Change Password'.tr(),
+                      style: const TextStyle(
                         color: blueBlack,
                         fontSize: 26,
                       ),
@@ -76,7 +77,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                     SizedBox(height: height * 0.04),
                     MyTextField(
                       controller: newPasswordController,
-                      hintText: 'Enter Your New Password',
+                      hintText: 'Enter Your New Password'.tr(),
                       obscureText: false,
                     ),
                     SizedBox(height: height * 0.015),
@@ -100,10 +101,10 @@ class _ChangePasswordState extends State<ChangePassword> {
                           color: blueBlack,
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text(
-                            "Change Password",
-                            style: TextStyle(
+                            "Change Password".tr(),
+                            style: const TextStyle(
                               color: orangeAccent,
                               fontWeight: FontWeight.w900,
                               fontSize: 20,

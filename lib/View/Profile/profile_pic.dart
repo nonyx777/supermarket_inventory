@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -80,7 +81,7 @@ class _ProfilePicState extends State<ProfilePic> {
           onPressed: () {
             deleteData();
           },
-          child: Text("Delete image"),
+          child: Text("Delete image".tr()),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(dangerRed),
           ),
@@ -103,9 +104,9 @@ class _ProfilePicState extends State<ProfilePic> {
                 padding: const EdgeInsets.all(12.0),
                 child: Column(
                   children: [
-                    const Text(
-                      'Select Image From !',
-                      style: TextStyle(
+                    Text(
+                      'Select Image From !'.tr(),
+                      style: const TextStyle(
                           fontSize: 18.0, fontWeight: FontWeight.bold),
                     ),
                     Row(
@@ -126,7 +127,7 @@ class _ProfilePicState extends State<ProfilePic> {
                                       height: 60,
                                       width: 60,
                                     ),
-                                    Text('Gallery'),
+                                    Text('Gallery'.tr()),
                                   ],
                                 ),
                               )),
@@ -146,7 +147,7 @@ class _ProfilePicState extends State<ProfilePic> {
                                       height: 60,
                                       width: 60,
                                     ),
-                                    Text('Camera'),
+                                    Text('Camera'.tr()),
                                   ],
                                 ),
                               )),

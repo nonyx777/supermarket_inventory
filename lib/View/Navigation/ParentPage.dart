@@ -1,4 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -44,12 +45,12 @@ class _ParentPageState extends State<ParentPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: blueBlack,
-        title: const Text(
-          style: TextStyle(
+        title: Text(
+          style: const TextStyle(
             color: pureWhite,
             fontSize: 25,
           ),
-          "Inventory",
+          "inventory".tr(),
         ),
         actions: [
           Padding(

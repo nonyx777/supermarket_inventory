@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -32,7 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ProfilePic(),
             SizedBox(height: height * 0.05),
             ProfileMenu(
-              text: "Change Password",
+              text: "Change Password".tr(),
               icon: const Icon(Icons.change_circle, color: orangeAccent),
               press: () {
                 Navigator.pushReplacement(context,
@@ -40,7 +41,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
             ),
             ProfileMenu(
-              text: "Language",
+              text: "Language".tr(),
               icon: const Icon(
                 Icons.language,
                 color: orangeAccent,
@@ -53,7 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
             ),
             ProfileMenu(
-              text: "Theme",
+              text: "Theme".tr(),
               icon: const Icon(
                 Icons.theater_comedy,
                 color: orangeAccent,
@@ -66,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
             ),
             ProfileMenu(
-              text: "Log Out",
+              text: "Log Out".tr(),
               icon: const Icon(
                 Icons.logout,
                 color: orangeAccent,

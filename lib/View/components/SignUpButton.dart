@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:supermarket_inventory/color/color.dart';
 
@@ -17,10 +18,10 @@ class SignUpButton extends StatelessWidget {
           color: blueBlack,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: const Center(
+        child: Center(
           child: Text(
-            "SIGN UP",
-            style: TextStyle(
+            "usign_up".tr(),
+            style: const TextStyle(
               color: orangeAccent,
               fontWeight: FontWeight.w900,
               fontSize: 20,

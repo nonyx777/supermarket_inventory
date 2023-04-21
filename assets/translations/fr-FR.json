@@ -11,14 +11,14 @@
     "notifications": "Avis",
     "log_0ut": "Se déconnecter",
     "inventory": "Inventaire",
-    "welcome_back": "Content de te revoir",
+    "welcome_back": "Content de te revoir!",
     "manager": "Directeur",
     "email": "E-mail",
     "password": "Mot de passe",
     "or_continue_with": "Ou continuer avec",
-    "not_a_member": "Pas un membre",
+    "not_a_member": "Pas un membre?",
     "register_now": "S'inscrire maintenant",
-    "forgot_password": "Mot de passe oublié",
+    "forgot_password": "Mot de passe oublié?",
     "sign_up": "S'inscrire",
     "sign_in": "S'identifier",
     "send_verification": "Envoyer la vérification",
@@ -47,5 +47,17 @@
     "Snack": "Collation",
     "Dairy": "Laitier",
     "Vegetable": "Légume",
-    "Fruit": "Fruit"
+    "Fruit": "Fruit",
+
+    "ulogin":"LOG IN",
+    "usign_up":"SIGN UP",
+    
+    "already_a_member":"Already a member?",
+    "hello":"Hello ",
+    "google_log_out":"Google Log Out",
+    "profile_page":"Profile Page",
+    "email_sent": "Email Sent",
+    "incorrect_email":"Incorrect Email",
+    "incorrect_password": "Incorrect Password",
+    "error_try_again":"Error While Sending the Email! Try Again"
 }

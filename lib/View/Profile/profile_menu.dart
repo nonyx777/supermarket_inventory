@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:supermarket_inventory/color/color.dart';
 
@@ -33,7 +34,7 @@ class ProfileMenu extends StatelessWidget {
             SizedBox(width: width * 0.07),
             Expanded(
               child: Text(
-                text,
+                text.tr(),
                 style: const TextStyle(color: blueBlack),
               ),
             ),
