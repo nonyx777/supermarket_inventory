@@ -278,12 +278,15 @@ class _MarketPageState extends State<MarketPage> {
                             _getFilteredProducts(state.product)[index];
                         return InkWell(
                           onTap: () {
+                            final marketBloc = MarketBloc();
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    MarketDetailPage(product: product),
-                              ),
+                                  builder: (context) => BlocProvider.value(
+                                        value: marketBloc,
+                                        child:
+                                            MarketDetailPage(product: product),
+                                      )),
                             );
                           },
                           child: Card(
