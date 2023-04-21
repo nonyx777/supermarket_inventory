@@ -151,7 +151,6 @@ class _ProductTileState extends State<ProductTile> {
                             productCategory: selectedCategory,
                             productQuantity: widget.productQuantity);
 
-                        saveToMarketDatabase();
                         await NotificationService.showNotification(
                           title: "Product Added To Market",
                           body: "You have added " +
@@ -162,6 +161,10 @@ class _ProductTileState extends State<ProductTile> {
                           notificationLayout: NotificationLayout.BigPicture,
                           bigPicture: widget.productImage,
                         );
+
+                        setState(() {
+                          saveToMarketDatabase();
+                        });
                       },
                       style: const ButtonStyle(
                         backgroundColor:
@@ -188,16 +191,20 @@ class _ProductTileState extends State<ProductTile> {
 }
 
 void saveToMarketDatabase() async {
-  final _service = Service();
+  final _serviceMarket = Service();
 
   await readFromDatabase();
 
   if (marketProducts.contains(market_product)) {
     market_product.productQuantity += quantity;
-    _service.updateProduct(market_product);
+    _serviceMarket.updateProduct(market_product);
   } else {
-    _service.saveProduct(market_product);
+    _serviceMarket.saveProduct(market_product);
   }
+
+  //decreasing product quantity from the store
+  market_product.productQuantity -= quantity;
+  serviceStore.updateProduct(market_product);
 
   //revert quantity to 1
   quantity = 1;

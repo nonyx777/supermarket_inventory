@@ -1,4 +1,5 @@
 import 'package:supermarket_inventory/Data/Model/Product.dart';
+import 'package:supermarket_inventory/Data/Repository/Store/service.dart';
 
 //related with the store
 List<String> categoryExists = [];
@@ -9,6 +10,7 @@ double totalProductQuantity = 0;
 String selectedCategory = "";
 List<Map<String, dynamic>>? productData;
 List addedProducts = [];
+final serviceStore = Service();
 
 //related with the market
 late Product market_product;

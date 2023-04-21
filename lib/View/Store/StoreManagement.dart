@@ -22,7 +22,9 @@ class _StoreManagementState extends State<StoreManagement> {
 
   @override
   void initState() {
-    BlocProvider.of<StoreBloc>(context).add(GetCategoryInitially());
+    setState(() {
+      BlocProvider.of<StoreBloc>(context).add(GetCategoryInitially());
+    });
     super.initState();
   }
 
