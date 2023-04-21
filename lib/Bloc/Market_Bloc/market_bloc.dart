@@ -8,7 +8,6 @@ part 'market_event.dart';
 part 'market_state.dart';
 
 final _service = Service();
-late bool already_in_database;
 
 class MarketBloc extends Bloc<MarketEvent, MarketState> {
   MarketBloc() : super(MarketInitial()) {

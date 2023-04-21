@@ -53,9 +53,127 @@ class _MarketPageState extends State<MarketPage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: products_ == null
-          ? const Center(child: CircularProgressIndicator())
-          : Column(
+      body: BlocBuilder<MarketBloc, MarketState>(
+        builder: (context, state) {
+          if (state is MarketInitial) {
+            return Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(height * 0.01),
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 0.2,
+                        blurRadius: 2,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      const Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: "Search",
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.search),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          } else if (state is MarketLoadingState) {
+            return Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(height * 0.01),
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 0.2,
+                        blurRadius: 2,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      const Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: "Search",
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.search),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ),
+                const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ],
+            );
+          } else if (state is MarketFailState) {
+            return Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(height * 0.01),
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 0.2,
+                        blurRadius: 2,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      const Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: "Search",
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.search),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ),
+                Center(
+                  child: Text(state.message),
+                ),
+              ],
+            );
+          } else if (state is MarketSuccessState) {
+            return Column(
               children: [
                 Container(
                   margin: EdgeInsets.all(height * 0.01),
@@ -220,7 +338,11 @@ class _MarketPageState extends State<MarketPage> {
                   ),
                 ),
               ],
-            ),
+            );
+          }
+          return Container();
+        },
+      ),
     );
   }
 }
