@@ -8,7 +8,6 @@ part 'market_event.dart';
 part 'market_state.dart';
 
 final _service = Service();
-late bool already_in_database;
 
 class MarketBloc extends Bloc<MarketEvent, MarketState> {
   MarketBloc() : super(MarketInitial()) {
@@ -38,6 +37,7 @@ Future<Product?> saveToDatabase(Product product) async {
 }
 
 Future<List?> readFromDatabase() async {
+  marketProducts.clear();
   await _service.readProduct().then((value) => productData = value);
   if (productData != null) {
     for (var i = 0; i < productData!.length; i++) {

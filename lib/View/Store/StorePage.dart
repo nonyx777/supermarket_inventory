@@ -24,8 +24,8 @@ class _StorePageState extends State<StorePage> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Product",
+        title: const Text(
+          "Products",
           style: TextStyle(
             color: pureWhite,
           ),

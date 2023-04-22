@@ -16,29 +16,14 @@ class MarketPage extends StatefulWidget {
 }
 
 class _MarketPageState extends State<MarketPage> {
-  Future<void> _fetchProducts() async {
-    final response = await http.get(Uri.parse(
-        'https://642b0a1db11efeb759a930cb.mockapi.io/api/supermarket/products'));
-    final List<Product> fetchedProducts = [];
-
-    if (response.statusCode == 200) {
-      final List<dynamic> productsJson = json.decode(response.body);
-      for (var json in productsJson) {
-        final product = Product.fromJson(json);
-        fetchedProducts.add(product);
-        selectedCategory_ = 'all';
-      }
-    }
-  }
-
-  List<Product> _getFilteredProducts() {
-    if (selectedCategory_.isEmpty || products_ == null) {
+  List<Product> _getFilteredProducts(List<Product> products) {
+    if (selectedCategory_.isEmpty || products == null) {
       return [];
     } else if (selectedCategory_ == "all" || selectedCategory_.isEmpty) {
-      return products_;
+      return products;
     } else {
-      return products_
-          .where((p) => p.productCategory == selectedCategory_)
+      return products
+          .where((m) => m.productCategory == selectedCategory_)
           .toList();
     }
   }
@@ -55,9 +40,127 @@ class _MarketPageState extends State<MarketPage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: products_ == null
-          ? const Center(child: CircularProgressIndicator())
-          : Column(
+      body: BlocBuilder<MarketBloc, MarketState>(
+        builder: (context, state) {
+          if (state is MarketInitial) {
+            return Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(height * 0.01),
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 0.2,
+                        blurRadius: 2,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      const Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: "Search",
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.search),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          } else if (state is MarketLoadingState) {
+            return Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(height * 0.01),
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 0.2,
+                        blurRadius: 2,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      const Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: "Search",
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.search),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ),
+                const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ],
+            );
+          } else if (state is MarketFailState) {
+            return Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(height * 0.01),
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 0.2,
+                        blurRadius: 2,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      const Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: "Search",
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.search),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ),
+                Center(
+                  child: Text(state.message),
+                ),
+              ],
+            );
+          } else if (state is MarketSuccessState) {
+            return Column(
               children: [
                 Container(
                   margin: EdgeInsets.all(height * 0.01),
@@ -168,12 +271,13 @@ class _MarketPageState extends State<MarketPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: GridView.builder(
-                      itemCount: _getFilteredProducts().length,
+                      itemCount: _getFilteredProducts(state.product).length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2, childAspectRatio: 0.75),
                       itemBuilder: (BuildContext context, int index) {
-                        final product = _getFilteredProducts()[index];
+                        final product =
+                            _getFilteredProducts(state.product)[index];
                         return InkWell(
                           onTap: () {
                             Navigator.push(
@@ -204,11 +308,22 @@ class _MarketPageState extends State<MarketPage> {
                                         style: const TextStyle(fontSize: 16),
                                       ),
                                       SizedBox(height: height * 0.005),
-                                      Text(
-                                        '\$${product.productPrice}',
-                                        style: const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            '\$${product.productPrice}',
+                                            style: const TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            '${product.productQuantity}',
+                                            style:
+                                                const TextStyle(fontSize: 16),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
@@ -222,7 +337,11 @@ class _MarketPageState extends State<MarketPage> {
                   ),
                 ),
               ],
-            ),
+            );
+          }
+          return Container();
+        },
+      ),
     );
   }
 }
