@@ -36,7 +36,6 @@ class _MarketPageState extends State<MarketPage> {
 
   @override
   Widget build(BuildContext context) {
-    context.locale = Locale('am', 'ETH');
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -62,10 +61,10 @@ class _MarketPageState extends State<MarketPage> {
                   ),
                   child: Row(
                     children: [
-                      const Expanded(
+                      Expanded(
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: "Search",
+                            hintText: "search".tr(),
                             border: InputBorder.none,
                           ),
                         ),
@@ -99,10 +98,10 @@ class _MarketPageState extends State<MarketPage> {
                   ),
                   child: Row(
                     children: [
-                      const Expanded(
+                      Expanded(
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: "Search",
+                            hintText: "search".tr(),
                             border: InputBorder.none,
                           ),
                         ),
@@ -139,10 +138,10 @@ class _MarketPageState extends State<MarketPage> {
                   ),
                   child: Row(
                     children: [
-                      const Expanded(
+                      Expanded(
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: "Search",
+                            hintText: "search".tr(),
                             border: InputBorder.none,
                           ),
                         ),
@@ -225,7 +224,7 @@ class _MarketPageState extends State<MarketPage> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: width * 0.04, vertical: 10),
                                 child: Text(
-                                  "All",
+                                  "all".tr(),
                                   style: TextStyle(
                                     color: selectedCategory_ == "all"
                                         ? Colors.white

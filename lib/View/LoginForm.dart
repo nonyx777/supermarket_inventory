@@ -95,7 +95,7 @@ class _LoginFormState extends State<LoginForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: height * 0.05),
-                Image.asset("images/logo.png"),
+                Image.asset("assets/images/logo.png"),
                 SizedBox(height: height * 0.03),
                 Text(
                   "inventory".tr(),
@@ -197,7 +197,7 @@ class _LoginFormState extends State<LoginForm> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
-                      SquareTile(imagePath: 'images/google.png'),
+                      SquareTile(imagePath: 'assets/images/google.png'),
                     ],
                   ),
                 ),

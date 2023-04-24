@@ -16,7 +16,6 @@ class SignUpForm extends StatefulWidget {
   @override
   State<SignUpForm> createState() => _SignUpFormState();
 }
-
 class _SignUpFormState extends State<SignUpForm> {
   final emailController = TextEditingController();
 
@@ -64,7 +63,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(height: height * 0.05),
-                    Image.asset("images/logo.png"),
+                    Image.asset("assets/images/logo.png"),
                     SizedBox(height: height * 0.03),
                     Text(
                       "inventory".tr(),
@@ -148,7 +147,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
-                          SquareTile(imagePath: 'images/google.png'),
+                          SquareTile(imagePath: 'assets/images/google.png'),
                         ],
                       ),
                     ),

@@ -69,7 +69,7 @@ class _ProfilePicState extends State<ProfilePic> {
                       selectImage();
                       setState(() {});
                     },
-                    child: Image.asset("images/edit.png"),
+                    child: Image.asset("assets/images/edit.png"),
                   ),
                 ),
               ),
@@ -123,7 +123,7 @@ class _ProfilePicState extends State<ProfilePic> {
                                 child: Column(
                                   children: [
                                     Image.asset(
-                                      'images/gallery.png',
+                                      'assets/images/gallery.png',
                                       height: 60,
                                       width: 60,
                                     ),
@@ -143,7 +143,7 @@ class _ProfilePicState extends State<ProfilePic> {
                                 child: Column(
                                   children: [
                                     Image.asset(
-                                      'images/camera.png',
+                                      'assets/images/camera.png',
                                       height: 60,
                                       width: 60,
                                     ),

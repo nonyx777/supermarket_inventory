@@ -46,14 +46,11 @@
     "Vegetable": "Vegetable",
     "Fruit": "Fruit",
 
-
     "forgot_password": "forgot password?",
     "not_a_member": "Not a member?",
     "welcome_back": "Welcome back!",
-
     "ulogin":"LOG IN",
     "usign_up":"SIGN UP",
-
     "already_a_member":"Already a member?",
     "hello":"Hello ",
     "google_log_out":"Google Log Out",
@@ -61,5 +58,9 @@
     "email_sent": "Email Sent",
     "incorrect_email":"Incorrect Email",
     "incorrect_password": "Incorrect Password",
-    "error_try_again":"Error While Sending the Email! Try Again"
+    "error_try_again":"Error While Sending the Email! Try Again",
+    "search":"Search",
+    "add":"Add to Cart",
+    "items":"Similar Items"
+
 }

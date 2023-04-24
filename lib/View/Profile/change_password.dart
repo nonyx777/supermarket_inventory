@@ -7,7 +7,7 @@ import 'package:supermarket_inventory/View/components/LoginTextfield.dart';
 import 'package:supermarket_inventory/color/color.dart';
 import 'package:supermarket_inventory/color/color.dart';
 
-import '../LoginForm.dart';
+import '../LoginForm.dart'; 
 
 class ChangePassword extends StatefulWidget {
   const ChangePassword({super.key});
@@ -58,7 +58,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset("images/logo.png"),
+                    Image.asset("assets/images/logo.png"),
                     Text(
                       'Inventory'.tr(),
                       style: const TextStyle(

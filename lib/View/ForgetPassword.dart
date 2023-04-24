@@ -29,7 +29,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset("images/logo.png"),
+                    Image.asset("assets/images/logo.png"),
                     Text(
                       "inventory".tr(),
                       style: const TextStyle(
