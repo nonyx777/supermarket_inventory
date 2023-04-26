@@ -8,6 +8,7 @@ import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
 import 'package:supermarket_inventory/View/ForgetPassword.dart';
 import 'package:supermarket_inventory/View/HomePage.dart';
 import 'package:supermarket_inventory/View/Navigation/ParentPage.dart';
+import 'package:supermarket_inventory/View/Profile/supportedlocales.dart';
 import 'package:supermarket_inventory/View/SignUp.dart';
 import 'package:supermarket_inventory/View/Store/StoreManagement.dart';
 import 'package:supermarket_inventory/View/components/LoginButton.dart';
@@ -94,9 +95,38 @@ class _LoginFormState extends State<LoginForm> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: height * 0.05),
+                ListTile(
+                  leading: const Icon(
+                    Icons.language,
+                    color: orangeAccent,
+                  ),
+                  trailing: DropdownButton<Locale>(
+                    value: context.locale,
+                    onChanged: (newLocale) {
+                      BlocProvider.of<StoreBloc>(context)
+                          .add(GetCategoryInitially());
+                      setState(() {
+                        BlocProvider.of<StoreBloc>(context)
+                            .add(GetCategoryInitially());
+                        context.setLocale(newLocale!);
+                      });
+                    },
+                    items: supportedLocales
+                        .map((locale) => DropdownMenuItem(
+                              value: locale,
+                              child: Text(
+                                locale.languageCode.toUpperCase(),
+                              ),
+                            ))
+                        .toList(),
+                  ),
+                  onTap: () {
+                    context.setLocale(Locale(''));
+                  },
+                ),
+                //SizedBox(height: height * 0.05),
                 Image.asset("assets/images/logo.png"),
-                SizedBox(height: height * 0.03),
+                SizedBox(height: height * 0.01),
                 Text(
                   "inventory".tr(),
                   style: const TextStyle(
@@ -111,7 +141,7 @@ class _LoginFormState extends State<LoginForm> {
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(height: height * 0.04),
+                SizedBox(height: height * 0.02),
                 MyTextField(
                   controller: emailController,
                   hintText: "email".tr(),
@@ -213,7 +243,8 @@ class _LoginFormState extends State<LoginForm> {
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => const SignUpForm()),
+                          MaterialPageRoute(
+                              builder: (context) => const SignUpForm()),
                         );
                       },
                       child: Text(
