@@ -109,15 +109,20 @@ class _ProductTileState extends State<ProductTile> {
                 children: [
                   Row(
                     children: [
-                      IconButton(
-                        onPressed: () {
-                          if (quantity < widget.productQuantity) {
-                            setState(() {
-                              quantity++;
-                            });
-                          }
-                        },
-                        icon: const Icon(Icons.add),
+                      CircleAvatar(
+                        radius: 20,
+                        backgroundColor: productTileButtonColor,
+                        child: IconButton(
+                          onPressed: () {
+                            if (quantity < widget.productQuantity) {
+                              setState(() {
+                                quantity++;
+                              });
+                            }
+                          },
+                          color: blueBlack,
+                          icon: const Icon(Icons.add),
+                        ),
                       ),
                       Text(
                         quantity.toString(),
@@ -125,15 +130,20 @@ class _ProductTileState extends State<ProductTile> {
                           fontSize: 20,
                         ),
                       ),
-                      IconButton(
-                        onPressed: () {
-                          if (quantity > 1) {
-                            setState(() {
-                              quantity--;
-                            });
-                          }
-                        },
-                        icon: const Icon(Icons.remove),
+                      CircleAvatar(
+                        radius: 20,
+                        backgroundColor: productTileButtonColor,
+                        child: IconButton(
+                          onPressed: () {
+                            if (quantity > 1) {
+                              setState(() {
+                                quantity--;
+                              });
+                            }
+                          },
+                          color: blueBlack,
+                          icon: const Icon(Icons.remove),
+                        ),
                       )
                     ],
                   ),
