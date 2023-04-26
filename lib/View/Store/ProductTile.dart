@@ -1,4 +1,5 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Market_Bloc/market_bloc.dart';
@@ -62,14 +63,14 @@ class _ProductTileState extends State<ProductTile> {
                   Stack(
                     children: [
                       Text(
-                        widget.productName,
+                        widget.productName.tr(),
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),
                       ),
                       Text(
-                        widget.productName,
+                        widget.productName.tr(),
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -167,9 +168,9 @@ class _ProductTileState extends State<ProductTile> {
                         backgroundColor:
                             MaterialStatePropertyAll(productTileButtonColor),
                       ),
-                      child: const Text(
-                        "Add",
-                        style: TextStyle(
+                      child: Text(
+                        "add".tr(),
+                        style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: pureBlack,

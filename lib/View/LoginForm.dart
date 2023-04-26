@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,7 +51,7 @@ class _LoginFormState extends State<LoginForm> {
       }
       if (e.code == 'wrong-password') {
         Fluttertoast.showToast(
-            msg: "Incorrect Password",
+            msg: "incorrect_password",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.BOTTOM,
             backgroundColor: dangerRed,
@@ -94,18 +95,18 @@ class _LoginFormState extends State<LoginForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: height * 0.05),
-                Image.asset("images/logo.png"),
+                Image.asset("assets/images/logo.png"),
                 SizedBox(height: height * 0.03),
-                const Text(
-                  'Inventory',
-                  style: TextStyle(
+                Text(
+                  "inventory".tr(),
+                  style: const TextStyle(
                       color: blueBlack,
                       fontSize: 36,
                       fontWeight: FontWeight.bold),
                 ),
-                const Text(
-                  'Welcome back, Manager',
-                  style: TextStyle(
+                Text(
+                  "welcome_back".tr(),
+                  style: const TextStyle(
                     color: blueBlack,
                     fontSize: 16,
                   ),
@@ -113,13 +114,13 @@ class _LoginFormState extends State<LoginForm> {
                 SizedBox(height: height * 0.04),
                 MyTextField(
                   controller: emailController,
-                  hintText: 'Email',
+                  hintText: "email".tr(),
                   obscureText: false,
                 ),
                 SizedBox(height: height * 0.01),
                 MyTextField(
                   controller: passwordController,
-                  hintText: 'Password',
+                  hintText: "password".tr(),
                   obscureText: true,
                 ),
                 Padding(
@@ -132,11 +133,11 @@ class _LoginFormState extends State<LoginForm> {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ForgetPassword()),
+                                builder: (context) => const ForgetPassword()),
                           );
                         },
                         child: Text(
-                          'forgot password?',
+                          "forgot_password".tr(),
                           style: TextStyle(
                             color: grey500,
                             fontSize: 11,
@@ -163,7 +164,7 @@ class _LoginFormState extends State<LoginForm> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
-                          'Or continue with',
+                          "or_continue_with".tr(),
                           style: TextStyle(color: grey700),
                         ),
                       ),
@@ -196,7 +197,7 @@ class _LoginFormState extends State<LoginForm> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
-                      SquareTile(imagePath: 'images/google.png'),
+                      SquareTile(imagePath: 'assets/images/google.png'),
                     ],
                   ),
                 ),
@@ -204,7 +205,7 @@ class _LoginFormState extends State<LoginForm> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Not a member?',
+                      "not_a_member".tr(),
                       style: TextStyle(color: grey700),
                     ),
                     SizedBox(width: width * 0.01),
@@ -212,12 +213,12 @@ class _LoginFormState extends State<LoginForm> {
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => SignUpForm()),
+                          MaterialPageRoute(builder: (context) => const SignUpForm()),
                         );
                       },
-                      child: const Text(
-                        'Register now',
-                        style: TextStyle(
+                      child: Text(
+                        "register_now".tr(),
+                        style: const TextStyle(
                           color: orangeAccent,
                           fontWeight: FontWeight.bold,
                         ),

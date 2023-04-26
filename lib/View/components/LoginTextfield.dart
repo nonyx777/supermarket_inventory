@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:supermarket_inventory/color/color.dart';
 
@@ -29,7 +30,7 @@ class MyTextField extends StatelessWidget {
             ),
             fillColor: Colors.grey.shade200,
             filled: true,
-            hintText: hintText,
+            hintText: hintText.tr(),
             hintStyle: TextStyle(color: grey500)),
       ),
     );

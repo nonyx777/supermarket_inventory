@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -15,7 +16,6 @@ class SignUpForm extends StatefulWidget {
   @override
   State<SignUpForm> createState() => _SignUpFormState();
 }
-
 class _SignUpFormState extends State<SignUpForm> {
   final emailController = TextEditingController();
 
@@ -63,19 +63,19 @@ class _SignUpFormState extends State<SignUpForm> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(height: height * 0.05),
-                    Image.asset("images/logo.png"),
+                    Image.asset("assets/images/logo.png"),
                     SizedBox(height: height * 0.03),
-                    const Text(
-                      'Inventory',
-                      style: TextStyle(
+                    Text(
+                      "inventory".tr(),
+                      style: const TextStyle(
                           color: blueBlack,
                           fontSize: 36,
                           fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: height * 0.01),
-                    const Text(
-                      'Sign Up',
-                      style: TextStyle(
+                    Text(
+                      "email".tr(),
+                      style: const TextStyle(
                         color: blueBlack,
                         fontSize: 16,
                       ),
@@ -83,13 +83,13 @@ class _SignUpFormState extends State<SignUpForm> {
                     SizedBox(height: height * 0.04),
                     MyTextField(
                       controller: emailController,
-                      hintText: 'Email',
+                      hintText: "email".tr(),
                       obscureText: false,
                     ),
                     SizedBox(height: height * 0.01),
                     MyTextField(
                       controller: passwordController,
-                      hintText: 'Password',
+                      hintText: "password".tr(),
                       obscureText: true,
                     ),
                     SizedBox(height: height * 0.01),
@@ -101,7 +101,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginForm()),
+                          MaterialPageRoute(builder: (context) => const LoginForm()),
                         );
                       },
                     ),
@@ -120,7 +120,7 @@ class _SignUpFormState extends State<SignUpForm> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 10.0),
                             child: Text(
-                              'Or continue with',
+                              "or_continue_with".tr(),
                               style: TextStyle(color: grey700),
                             ),
                           ),
@@ -147,7 +147,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
-                          SquareTile(imagePath: 'images/google.png'),
+                          SquareTile(imagePath: 'assets/images/google.png'),
                         ],
                       ),
                     ),
@@ -155,7 +155,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Already a member?',
+                          "already_a_member".tr(),
                           style: TextStyle(color: grey700),
                         ),
                         SizedBox(width: width * 0.01),
@@ -164,12 +164,12 @@ class _SignUpFormState extends State<SignUpForm> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => LoginForm()),
+                                  builder: (context) => const LoginForm()),
                             );
                           },
-                          child: const Text(
-                            'Login Now',
-                            style: TextStyle(
+                          child: Text(
+                            "login_now".tr(),
+                            style: const TextStyle(
                               color: orangeAccent,
                               fontWeight: FontWeight.bold,
                             ),

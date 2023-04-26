@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
@@ -24,9 +25,9 @@ class _StorePageState extends State<StorePage> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Products",
-          style: TextStyle(
+        title: Text(
+          "products".tr(),
+          style: const TextStyle(
             color: pureWhite,
           ),
         ),
@@ -39,7 +40,7 @@ class _StorePageState extends State<StorePage> {
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               alignment: Alignment.center,
-              child: const Text("No prodcuts available"),
+              child: Text("no_available_products".tr()),
             );
           } else if (state is StoreLoadingState) {
             return const Center(child: CircularProgressIndicator());

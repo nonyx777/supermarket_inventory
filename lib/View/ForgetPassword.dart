@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -28,18 +29,18 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset("images/logo.png"),
-                    const Text(
-                      'Inventory',
-                      style: TextStyle(
+                    Image.asset("assets/images/logo.png"),
+                    Text(
+                      "inventory".tr(),
+                      style: const TextStyle(
                           color: blueBlack,
                           fontSize: 46,
                           fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: height * 0.01),
-                    const Text(
-                      'Forgot Password',
-                      style: TextStyle(
+                    Text(
+                      "forgot_password".tr(),
+                      style: const TextStyle(
                         color: blueBlack,
                         fontSize: 26,
                       ),
@@ -47,7 +48,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     SizedBox(height: height * 0.04),
                     MyTextField(
                       controller: forgotPasswordController,
-                      hintText: 'Email',
+                      hintText: "email".tr(),
                       obscureText: false,
                     ),
                     SizedBox(height: height * 0.015),
@@ -66,7 +67,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                               .sendPasswordResetEmail(email: forgotEmail)
                               .then((value) => {
                                     Fluttertoast.showToast(
-                                        msg: "Email Sent",
+                                        msg: "email_sent".tr(),
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         backgroundColor: dangerRed,
@@ -74,12 +75,12 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => LoginForm()),
+                                          builder: (context) => const LoginForm()),
                                     ),
                                   });
                         } on FirebaseAuthException catch (e) {
                           Fluttertoast.showToast(
-                              msg: "Error While Sending the Email! Try Again",
+                              msg: "error_try_again".tr(),
                               toastLength: Toast.LENGTH_SHORT,
                               gravity: ToastGravity.BOTTOM,
                               backgroundColor: dangerRed,
@@ -94,10 +95,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           color: blueBlack,
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text(
-                            "Send Verification",
-                            style: TextStyle(
+                            "send_verification".tr(),
+                            style: const TextStyle(
                               color: orangeAccent,
                               fontWeight: FontWeight.w900,
                               fontSize: 20,
@@ -110,7 +111,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Remeber your password?',
+                          "remember_your_password?".tr(),
                           style: TextStyle(color: grey700),
                         ),
                         SizedBox(width: width * 0.01),
@@ -119,12 +120,12 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => LoginForm()),
+                                  builder: (context) => const LoginForm()),
                             );
                           },
-                          child: const Text(
-                            'Login now',
-                            style: TextStyle(
+                          child: Text(
+                            "login_now".tr(),
+                            style: const TextStyle(
                               color: orangeAccent,
                               fontWeight: FontWeight.bold,
                             ),

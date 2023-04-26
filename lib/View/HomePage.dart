@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -31,13 +32,13 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("Hello " + user.email!),
+          Text("hello".tr() + user.email!),
           ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
               onPressed: () {
                 FirebaseAuth.instance.signOut();
               },
-              child: Text("Log Out")),
+              child: Text("log_out".tr())),
           SizedBox(
             height: height * 0.01,
           ),
@@ -48,14 +49,14 @@ class _HomePageState extends State<HomePage> {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => const LoginForm()));
               },
-              child: Text("Google Log Out")),
+              child: Text("google_log_out".tr())),
           ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
               onPressed: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => ProfileScreen()));
               },
-              child: Text("Profile Page"))
+              child: Text("profile_page".tr()))
         ],
       ),
     )));

@@ -1,10 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
 import 'package:supermarket_inventory/View/LoginForm.dart';
 import 'package:supermarket_inventory/View/Profile/change_password.dart';
 import 'package:supermarket_inventory/View/Profile/profile_menu.dart';
 import 'package:supermarket_inventory/View/Profile/profile_pic.dart';
+import 'package:supermarket_inventory/View/Profile/supportedlocales.dart';
 import 'package:supermarket_inventory/color/color.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -13,6 +17,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  // final LanguageNotifier _languageNotifier = LanguageNotifier();
+
   Future<void> googleLogout() async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
     await googleSignIn.signOut();
@@ -32,28 +38,47 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ProfilePic(),
             SizedBox(height: height * 0.05),
             ProfileMenu(
-              text: "Change Password",
+              text: "change_password".tr(),
               icon: const Icon(Icons.change_circle, color: orangeAccent),
               press: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => ChangePassword()));
               },
             ),
-            ProfileMenu(
-              text: "Language",
-              icon: const Icon(
+            ListTile(
+              leading: const Icon(
                 Icons.language,
                 color: orangeAccent,
               ),
-              press: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Placeholder()));
+              title: Text(
+                'language'.tr(),
+              ),
+              trailing: DropdownButton<Locale>(
+                value: context.locale,
+                onChanged: (newLocale) {
+                  BlocProvider.of<StoreBloc>(context)
+                      .add(GetCategoryInitially());
+                  setState(() {
+                    BlocProvider.of<StoreBloc>(context)
+                        .add(GetCategoryInitially());
+                    context.setLocale(newLocale!);
+                  });
+                },
+                items: supportedLocales
+                    .map((locale) => DropdownMenuItem(
+                          value: locale,
+                          child: Text(
+                            locale.languageCode.toUpperCase(),
+                          ),
+                        ))
+                    .toList(),
+              ),
+              onTap: () {
+                context.setLocale(Locale(''));
               },
             ),
             ProfileMenu(
-              text: "Theme",
+              text: "theme".tr(),
               icon: const Icon(
                 Icons.theater_comedy,
                 color: orangeAccent,
@@ -66,7 +91,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
             ),
             ProfileMenu(
-              text: "Log Out",
+              text: "logout".tr(),
               icon: const Icon(
                 Icons.logout,
                 color: orangeAccent,

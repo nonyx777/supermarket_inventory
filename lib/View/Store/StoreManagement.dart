@@ -1,4 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -57,16 +58,16 @@ class _StoreManagementState extends State<StoreManagement> {
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text(
-                          "Total Product Price",
-                          style: TextStyle(
+                          "total_product_price".tr(),
+                          style: const TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 20,
                           ),
                         ),
                         Text(
-                          "Stock in Hand",
+                          "stock_in_hand".tr(),
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 20,
@@ -104,9 +105,9 @@ class _StoreManagementState extends State<StoreManagement> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          "Product List",
-                          style: TextStyle(
+                        Text(
+                          "product_list".tr(),
+                          style: const TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 20,
                           ),
@@ -121,9 +122,9 @@ class _StoreManagementState extends State<StoreManagement> {
                             BlocProvider.of<StoreBloc>(context)
                                 .add(GetCategoryButtonPressed());
                           },
-                          child: const Text(
-                            "Request",
-                            style: TextStyle(
+                          child:Text(
+                            "request".tr(),
+                            style: const TextStyle(
                               color: orangeAccent,
                             ),
                           ),
@@ -131,10 +132,10 @@ class _StoreManagementState extends State<StoreManagement> {
                       ],
                     ),
                     //...
-                    const Center(
+                    Center(
                       child: Text(
-                        "No available products",
-                        style: TextStyle(
+                        "no_available_products".tr(),
+                        style: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w600,
                         ),
@@ -167,16 +168,16 @@ class _StoreManagementState extends State<StoreManagement> {
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children:  [
                         Text(
-                          "Total Product Price",
-                          style: TextStyle(
+                          "total_product_price".tr(),
+                          style: const TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 20,
                           ),
                         ),
                         Text(
-                          "Stock in Hand",
+                          "stock_in_hand".tr(),
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 20,
@@ -212,9 +213,9 @@ class _StoreManagementState extends State<StoreManagement> {
                       height: height * 0.02,
                     ),
                     //product list(scrollable)
-                    const Text(
-                      "Product List",
-                      style: TextStyle(
+                    Text(
+                      "product_list".tr(),
+                      style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 20,
                       ),
@@ -261,16 +262,16 @@ class _StoreManagementState extends State<StoreManagement> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           Text(
-                            "Total Product Price",
-                            style: TextStyle(
+                            "total_product_price".tr(),
+                            style: const TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 20,
                             ),
                           ),
                           Text(
-                            "Stock in Hand",
+                            "stock_in_hand".tr(),
                             style: TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 20,
@@ -309,8 +310,8 @@ class _StoreManagementState extends State<StoreManagement> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            "Product List",
+                          Text(
+                            "product_list".tr(),
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 20,
@@ -326,8 +327,8 @@ class _StoreManagementState extends State<StoreManagement> {
                               BlocProvider.of<StoreBloc>(context)
                                   .add(GetCategoryButtonPressed());
                             },
-                            child: const Text(
-                              "Request",
+                            child: Text(
+                              "request".tr(),
                               style: TextStyle(
                                 color: orangeAccent,
                               ),

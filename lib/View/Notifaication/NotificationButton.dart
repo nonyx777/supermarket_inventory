@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class NotificationButton extends StatelessWidget {
@@ -17,7 +18,7 @@ class NotificationButton extends StatelessWidget {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(),
           onPressed: onPressed,
-          child: Text(text),
+          child: Text(text).tr(),
         ),
       ),
     );

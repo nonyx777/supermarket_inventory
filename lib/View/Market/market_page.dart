@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -60,10 +61,10 @@ class _MarketPageState extends State<MarketPage> {
                   ),
                   child: Row(
                     children: [
-                      const Expanded(
+                      Expanded(
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: "Search",
+                            hintText: "search".tr(),
                             border: InputBorder.none,
                           ),
                         ),
@@ -97,10 +98,10 @@ class _MarketPageState extends State<MarketPage> {
                   ),
                   child: Row(
                     children: [
-                      const Expanded(
+                      Expanded(
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: "Search",
+                            hintText: "search".tr(),
                             border: InputBorder.none,
                           ),
                         ),
@@ -137,10 +138,10 @@ class _MarketPageState extends State<MarketPage> {
                   ),
                   child: Row(
                     children: [
-                      const Expanded(
+                      Expanded(
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: "Search",
+                            hintText: "search".tr(),
                             border: InputBorder.none,
                           ),
                         ),
@@ -177,10 +178,10 @@ class _MarketPageState extends State<MarketPage> {
                   ),
                   child: Row(
                     children: [
-                      const Expanded(
+                      Expanded(
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: "Search",
+                            hintText: "search".tr(),
                             border: InputBorder.none,
                           ),
                         ),
@@ -223,7 +224,7 @@ class _MarketPageState extends State<MarketPage> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: width * 0.04, vertical: 10),
                                 child: Text(
-                                  "All",
+                                  "all".tr(),
                                   style: TextStyle(
                                     color: selectedCategory_ == "all"
                                         ? Colors.white
@@ -250,7 +251,7 @@ class _MarketPageState extends State<MarketPage> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 20, vertical: 10),
                                 child: Text(
-                                  category,
+                                  category.tr(),
                                   style: TextStyle(
                                     color: selectedCategory_ == category
                                         ? Colors.white
@@ -302,7 +303,7 @@ class _MarketPageState extends State<MarketPage> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        product.productName,
+                                        product.productName.tr(),
                                         style: const TextStyle(fontSize: 16),
                                       ),
                                       SizedBox(height: height * 0.005),

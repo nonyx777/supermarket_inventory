@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../Data/Model/Product.dart';
@@ -68,7 +69,7 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.product.productName),
+        title: Text(widget.product.productName.tr()),
         backgroundColor: const Color.fromARGB(255, 20, 33, 61),
       ),
       body: Column(
@@ -89,7 +90,7 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        widget.product.productName,
+                        widget.product.productName.tr(),
                         style: const TextStyle(fontSize: 20),
                       ),
                       Text(
@@ -150,21 +151,20 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
                                   RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(10.0)))),
-                          child: const Text(
-                            "Sell / Add",
+                          child: Text(
+                            "add".tr(),
                           )),
                     ],
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  const Text(
-                    "Similar Items",
+                  Text(
+                    "items".tr(),
                     style: TextStyle(fontSize: 20),
                   ),
                   Container(
                     height: 200,
-                    //color: Colors.red,
                     child: ListView.builder(
                         itemCount: _getFilteredProducts().length,
                         scrollDirection: Axis.horizontal,
@@ -186,7 +186,6 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
                               child: InkWell(
                                 onTap: () {},
                                 child: Container(
-                                  //width: 100,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: Colors.white,
@@ -217,7 +216,7 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
                                           ),
                                         ),
                                         Text(
-                                          product.productName,
+                                          product.productName.tr(),
                                           style: const TextStyle(
                                               fontSize: 12,
                                               color: Colors.black,
