@@ -33,7 +33,7 @@ class _ChangePasswordState extends State<ChangePassword> {
     try {
       await currentUser!.updatePassword(newPassword);
       Fluttertoast.showToast(
-          msg: "Password Changed Succesfully".tr(),
+          msg: "password_changed_succesfully".tr(),
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           backgroundColor: dangerRed,
@@ -60,7 +60,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   children: [
                     Image.asset("assets/images/logo.png"),
                     Text(
-                      'Inventory'.tr(),
+                      'inventory'.tr(),
                       style: const TextStyle(
                           color: blueBlack,
                           fontSize: 46,
@@ -68,7 +68,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                     ),
                     SizedBox(height: height * 0.01),
                     Text(
-                      'Change Password'.tr(),
+                      'change_password'.tr(),
                       style: const TextStyle(
                         color: blueBlack,
                         fontSize: 26,
@@ -77,7 +77,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                     SizedBox(height: height * 0.04),
                     MyTextField(
                       controller: newPasswordController,
-                      hintText: 'Enter Your New Password'.tr(),
+                      hintText: 'enter_your_new_password'.tr(),
                       obscureText: false,
                     ),
                     SizedBox(height: height * 0.015),
@@ -103,7 +103,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                         ),
                         child: Center(
                           child: Text(
-                            "Change Password".tr(),
+                            "change_password".tr(),
                             style: const TextStyle(
                               color: orangeAccent,
                               fontWeight: FontWeight.w900,

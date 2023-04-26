@@ -81,7 +81,7 @@ class _ProfilePicState extends State<ProfilePic> {
           onPressed: () {
             deleteData();
           },
-          child: Text("Delete image".tr()),
+          child: Text("delete_image".tr()),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(dangerRed),
           ),
@@ -105,7 +105,7 @@ class _ProfilePicState extends State<ProfilePic> {
                 child: Column(
                   children: [
                     Text(
-                      'Select Image From !'.tr(),
+                      'select_image'.tr(),
                       style: const TextStyle(
                           fontSize: 18.0, fontWeight: FontWeight.bold),
                     ),
@@ -127,7 +127,7 @@ class _ProfilePicState extends State<ProfilePic> {
                                       height: 60,
                                       width: 60,
                                     ),
-                                    Text('Gallery'.tr()),
+                                    Text('gallery'.tr()),
                                   ],
                                 ),
                               )),
@@ -147,7 +147,7 @@ class _ProfilePicState extends State<ProfilePic> {
                                       height: 60,
                                       width: 60,
                                     ),
-                                    Text('Camera'.tr()),
+                                    Text('camera'.tr()),
                                   ],
                                 ),
                               )),

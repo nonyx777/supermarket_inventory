@@ -26,23 +26,16 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
-  final languageNotifier = LanguageNotifier();
-  await languageNotifier.loadSelectedLanguage();
-
   runApp(
-    ChangeNotifierProvider<LanguageNotifier>(
-        create: (context) => LanguageNotifier(),
-        builder: (context, child) {
-          return EasyLocalization(
-              supportedLocales: const [
-                Locale('en', 'US'),
-                Locale('am', 'ETH'),
-                Locale('fr', 'FR')
-              ],
-              path: 'assets/translations',
-              fallbackLocale: const Locale('en', 'US'),
-              child: const MyApp());
-        }),
+    EasyLocalization(
+        supportedLocales: const [
+          Locale('en', 'US'),
+          Locale('am', 'ETH'),
+          Locale('fr', 'FR')
+        ],
+        path: 'assets/translations',
+        fallbackLocale: const Locale('en', 'US'),
+        child: const MyApp()),
   );
 }
 

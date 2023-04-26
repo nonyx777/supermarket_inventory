@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:supermarket_inventory/View/Profile/change_notifier.dart';
 
 const blueBlack = Color(0xFF14213D);
 const orangeAccent = Color(0xFFFCA311);
@@ -13,3 +15,156 @@ const productTileColor = Color.fromARGB(255, 229, 229, 229);
 const productTileButtonColor = Color.fromARGB(255, 252, 248, 248);
 const pureBlack = Colors.black;
 const dangerRed = Colors.red;
+
+class MyTheme {
+  static ThemeData light() {
+    return ThemeData(
+      brightness: Brightness.light,
+      colorScheme: const ColorScheme.light(
+        primary: Colors.white,
+        secondary: Color(0xFFFCA311),
+      ),
+      scaffoldBackgroundColor: const Color(0xFFF5F5F5),
+      appBarTheme: AppBarTheme(
+        foregroundColor: Colors.black,
+        backgroundColor: const Color(0xFFFCA311),
+        centerTitle: true,
+        titleTextStyle: GoogleFonts.nunitoSans(
+          fontSize: 25.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      textTheme: TextTheme(
+        bodyLarge: GoogleFonts.openSans(
+          fontSize: 26.0,
+          fontWeight: FontWeight.w700,
+          color: Colors.black,
+        ),
+        bodyMedium: GoogleFonts.openSans(
+          fontSize: 20.0,
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
+        ),
+        bodySmall: GoogleFonts.openSans(
+          fontSize: 16.0,
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
+        ),
+        displayLarge: GoogleFonts.openSans(
+          fontSize: 46.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
+        displayMedium: GoogleFonts.openSans(
+          fontSize: 25.0,
+          fontWeight: FontWeight.w700,
+          color: Colors.black,
+        ),
+        displaySmall: GoogleFonts.openSans(
+          fontSize: 18.0,
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
+        ),
+        labelSmall: GoogleFonts.openSans(
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
+        labelMedium: GoogleFonts.openSans(
+          fontSize: 30.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
+      ),
+    );
+  }
+
+  static ThemeData dark() {
+    return ThemeData(
+      brightness: Brightness.dark,
+      colorScheme: const ColorScheme.light(
+        primary: Color(0xFF14213D),
+        secondary: Color(0xFFE5E5E5),
+      ),
+      scaffoldBackgroundColor: const Color(0xFF14213D),
+      appBarTheme: AppBarTheme(
+        foregroundColor: Colors.white,
+        backgroundColor: const Color(0xFF14213D),
+        centerTitle: true,
+        titleTextStyle: GoogleFonts.nunitoSans(
+          fontSize: 25.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      textTheme: TextTheme(
+        bodyLarge: GoogleFonts.openSans(
+          fontSize: 26.0,
+          fontWeight: FontWeight.w700,
+          color: Colors.white,
+        ),
+        bodyMedium: GoogleFonts.openSans(
+          fontSize: 20.0,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+        ),
+        bodySmall: GoogleFonts.openSans(
+          fontSize: 16.0,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+        ),
+        displayLarge: GoogleFonts.openSans(
+          fontSize: 46.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+        displayMedium: GoogleFonts.openSans(
+          fontSize: 25.0,
+          fontWeight: FontWeight.w700,
+          color: Colors.white,
+        ),
+        displaySmall: GoogleFonts.openSans(
+          fontSize: 18.0,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+        ),
+        labelSmall: GoogleFonts.openSans(
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+        labelMedium: GoogleFonts.openSans(
+          fontSize: 30.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+
+  static AppTheme currentTheme = AppTheme.light;
+
+  static ThemeData lightTheme = ThemeData(
+    primarySwatch: Colors.blue,
+    brightness: Brightness.light,
+  );
+
+  static ThemeData darkTheme = ThemeData(
+    primarySwatch: Colors.blue,
+    brightness: Brightness.dark,
+  );
+
+  static ThemeData getTheme() {
+    switch (currentTheme) {
+      case AppTheme.light:
+        return lightTheme;
+      case AppTheme.dark:
+        return darkTheme;
+      case AppTheme.system:
+        if (WidgetsBinding.instance.window.platformBrightness ==
+            Brightness.dark) {
+          return darkTheme;
+        }
+        return lightTheme;
+    }
+  }
+}

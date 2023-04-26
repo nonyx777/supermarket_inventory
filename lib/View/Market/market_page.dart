@@ -251,7 +251,7 @@ class _MarketPageState extends State<MarketPage> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 20, vertical: 10),
                                 child: Text(
-                                  category,
+                                  category.tr(),
                                   style: TextStyle(
                                     color: selectedCategory_ == category
                                         ? Colors.white

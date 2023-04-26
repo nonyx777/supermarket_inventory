@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
 import 'package:supermarket_inventory/View/LoginForm.dart';
-import 'package:supermarket_inventory/View/Profile/change_notifier.dart';
 import 'package:supermarket_inventory/View/Profile/change_password.dart';
 import 'package:supermarket_inventory/View/Profile/profile_menu.dart';
 import 'package:supermarket_inventory/View/Profile/profile_pic.dart';
@@ -16,7 +17,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final LanguageNotifier _languageNotifier = LanguageNotifier();
+  // final LanguageNotifier _languageNotifier = LanguageNotifier();
 
   Future<void> googleLogout() async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -37,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ProfilePic(),
             SizedBox(height: height * 0.05),
             ProfileMenu(
-              text: "Change Password".tr(),
+              text: "change_password".tr(),
               icon: const Icon(Icons.change_circle, color: orangeAccent),
               press: () {
                 Navigator.pushReplacement(context,
@@ -50,12 +51,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: orangeAccent,
               ),
               title: Text(
-                'Language'.tr(),
+                'language'.tr(),
               ),
               trailing: DropdownButton<Locale>(
                 value: context.locale,
                 onChanged: (newLocale) {
-                  context.setLocale(newLocale!);
+                  BlocProvider.of<StoreBloc>(context)
+                      .add(GetCategoryInitially());
+                  setState(() {
+                    BlocProvider.of<StoreBloc>(context)
+                        .add(GetCategoryInitially());
+                    context.setLocale(newLocale!);
+                  });
                 },
                 items: supportedLocales
                     .map((locale) => DropdownMenuItem(
@@ -66,23 +73,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ))
                     .toList(),
               ),
+              onTap: () {
+                context.setLocale(Locale(''));
+              },
             ),
-
-            // ProfileMenu(
-            //   text: "Language".tr(),
-            //   icon: const Icon(
-            //     Icons.language,
-            //     color: orangeAccent,
-            //   ),
-            //   press: () {
-            //     Navigator.push(
-            //         context,
-            //         MaterialPageRoute(
-            //             builder: (context) => const Placeholder()));
-            //   },
-            // ),
             ProfileMenu(
-              text: "Theme".tr(),
+              text: "theme".tr(),
               icon: const Icon(
                 Icons.theater_comedy,
                 color: orangeAccent,
@@ -95,7 +91,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
             ),
             ProfileMenu(
-              text: "Log Out".tr(),
+              text: "logout".tr(),
               icon: const Icon(
                 Icons.logout,
                 color: orangeAccent,

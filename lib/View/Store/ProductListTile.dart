@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
@@ -72,7 +73,7 @@ class _ProductListTileState extends State<ProductListTile> {
                     ),
                     //...
                     Text(
-                      widget.productCategory,
+                      widget.productCategory.tr(),
                       style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 20,

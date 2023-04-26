@@ -7,7 +7,7 @@
     "request": "Request",
     "all": "All",
     "fruits": "Fruits",
-    "change_assword": "Change Password",
+    "change_password": "Change Password",
     "notifications": "Notifications",
     "log_out": "Log Out",
     "inventory": "Inventory",    
@@ -61,6 +61,16 @@
     "error_try_again":"Error While Sending the Email! Try Again",
     "search":"Search",
     "add":"Add to Cart",
-    "items":"Similar Items"
+    "items":"Similar Items",
+    "no_available_products":"No available products",
+    "password_changed-succesfully":"Password Changed Succesfully",
+    "enter_your_new_password":"Enter Your New Password",
+    "delete_image":"Delete image",
+    "select_image":"Select Image From !",
+    "gallery":"Gallery",
+    "camera":"Camera",
+    "language":"Language",
+    "theme":"Theme",
+    "logout":"Log Out"
 
 }
