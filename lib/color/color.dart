@@ -152,19 +152,4 @@ class MyTheme {
     primarySwatch: Colors.blue,
     brightness: Brightness.dark,
   );
-
-  static ThemeData getTheme() {
-    switch (currentTheme) {
-      case AppTheme.light:
-        return lightTheme;
-      case AppTheme.dark:
-        return darkTheme;
-      case AppTheme.system:
-        if (WidgetsBinding.instance.window.platformBrightness ==
-            Brightness.dark) {
-          return darkTheme;
-        }
-        return lightTheme;
-    }
-  }
 }
