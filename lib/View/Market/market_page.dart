@@ -7,6 +7,7 @@ import 'package:supermarket_inventory/Bloc/Market_Bloc/market_bloc.dart';
 import 'package:supermarket_inventory/Data/Model/Product.dart';
 import 'package:supermarket_inventory/Service/Utility.dart';
 import 'package:supermarket_inventory/View/Market/market_detail.dart';
+import 'package:supermarket_inventory/View/Market/search.dart';
 
 class MarketPage extends StatefulWidget {
   const MarketPage({Key? key}) : super(key: key);
@@ -180,7 +181,12 @@ class _MarketPageState extends State<MarketPage> {
                     children: [
                       Expanded(
                         child: TextField(
-                          onTap: () {},
+                          onTap: () { 
+                            showSearch(
+                              context: context,
+                              delegate: CustomSearch(),
+                            );
+                          },
                           decoration: InputDecoration(
                             hintText: "search".tr(),
                             border: InputBorder.none,

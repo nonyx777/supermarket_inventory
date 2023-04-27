@@ -18,6 +18,10 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+    AppTheme currentTheme = AppTheme.light;
+
+  final light = ThemeData.light();
+  final dark = ThemeData.dark();
   // final LanguageNotifier _languageNotifier = LanguageNotifier();
 
   Future<void> googleLogout() async {
@@ -78,6 +82,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     MaterialPageRoute(builder: (context) => ChangePassword()));
               },
             ),
+             ListTile(
+              leading: const Icon(
+                Icons.language,
+                color: orangeAccent,
+              ),
+              title: Text(
+                'theme'.tr(),
+              ),
+              trailing: DropdownButton<ThemeData>(
+                value: currentTheme == AppTheme.light ? light : dark,
+                onChanged: (theme) {
+                  setState(() {
+                    currentTheme = theme == light ? AppTheme.light : AppTheme.dark;
+                  });
+                },
+                items: [
+                  DropdownMenuItem(
+                    value: light,
+                    child: Text('Light Theme'),
+                  ),
+                  DropdownMenuItem(
+                    value: dark,
+                    child: Text('Dark Theme'),
+                  ),
+                ],
+              ),
+            ),
           ProfileMenu(
               text: "logout".tr(),
               icon: const Icon(
@@ -94,6 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
       ),
+      backgroundColor: currentTheme == AppTheme.light ? Colors.white : Colors.black,
     );
   }
 }
