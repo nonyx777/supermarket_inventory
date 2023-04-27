@@ -3,15 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Market_Bloc/market_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
 import 'package:supermarket_inventory/Service/Notification.dart';
 import 'package:supermarket_inventory/View/LoginForm.dart';
 import 'package:supermarket_inventory/View/Navigation/ParentPage.dart';
-import 'package:supermarket_inventory/View/Profile/change_notifier.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

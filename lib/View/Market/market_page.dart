@@ -1,7 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:supermarket_inventory/Bloc/Market_Bloc/market_bloc.dart';
 import 'package:supermarket_inventory/Data/Model/Product.dart';

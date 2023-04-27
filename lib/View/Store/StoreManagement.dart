@@ -1,12 +1,7 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
-import 'package:supermarket_inventory/Data/Model/Product.dart';
-import 'package:supermarket_inventory/Service/ApiService.dart';
 import 'package:supermarket_inventory/Service/Utility.dart';
 import 'package:supermarket_inventory/View/Store/ProductListTile.dart';
 import 'package:supermarket_inventory/color/color.dart';

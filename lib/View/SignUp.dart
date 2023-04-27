@@ -8,7 +8,6 @@ import 'package:supermarket_inventory/View/components/LoginTextfield.dart';
 import 'package:supermarket_inventory/View/components/SignUpButton.dart';
 import 'package:supermarket_inventory/View/components/square_tile.dart';
 import 'package:supermarket_inventory/color/color.dart';
-import 'package:supermarket_inventory/color/color.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -75,8 +74,8 @@ class _SignUpFormState extends State<SignUpForm> {
                     ),
                     SizedBox(height: height * 0.01),
                     Text(
-                      "email".tr(),
-                      style: kMBoldStyle.copyWith(
+                      "sign_up".tr(),
+                      style: kMRegularStyle.copyWith(
                         color: blueBlack,
                         fontSize: 16,
                       ),

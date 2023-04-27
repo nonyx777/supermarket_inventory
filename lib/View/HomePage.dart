@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supermarket_inventory/View/LoginForm.dart';
 import 'package:supermarket_inventory/View/Profile/profile_screen.dart';
-import 'package:supermarket_inventory/View/Profile/profile_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
