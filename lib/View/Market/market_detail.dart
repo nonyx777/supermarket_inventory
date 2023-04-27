@@ -150,7 +150,7 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
                               backgroundColor: MaterialStateProperty.all(
                                   const Color.fromARGB(255, 20, 33, 61)),
                               fixedSize: MaterialStateProperty.all(
-                                  Size(double.infinity, 50)),
+                                  Size(double.infinity, height * 0.06)),
                               shape: MaterialStateProperty.all(
                                   RoundedRectangleBorder(
                                       borderRadius:
