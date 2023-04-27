@@ -46,7 +46,7 @@ class _ParentPageState extends State<ParentPage> {
       appBar: AppBar(
         backgroundColor: blueBlack,
         title: Text(
-          style: const TextStyle(
+          style: kMBoldStyle.copyWith(
             color: pureWhite,
             fontSize: 25,
           ),

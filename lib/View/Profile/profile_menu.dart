@@ -35,7 +35,7 @@ class ProfileMenu extends StatelessWidget {
             Expanded(
               child: Text(
                 text.tr(),
-                style: const TextStyle(color: blueBlack),
+                style: kMRegularStyle.copyWith(color: blueBlack),
               ),
             ),
             const Icon(

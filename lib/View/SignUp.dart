@@ -16,6 +16,7 @@ class SignUpForm extends StatefulWidget {
   @override
   State<SignUpForm> createState() => _SignUpFormState();
 }
+
 class _SignUpFormState extends State<SignUpForm> {
   final emailController = TextEditingController();
 
@@ -67,7 +68,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     SizedBox(height: height * 0.03),
                     Text(
                       "inventory".tr(),
-                      style: const TextStyle(
+                      style: kMBoldStyle.copyWith(
                           color: blueBlack,
                           fontSize: 36,
                           fontWeight: FontWeight.bold),
@@ -75,7 +76,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     SizedBox(height: height * 0.01),
                     Text(
                       "email".tr(),
-                      style: const TextStyle(
+                      style: kMBoldStyle.copyWith(
                         color: blueBlack,
                         fontSize: 16,
                       ),
@@ -101,7 +102,8 @@ class _SignUpFormState extends State<SignUpForm> {
 
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => const LoginForm()),
+                          MaterialPageRoute(
+                              builder: (context) => const LoginForm()),
                         );
                       },
                     ),
@@ -121,7 +123,7 @@ class _SignUpFormState extends State<SignUpForm> {
                                 const EdgeInsets.symmetric(horizontal: 10.0),
                             child: Text(
                               "or_continue_with".tr(),
-                              style: TextStyle(color: grey700),
+                              style: kMRegularStyle.copyWith(color: grey700),
                             ),
                           ),
                           Expanded(
@@ -156,7 +158,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       children: [
                         Text(
                           "already_a_member".tr(),
-                          style: TextStyle(color: grey700),
+                          style: kMRegularStyle.copyWith(color: grey700),
                         ),
                         SizedBox(width: width * 0.01),
                         TextButton(
@@ -169,7 +171,7 @@ class _SignUpFormState extends State<SignUpForm> {
                           },
                           child: Text(
                             "login_now".tr(),
-                            style: const TextStyle(
+                            style: kMRegularStyle.copyWith(
                               color: orangeAccent,
                               fontWeight: FontWeight.bold,
                             ),

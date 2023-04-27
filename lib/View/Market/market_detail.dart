@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 import '../../Data/Model/Product.dart';
 
@@ -69,7 +70,10 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.product.productName.tr()),
+        title: Text(
+          widget.product.productName.tr(),
+          style: kMBoldStyle,
+        ),
         backgroundColor: const Color.fromARGB(255, 20, 33, 61),
       ),
       body: Column(
@@ -91,16 +95,16 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
                     children: [
                       Text(
                         widget.product.productName.tr(),
-                        style: const TextStyle(fontSize: 20),
+                        style: kMBoldStyle.copyWith(fontSize: 20),
                       ),
                       Text(
                         '\$${widget.product.productPrice}',
-                        style: const TextStyle(fontSize: 20),
+                        style: kMBoldStyle.copyWith(fontSize: 20),
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: height * 0.03,
                   ),
                   Row(
                     children: [
@@ -118,12 +122,12 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
                           child: Icon(Icons.remove),
                         ),
                       ),
-                      const SizedBox(
-                        width: 10,
+                      SizedBox(
+                        width: width * 0.03,
                       ),
                       Text(_quantity.toString()),
-                      const SizedBox(
-                        width: 10,
+                      SizedBox(
+                        width: width * 0.03,
                       ),
                       InkWell(
                         onTap: () {
@@ -137,8 +141,8 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
                           child: Icon(Icons.add),
                         ),
                       ),
-                      const SizedBox(
-                        width: 129,
+                      SizedBox(
+                        width: width * 0.42,
                       ),
                       ElevatedButton(
                           onPressed: () {},
@@ -153,15 +157,16 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
                                           BorderRadius.circular(10.0)))),
                           child: Text(
                             "add".tr(),
+                            style: kMSemiBoldStyle.copyWith(fontSize: 15),
                           )),
                     ],
                   ),
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: height * 0.03,
                   ),
                   Text(
                     "items".tr(),
-                    style: TextStyle(fontSize: 20),
+                    style: kMRegularStyle.copyWith(fontSize: 20),
                   ),
                   Container(
                     height: 200,
@@ -217,17 +222,17 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
                                         ),
                                         Text(
                                           product.productName.tr(),
-                                          style: const TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.black,
-                                              fontFamily: "Poppins"),
+                                          style: kMLightStyle.copyWith(
+                                            fontSize: 12,
+                                            color: Colors.black,
+                                          ),
                                         ),
-                                        const SizedBox(
-                                          height: 20,
+                                        SizedBox(
+                                          height: height * 0.015,
                                         ),
                                         Text(
                                           '\$${product.productPrice}',
-                                          style: const TextStyle(
+                                          style: kMLightStyle.copyWith(
                                               fontSize: 12,
                                               color: Colors.black,
                                               fontFamily: 'Poppins',

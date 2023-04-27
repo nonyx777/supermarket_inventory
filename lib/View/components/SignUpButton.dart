@@ -21,10 +21,8 @@ class SignUpButton extends StatelessWidget {
         child: Center(
           child: Text(
             "usign_up".tr(),
-            style: const TextStyle(
+            style: kMBoldStyle.copyWith(
               color: orangeAccent,
-              fontWeight: FontWeight.w900,
-              fontSize: 20,
             ),
           ),
         ),

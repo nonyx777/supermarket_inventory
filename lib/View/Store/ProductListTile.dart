@@ -75,8 +75,8 @@ class _ProductListTileState extends State<ProductListTile> {
                     //...
                     Text(
                       widget.productCategory.tr(),
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w500,
+                      style: kMBoldStyle.copyWith(
+                        fontWeight: FontWeight.w600,
                         fontSize: 20,
                       ),
                     ),
@@ -87,9 +87,9 @@ class _ProductListTileState extends State<ProductListTile> {
                     //...
                     Text(
                       "\$${widget.productPrice.toString()}",
-                      style: const TextStyle(
+                      style: kMBoldStyle.copyWith(
                         fontWeight: FontWeight.normal,
-                        fontSize: 20,
+                        fontSize: 18,
                       ),
                     ),
                   ],

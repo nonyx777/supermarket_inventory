@@ -8,6 +8,7 @@ import 'package:supermarket_inventory/Data/Model/Product.dart';
 import 'package:supermarket_inventory/Service/Utility.dart';
 import 'package:supermarket_inventory/View/Market/market_detail.dart';
 import 'package:supermarket_inventory/View/Market/search.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 class MarketPage extends StatefulWidget {
   const MarketPage({Key? key}) : super(key: key);
@@ -181,7 +182,7 @@ class _MarketPageState extends State<MarketPage> {
                     children: [
                       Expanded(
                         child: TextField(
-                          onTap: () { 
+                          onTap: () {
                             showSearch(
                               context: context,
                               delegate: CustomSearch(),
@@ -224,7 +225,7 @@ class _MarketPageState extends State<MarketPage> {
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: selectedCategory_ == "all"
-                                      ? Colors.blue
+                                      ? Colors.orangeAccent
                                       : Colors.white,
                                   borderRadius: BorderRadius.circular(25),
                                 ),
@@ -232,7 +233,7 @@ class _MarketPageState extends State<MarketPage> {
                                     horizontal: width * 0.04, vertical: 10),
                                 child: Text(
                                   "all".tr(),
-                                  style: TextStyle(
+                                  style: kMRegularStyle.copyWith(
                                     color: selectedCategory_ == "all"
                                         ? Colors.white
                                         : Colors.black,
@@ -251,7 +252,7 @@ class _MarketPageState extends State<MarketPage> {
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: selectedCategory_ == category
-                                      ? Colors.blue
+                                      ? Colors.orangeAccent
                                       : Colors.white,
                                   borderRadius: BorderRadius.circular(25),
                                 ),
@@ -259,7 +260,7 @@ class _MarketPageState extends State<MarketPage> {
                                     horizontal: 20, vertical: 10),
                                 child: Text(
                                   category.tr(),
-                                  style: TextStyle(
+                                  style: kMRegularStyle.copyWith(
                                     color: selectedCategory_ == category
                                         ? Colors.white
                                         : Colors.black,
@@ -309,9 +310,13 @@ class _MarketPageState extends State<MarketPage> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      SizedBox(
+                                        height: height * 0.008,
+                                      ),
                                       Text(
                                         product.productName.tr(),
-                                        style: const TextStyle(fontSize: 16),
+                                        style: kMSemiBoldStyle.copyWith(
+                                            fontSize: 18),
                                       ),
                                       SizedBox(height: height * 0.005),
                                       Row(
@@ -320,9 +325,8 @@ class _MarketPageState extends State<MarketPage> {
                                         children: [
                                           Text(
                                             '\$${product.productPrice}',
-                                            style: const TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold),
+                                            style: kMRegularStyle.copyWith(
+                                                fontSize: 16),
                                           ),
                                           Text(
                                             '${product.productQuantity}',
