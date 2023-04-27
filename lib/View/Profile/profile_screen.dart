@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
 import 'package:supermarket_inventory/View/LoginForm.dart';
+import 'package:supermarket_inventory/View/Profile/change_notifier.dart';
 import 'package:supermarket_inventory/View/Profile/change_password.dart';
 import 'package:supermarket_inventory/View/Profile/profile_menu.dart';
 import 'package:supermarket_inventory/View/Profile/profile_pic.dart';
@@ -37,14 +38,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(height: height * 0.05),
             ProfilePic(),
             SizedBox(height: height * 0.05),
-            ProfileMenu(
-              text: "change_password".tr(),
-              icon: const Icon(Icons.change_circle, color: orangeAccent),
-              press: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => ChangePassword()));
-              },
-            ),
             ListTile(
               leading: const Icon(
                 Icons.language,
@@ -78,19 +71,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
             ),
             ProfileMenu(
-              text: "theme".tr(),
-              icon: const Icon(
-                Icons.theater_comedy,
-                color: orangeAccent,
-              ),
+              text: "change_password".tr(),
+              icon: const Icon(Icons.change_circle, color: orangeAccent),
               press: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Placeholder()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => ChangePassword()));
               },
             ),
-            ProfileMenu(
+          ProfileMenu(
               text: "logout".tr(),
               icon: const Icon(
                 Icons.logout,
