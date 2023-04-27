@@ -62,7 +62,7 @@
     "error_try_again":"Error While Sending the Email! Try Again",
 
     "search":"Chercher",
-    "add":"Ajouter",
+    "add":"Ajoute",
     "items":"Articles similaires",
     "no_available_products":"Aucun produit disponible",
     "password_changed-succesfully":"Mot de passe modifié avec succès",
@@ -74,5 +74,6 @@
     "language":"Langue",
     "theme":"Thème",
     "logout":"Se déconnecter",
-    "are_you_sure": "Êtes-vous sûr de vouloir vous déconnecter?"
+    "are_you_sure": "Are You Sure You Want to Log Out?"
+
 }
