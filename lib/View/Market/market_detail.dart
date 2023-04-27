@@ -156,7 +156,7 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
                                       borderRadius:
                                           BorderRadius.circular(10.0)))),
                           child: Text(
-                            "add".tr(),
+                            "sell".tr(),
                             style: kMSemiBoldStyle.copyWith(fontSize: 15),
                           )),
                     ],
