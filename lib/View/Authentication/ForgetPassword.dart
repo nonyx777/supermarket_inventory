@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:supermarket_inventory/View/LoginForm.dart';
+import 'package:supermarket_inventory/View/Authentication/LoginForm.dart';
 import 'package:supermarket_inventory/View/components/LoginTextfield.dart';
 import 'package:supermarket_inventory/color/color.dart';
 

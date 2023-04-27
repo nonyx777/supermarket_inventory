@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Market_Bloc/market_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
 import 'package:supermarket_inventory/Service/Notification.dart';
-import 'package:supermarket_inventory/View/LoginForm.dart';
+import 'package:supermarket_inventory/View/Authentication/LoginForm.dart';
 import 'package:supermarket_inventory/View/Navigation/ParentPage.dart';
 
 void main() async {
