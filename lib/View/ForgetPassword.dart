@@ -111,7 +111,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "remember_your_password?".tr(),
+                          "remember_your_password".tr(),
                           style: TextStyle(color: grey700),
                         ),
                         SizedBox(width: width * 0.01),

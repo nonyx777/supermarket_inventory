@@ -180,6 +180,7 @@ class _MarketPageState extends State<MarketPage> {
                     children: [
                       Expanded(
                         child: TextField(
+                          onTap: () {},
                           decoration: InputDecoration(
                             hintText: "search".tr(),
                             border: InputBorder.none,
