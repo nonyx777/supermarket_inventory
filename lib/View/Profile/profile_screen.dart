@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
-import 'package:supermarket_inventory/View/LoginForm.dart';
-import 'package:supermarket_inventory/View/Profile/change_notifier.dart';
 import 'package:supermarket_inventory/View/Profile/change_password.dart';
 import 'package:supermarket_inventory/View/Profile/profile_menu.dart';
 import 'package:supermarket_inventory/View/Profile/profile_pic.dart';
@@ -18,12 +16,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  AppTheme currentTheme = AppTheme.light;
-
-  final light = ThemeData.light();
-  final dark = ThemeData.dark();
-  // final LanguageNotifier _languageNotifier = LanguageNotifier();
-
   Future<void> googleLogout() async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
     await googleSignIn.signOut();
@@ -123,34 +115,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     MaterialPageRoute(builder: (context) => ChangePassword()));
               },
             ),
-            ListTile(
-              leading: const Icon(
-                Icons.language,
-                color: orangeAccent,
-              ),
-              title: Text(
-                'theme'.tr(),
-              ),
-              trailing: DropdownButton<ThemeData>(
-                value: currentTheme == AppTheme.light ? light : dark,
-                onChanged: (theme) {
-                  setState(() {
-                    currentTheme =
-                        theme == light ? AppTheme.light : AppTheme.dark;
-                  });
-                },
-                items: [
-                  DropdownMenuItem(
-                    value: light,
-                    child: Text('Light Theme'),
-                  ),
-                  DropdownMenuItem(
-                    value: dark,
-                    child: Text('Dark Theme'),
-                  ),
-                ],
-              ),
-            ),
             ProfileMenu(
               text: "logout".tr(),
               icon: const Icon(
@@ -164,8 +128,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
       ),
-      backgroundColor:
-          currentTheme == AppTheme.light ? Colors.white : Colors.black,
     );
   }
 }

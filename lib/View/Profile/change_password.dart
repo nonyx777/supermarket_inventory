@@ -5,7 +5,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supermarket_inventory/View/components/LoginTextfield.dart';
 import 'package:supermarket_inventory/color/color.dart';
-import 'package:supermarket_inventory/color/color.dart';
 
 import '../LoginForm.dart';
 
