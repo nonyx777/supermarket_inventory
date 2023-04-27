@@ -76,12 +76,18 @@ class _ProfilePicState extends State<ProfilePic> {
             ],
           ),
         ),
-        Text(user.email!),
+        Text(
+          user.email!,
+          style: kMLightStyle.copyWith(fontSize: 16),
+        ),
         ElevatedButton(
           onPressed: () {
             deleteData();
           },
-          child: Text("delete_image".tr()),
+          child: Text(
+            "delete_image".tr(),
+            style: kMLightStyle,
+          ),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(dangerRed),
           ),

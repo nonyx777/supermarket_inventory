@@ -64,44 +64,33 @@ class _ProductTileState extends State<ProductTile> {
                     children: [
                       Stack(
                         children: [
-                          Text(
-                            widget.productName.tr(),
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                          Text(
-                            widget.productName.tr(),
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 0.2
-                                  ..color = pureWhite),
-                          ),
+                          Text(widget.productName.tr(), style: kMBoldStyle),
+                          // Text(
+                          //   widget.productName.tr(),
+                          //   style: TextStyle(
+                          //       fontWeight: FontWeight.bold,
+                          //       fontSize: 20,
+                          //       foreground: Paint()
+                          //         ..style = PaintingStyle.stroke
+                          //         ..strokeWidth = 0.2
+                          //         ..color = pureWhite),
+                          // ),
                         ],
                       ),
                       Stack(
                         children: [
-                          Text(
-                            "\$${widget.productPrice}",
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25,
-                            ),
-                          ),
-                          Text(
-                            "\$${widget.productPrice}",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 0.2
-                                  ..color = pureWhite),
-                          ),
+                          Text("\$${widget.productPrice}",
+                              style: kMSemiBoldStyle.copyWith(fontSize: 22)),
+                          // Text(
+                          //   "\$${widget.productPrice}",
+                          //   style: TextStyle(
+                          //       fontWeight: FontWeight.bold,
+                          //       fontSize: 25,
+                          //       foreground: Paint()
+                          //         ..style = PaintingStyle.stroke
+                          //         ..strokeWidth = 0.2
+                          //         ..color = pureWhite),
+                          // ),
                         ],
                       ),
                     ],
@@ -142,7 +131,7 @@ class _ProductTileState extends State<ProductTile> {
                           ),
                           child: Text(
                             "add".tr(),
-                            style: const TextStyle(
+                            style: kMRegularStyle.copyWith(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: pureBlack,
@@ -165,6 +154,7 @@ class _ProductTileState extends State<ProductTile> {
               children: [
                 Text(
                   "Available Quantity: " + widget.productQuantity.toString(),
+                  style: kMLightStyle.copyWith(fontSize: 14),
                 ),
                 Row(
                   children: [
@@ -181,7 +171,7 @@ class _ProductTileState extends State<ProductTile> {
                     ),
                     Text(
                       quantity.toString(),
-                      style: const TextStyle(
+                      style: kMRegularStyle.copyWith(
                         fontSize: 20,
                       ),
                     ),

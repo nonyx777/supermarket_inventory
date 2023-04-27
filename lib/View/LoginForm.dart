@@ -129,16 +129,15 @@ class _LoginFormState extends State<LoginForm> {
                 SizedBox(height: height * 0.01),
                 Text(
                   "inventory".tr(),
-                  style: const TextStyle(
+                  style: kMBoldStyle.copyWith(
                       color: blueBlack,
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold),
+                      fontSize: 40,
+                     ),
                 ),
                 Text(
                   "welcome_back".tr(),
-                  style: const TextStyle(
-                    color: blueBlack,
-                    fontSize: 16,
+                  style: kMRegularStyle.copyWith(
+                    color: blueBlack
                   ),
                 ),
                 SizedBox(height: height * 0.02),
@@ -168,9 +167,8 @@ class _LoginFormState extends State<LoginForm> {
                         },
                         child: Text(
                           "forgot_password".tr(),
-                          style: TextStyle(
+                          style: kMLightStyle.copyWith(
                             color: grey500,
-                            fontSize: 11,
                           ),
                         ),
                       )
@@ -195,7 +193,7 @@ class _LoginFormState extends State<LoginForm> {
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
                           "or_continue_with".tr(),
-                          style: TextStyle(color: grey700),
+                          style: kMLightStyle.copyWith(color: grey700),
                         ),
                       ),
                       Expanded(
@@ -236,7 +234,7 @@ class _LoginFormState extends State<LoginForm> {
                   children: [
                     Text(
                       "not_a_member".tr(),
-                      style: TextStyle(color: grey700),
+                      style: kMRegularStyle.copyWith(color: grey700),
                     ),
                     SizedBox(width: width * 0.01),
                     TextButton(
@@ -249,7 +247,7 @@ class _LoginFormState extends State<LoginForm> {
                       },
                       child: Text(
                         "register_now".tr(),
-                        style: const TextStyle(
+                        style: kMRegularStyle.copyWith(
                           color: orangeAccent,
                           fontWeight: FontWeight.bold,
                         ),

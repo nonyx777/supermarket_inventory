@@ -61,14 +61,14 @@ class _StoreManagementState extends State<StoreManagement> {
                       children: [
                         Text(
                           "total_product_price".tr(),
-                          style: const TextStyle(
+                          style: kMRegularStyle.copyWith(
                             fontWeight: FontWeight.w300,
                             fontSize: 20,
                           ),
                         ),
                         Text(
                           "stock_in_hand".tr(),
-                          style: TextStyle(
+                          style: kMRegularStyle.copyWith(
                             fontWeight: FontWeight.w300,
                             fontSize: 20,
                           ),
@@ -81,17 +81,17 @@ class _StoreManagementState extends State<StoreManagement> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
+                      children: [
                         Text(
                           "0",
-                          style: TextStyle(
+                          style: kMRegularStyle.copyWith(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
                           ),
                         ),
                         Text(
                           "0",
-                          style: TextStyle(
+                          style: kMRegularStyle.copyWith(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
                           ),
@@ -107,7 +107,7 @@ class _StoreManagementState extends State<StoreManagement> {
                       children: [
                         Text(
                           "product_list".tr(),
-                          style: const TextStyle(
+                          style: kMRegularStyle.copyWith(
                             fontWeight: FontWeight.w500,
                             fontSize: 20,
                           ),
@@ -124,7 +124,7 @@ class _StoreManagementState extends State<StoreManagement> {
                           },
                           child: Text(
                             "request".tr(),
-                            style: const TextStyle(
+                            style: kMRegularStyle.copyWith(
                               color: orangeAccent,
                             ),
                           ),
@@ -135,7 +135,7 @@ class _StoreManagementState extends State<StoreManagement> {
                     Center(
                       child: Text(
                         "no_available_products".tr(),
-                        style: const TextStyle(
+                        style: kMBoldStyle.copyWith(
                           fontSize: 30,
                           fontWeight: FontWeight.w600,
                         ),
@@ -171,14 +171,14 @@ class _StoreManagementState extends State<StoreManagement> {
                       children: [
                         Text(
                           "total_product_price".tr(),
-                          style: const TextStyle(
+                          style: kMRegularStyle.copyWith(
                             fontWeight: FontWeight.w300,
                             fontSize: 20,
                           ),
                         ),
                         Text(
                           "stock_in_hand".tr(),
-                          style: TextStyle(
+                          style: kMRegularStyle.copyWith(
                             fontWeight: FontWeight.w300,
                             fontSize: 20,
                           ),
@@ -191,17 +191,17 @@ class _StoreManagementState extends State<StoreManagement> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: const [
+                      children: [
                         Text(
                           "0",
-                          style: TextStyle(
+                          style: kMRegularStyle.copyWith(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
                           ),
                         ),
                         Text(
                           "0",
-                          style: TextStyle(
+                          style: kMRegularStyle.copyWith(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
                           ),
@@ -215,7 +215,7 @@ class _StoreManagementState extends State<StoreManagement> {
                     //product list(scrollable)
                     Text(
                       "product_list".tr(),
-                      style: const TextStyle(
+                      style: kMRegularStyle.copyWith(
                         fontWeight: FontWeight.w500,
                         fontSize: 20,
                       ),
@@ -265,14 +265,14 @@ class _StoreManagementState extends State<StoreManagement> {
                         children: [
                           Text(
                             "total_product_price".tr(),
-                            style: const TextStyle(
+                            style: kMLightStyle.copyWith(
                               fontWeight: FontWeight.w300,
                               fontSize: 20,
                             ),
                           ),
                           Text(
                             "stock_in_hand".tr(),
-                            style: TextStyle(
+                            style: kMLightStyle.copyWith(
                               fontWeight: FontWeight.w300,
                               fontSize: 20,
                             ),
@@ -288,14 +288,13 @@ class _StoreManagementState extends State<StoreManagement> {
                         children: [
                           Text(
                             "\$$totalProductPrice",
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
+                            style: kMBoldStyle.copyWith(
                               fontSize: 30,
                             ),
                           ),
                           Text(
                             totalProductQuantity.toString(),
-                            style: const TextStyle(
+                            style: kMRegularStyle.copyWith(
                               fontWeight: FontWeight.bold,
                               fontSize: 30,
                             ),
@@ -312,10 +311,7 @@ class _StoreManagementState extends State<StoreManagement> {
                         children: [
                           Text(
                             "product_list".tr(),
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 20,
-                            ),
+                            style: kMBoldStyle.copyWith(),
                           ),
                           ElevatedButton(
                             style: const ButtonStyle(
@@ -329,9 +325,8 @@ class _StoreManagementState extends State<StoreManagement> {
                             },
                             child: Text(
                               "request".tr(),
-                              style: const TextStyle(
-                                color: pureWhite,
-                              ),
+                              style: kMRegularStyle.copyWith(
+                                  color: pureWhite, fontSize: 16),
                             ),
                           ),
                         ],

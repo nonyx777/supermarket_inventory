@@ -16,6 +16,40 @@ const productTileButtonColor = Color.fromARGB(255, 252, 248, 248);
 const pureBlack = Colors.black;
 const dangerRed = Colors.red;
 
+const TextStyle kHelveticaStyle = TextStyle(
+  fontFamily: 'Helvetica',
+);
+
+const String kHelveticaFontFamily = 'Helvetica';
+
+const TextStyle kMLightStyle = TextStyle(
+  fontFamily: kHelveticaFontFamily,
+  fontWeight: FontWeight.w300,
+  fontStyle: FontStyle.normal,
+  fontSize: 12.0,
+);
+
+const TextStyle kMRegularStyle = TextStyle(
+  fontFamily: kHelveticaFontFamily,
+  fontWeight: FontWeight.w400,
+  fontStyle: FontStyle.normal,
+  fontSize: 15.0,
+);
+
+const TextStyle kMSemiBoldStyle = TextStyle(
+  fontFamily: kHelveticaFontFamily,
+  fontWeight: FontWeight.w600,
+  fontStyle: FontStyle.normal,
+  fontSize: 16.0,
+);
+
+const TextStyle kMBoldStyle = TextStyle(
+  fontFamily: kHelveticaFontFamily,
+  fontWeight: FontWeight.bold,
+  fontStyle: FontStyle.normal,
+  fontSize: 20.0,
+);
+
 class MyTheme {
   static ThemeData light() {
     return ThemeData(

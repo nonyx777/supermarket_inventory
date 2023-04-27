@@ -7,7 +7,7 @@ import 'package:supermarket_inventory/View/components/LoginTextfield.dart';
 import 'package:supermarket_inventory/color/color.dart';
 import 'package:supermarket_inventory/color/color.dart';
 
-import '../LoginForm.dart'; 
+import '../LoginForm.dart';
 
 class ChangePassword extends StatefulWidget {
   const ChangePassword({super.key});
@@ -61,7 +61,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                     Image.asset("assets/images/logo.png"),
                     Text(
                       'inventory'.tr(),
-                      style: const TextStyle(
+                      style: kMBoldStyle.copyWith(
                           color: blueBlack,
                           fontSize: 46,
                           fontWeight: FontWeight.bold),
@@ -69,7 +69,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                     SizedBox(height: height * 0.01),
                     Text(
                       'change_password'.tr(),
-                      style: const TextStyle(
+                      style: kMLightStyle.copyWith(
                         color: blueBlack,
                         fontSize: 26,
                       ),
@@ -104,10 +104,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                         child: Center(
                           child: Text(
                             "change_password".tr(),
-                            style: const TextStyle(
+                            style: kMBoldStyle.copyWith(
                               color: orangeAccent,
-                              fontWeight: FontWeight.w900,
-                              fontSize: 20,
                             ),
                           ),
                         ),

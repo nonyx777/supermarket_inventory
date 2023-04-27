@@ -32,7 +32,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     Image.asset("assets/images/logo.png"),
                     Text(
                       "inventory".tr(),
-                      style: const TextStyle(
+                      style: kMBoldStyle.copyWith(
                           color: blueBlack,
                           fontSize: 46,
                           fontWeight: FontWeight.bold),
@@ -40,7 +40,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     SizedBox(height: height * 0.01),
                     Text(
                       "forgot_password".tr(),
-                      style: const TextStyle(
+                      style: kMSemiBoldStyle.copyWith(
                         color: blueBlack,
                         fontSize: 26,
                       ),
@@ -75,7 +75,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => const LoginForm()),
+                                          builder: (context) =>
+                                              const LoginForm()),
                                     ),
                                   });
                         } on FirebaseAuthException catch (e) {
@@ -98,7 +99,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         child: Center(
                           child: Text(
                             "send_verification".tr(),
-                            style: const TextStyle(
+                            style: kMBoldStyle.copyWith(
                               color: orangeAccent,
                               fontWeight: FontWeight.w900,
                               fontSize: 20,
@@ -107,12 +108,15 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         ),
                       ),
                     ),
-                    Row(
+                    SizedBox(
+                      height: height * 0.05,
+                    ),
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "remember_your_password".tr(),
-                          style: TextStyle(color: grey700),
+                          style: kMRegularStyle.copyWith(color: grey700),
                         ),
                         SizedBox(width: width * 0.01),
                         TextButton(
@@ -125,7 +129,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           },
                           child: Text(
                             "login_now".tr(),
-                            style: const TextStyle(
+                            style: kMRegularStyle.copyWith(
                               color: orangeAccent,
                               fontWeight: FontWeight.bold,
                             ),

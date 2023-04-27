@@ -21,10 +21,8 @@ class MyButton extends StatelessWidget {
         child: Center(
           child: Text(
             "ulogin".tr(),
-            style: const TextStyle(
+            style: kMBoldStyle.copyWith(
               color: orangeAccent,
-              fontWeight: FontWeight.w900,
-              fontSize: 20,
             ),
           ),
         ),

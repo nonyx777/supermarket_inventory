@@ -31,7 +31,7 @@ class MyTextField extends StatelessWidget {
             fillColor: Colors.grey.shade200,
             filled: true,
             hintText: hintText.tr(),
-            hintStyle: TextStyle(color: grey500)),
+            hintStyle: kMRegularStyle.copyWith(color: grey500)),
       ),
     );
   }

@@ -18,7 +18,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-    AppTheme currentTheme = AppTheme.light;
+  AppTheme currentTheme = AppTheme.light;
 
   final light = ThemeData.light();
   final dark = ThemeData.dark();
@@ -49,6 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               title: Text(
                 'language'.tr(),
+                style: kMRegularStyle,
               ),
               trailing: DropdownButton<Locale>(
                 value: context.locale,
@@ -78,11 +79,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               text: "change_password".tr(),
               icon: const Icon(Icons.change_circle, color: orangeAccent),
               press: () {
-                Navigator.pushReplacement(context,
+                Navigator.push(context,
                     MaterialPageRoute(builder: (context) => ChangePassword()));
               },
             ),
-             ListTile(
+            ListTile(
               leading: const Icon(
                 Icons.language,
                 color: orangeAccent,
@@ -94,7 +95,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 value: currentTheme == AppTheme.light ? light : dark,
                 onChanged: (theme) {
                   setState(() {
-                    currentTheme = theme == light ? AppTheme.light : AppTheme.dark;
+                    currentTheme =
+                        theme == light ? AppTheme.light : AppTheme.dark;
                   });
                 },
                 items: [
@@ -109,7 +111,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
-          ProfileMenu(
+            ProfileMenu(
               text: "logout".tr(),
               icon: const Icon(
                 Icons.logout,
@@ -125,7 +127,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
       ),
-      backgroundColor: currentTheme == AppTheme.light ? Colors.white : Colors.black,
+      backgroundColor:
+          currentTheme == AppTheme.light ? Colors.white : Colors.black,
     );
   }
 }

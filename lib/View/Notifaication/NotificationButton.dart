@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:supermarket_inventory/color/color.dart';
 
 class NotificationButton extends StatelessWidget {
   const NotificationButton({
@@ -18,7 +19,10 @@ class NotificationButton extends StatelessWidget {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(),
           onPressed: onPressed,
-          child: Text(text).tr(),
+          child: Text(
+            text,
+            style: kMBoldStyle,
+          ).tr(),
         ),
       ),
     );
