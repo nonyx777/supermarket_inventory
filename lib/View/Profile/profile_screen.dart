@@ -21,6 +21,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
     await googleSignIn.signOut();
   }
 
+  String _getLocaleDisplayName(Locale locale) {
+    switch (locale.languageCode) {
+      case 'am':
+        return 'አማርኛ';
+      case 'fr':
+        return 'Français';
+      default:
+        return 'English';
+    }
+  }
+
   logoutPopup() {
     return showDialog(
         context: context,
@@ -86,8 +97,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               trailing: DropdownButton<Locale>(
                 value: context.locale,
                 onChanged: (newLocale) {
-                  BlocProvider.of<StoreBloc>(context)
-                      .add(GetCategoryInitially());
                   setState(() {
                     BlocProvider.of<StoreBloc>(context)
                         .add(GetCategoryInitially());
@@ -98,14 +107,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     .map((locale) => DropdownMenuItem(
                           value: locale,
                           child: Text(
-                            locale.languageCode.toUpperCase(),
+                            _getLocaleDisplayName(locale),
                           ),
                         ))
                     .toList(),
               ),
-              onTap: () {
-                context.setLocale(Locale(''));
-              },
             ),
             ProfileMenu(
               text: "change_password".tr(),
