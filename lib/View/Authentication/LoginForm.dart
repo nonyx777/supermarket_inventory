@@ -82,6 +82,17 @@ class _LoginFormState extends State<LoginForm> {
         await auth.signInWithCredential(credential);
   }
 
+  String _getLocaleDisplayName(Locale locale) {
+    switch (locale.languageCode) {
+      case 'am':
+        return 'አማርኛ';
+      case 'fr':
+        return 'Français';
+      default:
+        return 'English';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -113,7 +124,7 @@ class _LoginFormState extends State<LoginForm> {
                         .map((locale) => DropdownMenuItem(
                               value: locale,
                               child: Text(
-                                locale.languageCode.toUpperCase(),
+                                _getLocaleDisplayName(locale),
                               ),
                             ))
                         .toList(),
