@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket_inventory/Bloc/Store/bloc/store_bloc.dart';
 import 'package:supermarket_inventory/Service/Utility.dart';
+import 'package:supermarket_inventory/View/Store/ProductTile.dart';
 import 'package:supermarket_inventory/View/Store/StorePage.dart';
 import 'package:supermarket_inventory/color/color.dart';
 
@@ -96,6 +97,7 @@ class _ProductListTileState extends State<ProductListTile> {
               ),
               IconButton(
                 onPressed: () {
+                  quantity = 1; //reverting quantity of product tile
                   selectedCategory = widget.productCategory;
                   final storeBloc = StoreBloc();
                   Navigator.push(

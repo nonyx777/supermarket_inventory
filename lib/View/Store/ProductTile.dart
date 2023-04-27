@@ -37,153 +37,172 @@ class _ProductTileState extends State<ProductTile> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    return Material(
-      elevation: 3,
-      borderRadius: BorderRadius.circular(10),
-      child: Container(
-        height: height * 0.245,
-        width: width * .9,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(widget.productImage),
-            fit: BoxFit.fitWidth,
-          ),
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
-        ),
-        child: Padding(
-          padding: EdgeInsets.all(height * 0.01),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
+    return Column(
+      children: [
+        Material(
+          elevation: 3,
+          borderRadius: BorderRadius.circular(10),
+          child: Container(
+            height: height * 0.245,
+            width: width * .9,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(widget.productImage),
+                fit: BoxFit.fitWidth,
+              ),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(height * 0.01),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Stack(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        widget.productName.tr(),
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
+                      Stack(
+                        children: [
+                          Text(
+                            widget.productName.tr(),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          Text(
+                            widget.productName.tr(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                foreground: Paint()
+                                  ..style = PaintingStyle.stroke
+                                  ..strokeWidth = 0.2
+                                  ..color = pureWhite),
+                          ),
+                        ],
                       ),
-                      Text(
-                        widget.productName.tr(),
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            foreground: Paint()
-                              ..style = PaintingStyle.stroke
-                              ..strokeWidth = 0.2
-                              ..color = pureWhite),
+                      Stack(
+                        children: [
+                          Text(
+                            "\$${widget.productPrice}",
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25,
+                            ),
+                          ),
+                          Text(
+                            "\$${widget.productPrice}",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25,
+                                foreground: Paint()
+                                  ..style = PaintingStyle.stroke
+                                  ..strokeWidth = 0.2
+                                  ..color = pureWhite),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  Stack(
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        "\$${widget.productPrice}",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
+                      Container(
+                        width: width * 0.245,
+                        height: height * 0.055,
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            //instantiating an object
+                            //triggering an event to save the product into the database
+                            market_product = Product(
+                                id: widget.id,
+                                productName: widget.productName,
+                                productPrice: widget.productPrice,
+                                productImage: widget.productImage,
+                                productCategory: selectedCategory,
+                                productQuantity: widget.productQuantity);
+
+                            saveToMarketDatabase();
+                            await NotificationService.showNotification(
+                              title: "Product Added To Market",
+                              body: "You have added " +
+                                  quantity.toString() +
+                                  " amount of " +
+                                  widget.productName +
+                                  " into the Market",
+                              notificationLayout: NotificationLayout.BigPicture,
+                              bigPicture: widget.productImage,
+                            );
+                          },
+                          style: const ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll(
+                                productTileButtonColor),
+                          ),
+                          child: Text(
+                            "add".tr(),
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: pureBlack,
+                            ),
+                          ),
                         ),
-                      ),
-                      Text(
-                        "\$${widget.productPrice}",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                            foreground: Paint()
-                              ..style = PaintingStyle.stroke
-                              ..strokeWidth = 0.2
-                              ..color = pureWhite),
                       ),
                     ],
                   ),
                 ],
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          if (quantity < widget.productQuantity) {
-                            setState(() {
-                              quantity++;
-                            });
-                          }
-                        },
-                        icon: const Icon(Icons.add),
-                      ),
-                      Text(
-                        quantity.toString(),
-                        style: const TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          if (quantity > 1) {
-                            setState(() {
-                              quantity--;
-                            });
-                          }
-                        },
-                        icon: const Icon(Icons.remove),
-                      )
-                    ],
-                  ),
-                  Container(
-                    width: width * 0.245,
-                    height: height * 0.055,
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        //instantiating an object
-                        //triggering an event to save the product into the database
-                        market_product = Product(
-                            id: widget.id,
-                            productName: widget.productName,
-                            productPrice: widget.productPrice,
-                            productImage: widget.productImage,
-                            productCategory: selectedCategory,
-                            productQuantity: widget.productQuantity);
-
-                        saveToMarketDatabase();
-                        await NotificationService.showNotification(
-                          title: "Product Added To Market",
-                          body: "You have added " +
-                              quantity.toString() +
-                              " amount of " +
-                              widget.productName +
-                              " into the Market",
-                          notificationLayout: NotificationLayout.BigPicture,
-                          bigPicture: widget.productImage,
-                        );
+            ),
+          ),
+        ),
+        Container(
+          child: Padding(
+            padding: EdgeInsets.only(left: width * 0.05, right: width * 0.02),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Available Quantity: " + widget.productQuantity.toString(),
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        if (quantity < widget.productQuantity) {
+                          setState(() {
+                            quantity++;
+                          });
+                        }
                       },
-                      style: const ButtonStyle(
-                        backgroundColor:
-                            MaterialStatePropertyAll(productTileButtonColor),
-                      ),
-                      child: Text(
-                        "add".tr(),
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: pureBlack,
-                        ),
+                      color: blueBlack,
+                      icon: const Icon(Icons.add),
+                    ),
+                    Text(
+                      quantity.toString(),
+                      style: const TextStyle(
+                        fontSize: 20,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    IconButton(
+                      onPressed: () {
+                        if (quantity > 1) {
+                          setState(() {
+                            quantity--;
+                          });
+                        }
+                      },
+                      color: blueBlack,
+                      icon: const Icon(Icons.remove),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }
