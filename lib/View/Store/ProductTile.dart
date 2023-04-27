@@ -74,16 +74,6 @@ class _ProductTileState extends State<ProductTile> {
                             productQuantity: widget.productQuantity);
 
                         saveToMarketDatabase();
-                        await NotificationService.showNotification(
-                          title: "Product Added To Market",
-                          body: "You have added " +
-                              quantity.toString() +
-                              " amount of " +
-                              widget.productName +
-                              " into the Market",
-                          notificationLayout: NotificationLayout.BigPicture,
-                          bigPicture: widget.productImage,
-                        );
                       },
                       style: const ButtonStyle(
                         backgroundColor:
@@ -176,6 +166,17 @@ void saveToMarketDatabase() async {
   final _service = Service(); //market service
 
   await readFromDatabase();
+  //notify....
+  await NotificationService.showNotification(
+    title: "Product Added To Market",
+    body: "You have added " +
+        quantity.toString() +
+        " amount of " +
+        market_product.productName +
+        " into the Market",
+    notificationLayout: NotificationLayout.BigPicture,
+    bigPicture: market_product.productImage,
+  );
 
   if (marketProducts.contains(market_product)) {
     market_product.productQuantity += quantity;

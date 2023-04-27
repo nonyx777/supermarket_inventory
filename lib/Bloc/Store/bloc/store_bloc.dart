@@ -1,8 +1,10 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:supermarket_inventory/Data/Model/Product.dart';
 import 'package:supermarket_inventory/Data/Repository/Store/service.dart';
 import 'package:supermarket_inventory/Service/ApiService.dart';
+import 'package:supermarket_inventory/Service/Notification.dart';
 import 'package:supermarket_inventory/Service/Utility.dart';
 
 part 'store_event.dart';
@@ -26,6 +28,18 @@ class StoreBloc extends Bloc<StoreEvent, StoreState> {
         dynamic category = [];
 
         setUpProduct(category);
+
+        //if product quantity is 0 notify
+        for (var product in addedProducts) {
+          if (product.productQuantity == 0) {
+            await NotificationService.showNotification(
+              title: "Your running low on " + product.productName,
+              body: "Get " + product.productName + " from supplier",
+              notificationLayout: NotificationLayout.BigPicture,
+              bigPicture: product.productImage,
+            );
+          }
+        }
 
         emit(StoreSuccessState(category));
       }
