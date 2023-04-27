@@ -112,7 +112,7 @@ class _ProductTileState extends State<ProductTile> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Available Quantity: " +
+                      "avail".tr() +
                           widget.productQuantity.toString(),
                       style: kMLightStyle.copyWith(fontSize: 14),
                     ),

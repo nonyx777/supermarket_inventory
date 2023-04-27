@@ -74,6 +74,6 @@
     "language":"Langue",
     "theme":"Thème",
     "logout":"Se déconnecter",
-    "are_you_sure": "Are You Sure You Want to Log Out?"
-
+    "are_you_sure": "Are You Sure You Want to Log Out?",
+    "avail":"Quantité Disponible:  "
 }
