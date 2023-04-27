@@ -29,6 +29,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
     await googleSignIn.signOut();
   }
 
+  logoutPopup() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)),
+            child: Container(
+              height: 140,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'are_you_sure'.tr(),
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.bold),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () async {
+                            await googleLogout();
+                            FirebaseAuth.instance.signOut();
+                            Navigator.pop(context);
+                          },
+                          child: Text("logout".tr()),
+                          style: ElevatedButton.styleFrom(primary: dangerRed),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -118,10 +158,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: orangeAccent,
               ),
               press: () async {
-                await googleLogout();
-                FirebaseAuth.instance.signOut();
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const LoginForm()));
+                logoutPopup();
               },
             ),
           ],

@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supermarket_inventory/Service/Utility.dart';
 import 'package:supermarket_inventory/View/Market/market_page.dart';
 import 'package:supermarket_inventory/View/Profile/profile_screen.dart';
@@ -22,6 +23,51 @@ class _ParentPageState extends State<ParentPage> {
   double height = 0;
   double width = 0;
   int page = 0;
+
+  Future<void> googleLogout() async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    await googleSignIn.signOut();
+  }
+
+  logoutPopup() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)), //this right here
+            child: Container(
+              height: 160,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'are_you_sure'.tr(),
+                      style: kMRegularStyle.copyWith(
+                          fontSize: 18.0, fontWeight: FontWeight.bold),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () async {
+                            await googleLogout();
+                            FirebaseAuth.instance.signOut();
+                            Navigator.pop(context);
+                          },
+                          child: Text("logout".tr()),
+                          style: ElevatedButton.styleFrom(primary: dangerRed),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +102,8 @@ class _ParentPageState extends State<ParentPage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
+              onPressed: () async {
+                logoutPopup();
               },
               icon: Icon(
                 Icons.logout_rounded,
