@@ -71,6 +71,7 @@
     "camera":"Camera",
     "language":"Language",
     "theme":"Theme",
-    "logout":"Log Out"
+    "logout":"Log Out",
+    "are_you_sure": "Are You Sure You Want to Log Out"
 
 }

@@ -71,6 +71,7 @@
     "camera":"ካሜራ",
     "language":"ቋንቋ",
     "theme":"ገጽታ",
-    "logout":"ውጣ"
+    "logout":"ውጣ",
+    "are_you_sure": "እርግጠኛ ነህ ዘግተህ መውጣት ትፈልጋለህ?"
 
 }
