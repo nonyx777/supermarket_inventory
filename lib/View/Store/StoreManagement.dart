@@ -122,7 +122,7 @@ class _StoreManagementState extends State<StoreManagement> {
                             BlocProvider.of<StoreBloc>(context)
                                 .add(GetCategoryButtonPressed());
                           },
-                          child:Text(
+                          child: Text(
                             "request".tr(),
                             style: const TextStyle(
                               color: orangeAccent,
@@ -168,7 +168,7 @@ class _StoreManagementState extends State<StoreManagement> {
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children:  [
+                      children: [
                         Text(
                           "total_product_price".tr(),
                           style: const TextStyle(
@@ -329,8 +329,8 @@ class _StoreManagementState extends State<StoreManagement> {
                             },
                             child: Text(
                               "request".tr(),
-                              style: TextStyle(
-                                color: orangeAccent,
+                              style: const TextStyle(
+                                color: pureWhite,
                               ),
                             ),
                           ),
