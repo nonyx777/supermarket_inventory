@@ -207,8 +207,9 @@ class _ProductTileState extends State<ProductTile> {
   }
 }
 
+//this function should be removed and added to the bloc once done....
 void saveToMarketDatabase() async {
-  final _service = Service();
+  final _service = Service(); //market service
 
   await readFromDatabase();
 
@@ -217,6 +218,14 @@ void saveToMarketDatabase() async {
     _service.updateProduct(market_product);
   } else {
     _service.saveProduct(market_product);
+  }
+
+  //decreasing quantity from the store database
+  for (var product in addedProducts) {
+    if (product.id == market_product.id) {
+      product.productQuantity -= quantity;
+      storeService.updateProduct(product);
+    }
   }
 
   //revert quantity to 1
